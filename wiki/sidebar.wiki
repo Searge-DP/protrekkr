@@ -3,6 +3,7 @@
   * [compressed Compressed modules]
   * [faq FAQ/Troubleshooting]
   * [sequencer The sequencer]
+  * [effects The effects]
   * [shortcuts Keyboard Shortcuts]
   * [localization Keyboard Localization (Linux only)]
   * [thanks Thanks to...]
