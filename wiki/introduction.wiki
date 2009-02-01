@@ -1,6 +1,6 @@
 #sidebar sidebar
 <pre>
-[ProTrekkr http://code.google.com/p/protrekkr/]
+[http://code.google.com/p/protrekkr/ ProTrekkr]
 (formerly known as NoiseTrekker by Juan Antonio Arguelles Rius aka Arguru)
 is a tracker program combining a software synthesizer together with
 a traditional samples tracker which can (mainly) be used to create
