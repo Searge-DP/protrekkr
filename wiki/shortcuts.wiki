@@ -1,7 +1,7 @@
 #sidebar sidebar
 <pre>
-Playing
--------
+== Playing ==
+----
 
    RCTRL:                           Play song
   RALT:                            Play pattern
@@ -10,8 +10,8 @@ Playing
   Left mouse on 'Edit/Record':     Edit mode on/off.
   Right mouse on 'Edit/Record':    Record mode on/off.
 
- Editing
--------
+== Editing ==
+----
 
    TAB:                             Go to next track
   LSHIFT + TAB:                    Go to prev. track
@@ -39,8 +39,8 @@ Playing
   LCTRL + LSHIFT + M:              Solo the current track / Unmute all
   LSHIFT + F1 - F10:               Select the different tabs
 
-Tracking
---------
+== Tracking ==
+-----
 
    1st and 2nd keys rows:           Upper octave row
   3rd and 4th keys rows:           Lower octave row
@@ -54,8 +54,8 @@ Tracking
   F1:                              Select lower octave
   F2:                              Select higher octave
 
- Blocks
-------
+== Blocks ==
+----
 
    (Blocks can also be selected with the mouse by holding the right button
    and scrolling the pattern with the mouse wheel).
@@ -104,8 +104,8 @@ Tracking
   LCTRL + LSHIFT + D: Transpose the note of a selection to 1 seminote lower
                       (only for the current instrument)
 
- Misc.
------
+== Misc. ==
+----
 
    LALT + ENTER:       Switch between fullscreen / windowed mode
   LALT + F4:          Exit program
