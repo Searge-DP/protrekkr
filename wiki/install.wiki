@@ -1,0 +1,11 @@
+#sidebar sidebar
+<pre>
+Simply copy the files lame_acm.xml & lameACM.acm located in the install
+directory into the system directory of the OS (usually Windows/system32).
+
+The particular version of the lame mp3 encoder will strip some datas off
+compared to the official one (thus producing slightly smaller files).
+
+Please note that this manipulation will only save a small amount of bytes
+so it may not be necessary.
+</pre>
