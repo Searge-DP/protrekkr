@@ -3,17 +3,17 @@
 Playing
 -------
 
-  RCTRL:                           Play song
+   RCTRL:                           Play song
   RALT:                            Play pattern
   Left mouse on 'Play Sng/Pttrn':  Play song.
   Right mouse on 'Play Sng/Pttrn': Play pattern.
   Left mouse on 'Edit/Record':     Edit mode on/off.
   Right mouse on 'Edit/Record':    Record mode on/off.
 
-Editing
+ Editing
 -------
 
-  TAB:                             Go to next track
+   TAB:                             Go to next track
   LSHIFT + TAB:                    Go to prev. track
   SPACE:                           Toggle Edit mode On & Off.
                                    (Also stop if the song is being played)
@@ -30,11 +30,11 @@ Editing
   LCTRL + HOME / END:              Top left / Bottom right of pattern
   F5, F6, F7, F8, F9:              Jump to 0, 16, 32, 48, 63 line
 
-  + - (Numeric keypad):            Next / Previous pattern
+   + - (Numeric keypad):            Next / Previous pattern
   LCTRL + LEFT / RIGHT:            Next / Previous pattern
   LCTRL + LALT + LEFT / RIGHT:     Next / Previous position
 
-  LALT + LEFT / RIGHT:             Next / Previous instrument
+   LALT + LEFT / RIGHT:             Next / Previous instrument
   LSHIFT + M:                      Toggle mute state of the current channel
   LCTRL + LSHIFT + M:              Solo the current track / Unmute all
   LSHIFT + F1 - F10:               Select the different tabs
@@ -42,7 +42,7 @@ Editing
 Tracking
 --------
 
-  1st and 2nd keys rows:           Upper octave row
+   1st and 2nd keys rows:           Upper octave row
   3rd and 4th keys rows:           Lower octave row
   RSHIFT:                          Insert a note off
   / and * (Numeric keypad):        -1 or +1 octave
@@ -54,13 +54,13 @@ Tracking
   F1:                              Select lower octave
   F2:                              Select higher octave
 
-Blocks
+ Blocks
 ------
 
-  (Blocks can also be selected with the mouse by holding the right button
+   (Blocks can also be selected with the mouse by holding the right button
    and scrolling the pattern with the mouse wheel).
 
-  LCTRL + A:          Select entire current track
+   LCTRL + A:          Select entire current track
   LCTRL + LSHIFT + A: Select entire current pattern
   LCTRL + B:          Set start of a block
   LCTRL + E:          Set end of a block
@@ -70,10 +70,10 @@ Blocks
   LCTRL + I:          Interpolate selected datas from the first
                       to the last row of a selection
 
-                      example:
+                       example:
                       (assuming only the 2 effects datas columns are selected)
 
-                      C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  00
+                       C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  00
                       C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  02
                       C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  05
                       C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  08
