@@ -87,8 +87,8 @@
                   (won't work in the replay routine)
                   (won't work if the tracker was compiled without midi support)
 
-    Read in the [faq] how you can send MidiOut controller messages
-    and read the manual of your gear to how send RRPN messages
-    using this midiOut messages, also, you might find here the
-    midi implementation table of your hardware.
+    Read in the [faq] how you can send midiout controller messages
+    and read the manual of your gear to learn how send RRPN ones
+    using midiout, also, you might find here the midi implementation table
+    for your hardware.
 </pre>
