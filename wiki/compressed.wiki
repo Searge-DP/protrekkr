@@ -58,5 +58,5 @@ the .psy file format is as follow:
  Note:
 The fx data field is removed from the .ptp files and moved to the .psy files.
 
-Note2: Only one fx per position/row is saved.
+ Note2: Only one fx per position/row is saved.
 </pre>
