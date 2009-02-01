@@ -21,7 +21,7 @@ It's available (so far) for Windows and Linux and it's featuring:
  - Samples compressor handling Gsm/Mp3/TrueSpeech.
  - Replay routine to be included & used inside your own programs.
 
-[http://code.google.com/p/protrekkr/ ProTrekkr] is a FREEWARE tool, this means that you can use it for whatever
+This is a FREEWARE tool, this means that you can use it for whatever
 you want and for free. There's NO GUARANTEE that this program will perform
 well or even run on your computer.
 </pre>
