@@ -4,14 +4,14 @@ Q> No Fasttracker support, no 53194 tracks ?
    No etc...?, "m... i dont like the gui, the key shortcuts,
    you should have to..."
 
-A1> Get a compiler and code the best tracker ever. I'm sure you'll do fine.
+ A1> Get a compiler and code the best tracker ever. I'm sure you'll do fine.
 A2> Use fastracker, impulse tracker, buzz or whatever stuff you want.
 A3> Use your browser and search for some stuff...
 
 ----
-Q> I Cannot run the program! Any idea ?
+ Q> I Cannot run the program! Any idea ?
 
-A> If u have got a SBLive, try disabling EMU driver on your soundcard.
+ A> If u have got a SBLive, try disabling EMU driver on your soundcard.
    Be sure you have got lastest DirectX drivers for your stuff (gfx/sfx card)
    and DirectX6.1 or above installed.
    (Microsoft DirectX 6.1 or above is required to run ptk)
@@ -19,125 +19,125 @@ A> If u have got a SBLive, try disabling EMU driver on your soundcard.
    and (possibly) vista. Also, might not work with some goofy gfx/sfx cards.
 
 ----
-Q> Well, the program runs ok but ... how I can quit it ?
+ Q> Well, the program runs ok but ... how I can quit it ?
 
-A> Click 2 times on the exit button.
+ A> Click 2 times on the exit button.
    Or just close the window if you're running ptk in windows mode.
    Alternatively, you can also use the key combo: LALT + F4.
 
 ----
-Q> Ehh Everything sounds clicks, distorted and weird !!?
+ Q> Ehh Everything sounds clicks, distorted and weird !!?
 
-Plan A> Try to use higher latency in Misc. Setup section.
+ Plan A> Try to use higher latency in Misc. Setup section.
         This means that the CPU is not having enough time to render/fill
         the audio buffer data, and this produce clicking...
 Plan B> Buy a faster computer.
 
 ----
-Q> How I play 303 patterns in ptk ?
+ Q> How I play 303 patterns in ptk ?
 
-A> Use ptk command 31xy and 32xy. 31xy will trigger pattern 'y' (1-8)
+ A> Use ptk command 31xy and 32xy. 31xy will trigger pattern 'y' (1-8)
    from bank 'x' (A-D) from the first 303 unit
    (ptk has got 2 303 units, just like Rebirth).
 
-Example:
+ Example:
 
-  --- .. .. .. 31A3 << Play the 3th pattern of the bank A of the 1st 303 unit.
+   --- .. .. .. 31A3 << Play the 3th pattern of the bank A of the 1st 303 unit.
   --- .. .. .. 0000 
   --- .. .. .. 0000 
   --- .. .. .. 0000 
   Off .. .. .. 0000 << Switch the 303 unit off.
 
-The 303 unit 1 will be assigned to the track 0 stream.
+ The 303 unit 1 will be assigned to the track 0 stream.
 
-This means, that panning, fx setup, filter settings of the track will be
+ This means, that panning, fx setup, filter settings of the track will be
 applied to the sound of the 303 unit 1.
 
-To play the second 303 unit, use the same method but with 32xy command
+ To play the second 303 unit, use the same method but with 32xy command
 instead of 31. To stop 303 playing (patterns are played "looped" continuously)
 just put a note off (Right shift key) on the track were it was triggered.
 
-Also, using -3100- or -3200- will replay the patterns that are currently
+ Also, using -3100- or -3200- will replay the patterns that are currently
 selected on the 303 editor. Can be handy while composing basslines.
 
-Btw: 303 engine will not "eat" the track sampler/csynth engine,
+ Btw: 303 engine will not "eat" the track sampler/csynth engine,
      so you can have both playing ex. a bassdrum and a 303 line
      on the same track.
 
-Also, both 303 units can be triggered in the same track.
+ Also, both 303 units can be triggered in the same track.
 Well, just play with them :].
 
 ----
-Q> Oh!, the 303 sounds great, will you code a 'buzz' port ?
+ Q> Oh!, the 303 sounds great, will you code a 'buzz' port ?
 
-A> Nope.
+ A> Nope.
 
 ----
-Q> How I can record 303 or the tracks tweakings on the fly ?
+ Q> How I can record 303 or the tracks tweakings on the fly ?
 
-A> Press the "Live Rec: OFF" (top/left of the screen) button
+ A> Press the "Live Rec: OFF" (top/left of the screen) button
    and, voila, the 303 tweakings or current track are autofilled on pattern
    while the tune is being played.
 
 ----
-Q> How I can alter 303s CutOff, Resonance, etc.. on the pattern while playing ?
+ Q> How I can alter 303s CutOff, Resonance, etc.. on the pattern while playing ?
 
-A> Easy, just use the 303 special pattern commands.
+ A> Easy, just use the 303 special pattern commands.
    They're very useful to automatize 303 stuff.
 
 ----
-Q> How to use Midi In/Out ?
+ Q> How to use Midi In/Out ?
 
-A> First of all, midi in & out capabilities of this program are rather
+ A> First of all, midi in & out capabilities of this program are rather
    *primitive* to say the least.
 
-   Follow these steps:
+    Follow these steps:
 
     1 - Go to Misc. Setup section and select a midi in or out device to use
-        (ptk only supports one device at a time).
+       (ptk only supports one device at a time).
 
     2 - Go to instrument section, and select a MIDI PRG
-        (the default is N/A, which means no midi program selected).
+       (the default is N/A, which means no midi program selected).
 
     3 - Go to track section and here u can assign a midi channel
-        to each track of ptk.
+       to each track of ptk.
 
     4 - Play notes :]. Note off works. F'x' note cut command also works too,
-        and note-volume command (speed) is supported.
+       and note-volume command (speed) is supported.
 
-   Also, you can change midicontrollers in the tracker,
+    Also, you can change midicontrollers in the tracker,
    using '90' in the panning row:
 
-   ex:
+    ex:
 
-       C-3 02 .. .. 0000  
+        C-3 02 .. .. 0000  
 
-       --- .. .. 90 xxyy << This will change the value 
+        --- .. .. 90 xxyy << This will change the value 
        --- .. .. .. 0000    of the controller n.'xx' to 'yy' (both in hex)
        --- .. .. .. 0000
 
-   So "--- .. .. 90 2040" will change the controller number $20(32) to $40(64).
+    So "--- .. .. 90 2040" will change the controller number $20(32) to $40(64).
 
-   You will need the midi implementation table of your gear to know
+    You will need the midi implementation table of your gear to know
    what you can change with midi controller messages.
    Probably, it's located at the end of the manual =].
 
 ----
-Q> Audio & Midi are not synchronized, what I can do ?
+ Q> Audio & Midi are not synchronized, what I can do ?
 
-A1> Buy a commercial software package.
+ A1> Buy a commercial software package.
 A2> Well, there is a nasty trick to synchronize both.
     It's a bit hardcore but work with me:
 
-    Simply put one line down to all midi notes on your pattern (use Insert key)
+     Simply put one line down to all midi notes on your pattern (use Insert key)
     and go to 'Misc. Setup', adjust the latency and just search a value
     that will make sound sync both audio/midi.
 
 ----
-Q> The stock Sin/Saw/Pulse and Rnd waveforms are too simple/common,
+ Q> The stock Sin/Saw/Pulse and Rnd waveforms are too simple/common,
    is there a way to use something more complex/rich ?
 
-A> You have to ability to redirect the waveforms of the instruments
+ A> You have to ability to redirect the waveforms of the instruments
    through the synth pipe by selecting the "wav" option for the oscillator
    you're using for this synth instrument, samples can be used as wavetables
    to replace the stock signals.
