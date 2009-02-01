@@ -1,4 +1,5 @@
   * [introduction Introduction]
+  * [install How to install (Windows only)]
   * [compressed Compressed modules]
   * [faq FAQ/Troubleshooting]
   * [sequencer The sequencer]
