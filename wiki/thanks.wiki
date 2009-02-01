@@ -1,0 +1,59 @@
+#sidebar sidebar
+<pre>
+Arguru:
+
+  The original NoiseTrekker (you may be gone but your code lives on).
+
+Daxx,
+Teis,
+Kaneel,
+Ne7,
+Preacher,
+Mice ,
+Kmuland,
+Manwe,
+Manbearpig,
+Misioslaw,
+Raina,
+Grusbanan,
+Syphus,
+Nula,
+Little bitchard,
+Lemmon,
+cp:
+
+  Beta testing, ideas & bugs reports.
+
+Nula / Clrsrc:
+
+  Ordinary-Zero.ptk
+
+Mice / Brainstorm:
+
+  Bitchbiker.ptk
+
+Rhino / Torment:
+
+  Round A Bout.ptk
+  Jameson.ptk
+  Money.ptk
+  Dragon.ptk
+  Chemistry.ptk
+  Brass Tacks.ptk
+
+Tomchi:
+
+  devenirunpoulet.ptk
+
+Michael Wolniak, AAS Tao, Arguru:
+
+  Presets and instruments.
+
+Leonid:
+
+  303 skin.
+
+Alien & Kenet:
+
+  The startup logo.
+</pre>
