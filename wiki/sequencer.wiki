@@ -4,7 +4,7 @@ The sequencer used in ptk is a little bit different from those usually found
 in other trackers, the user have the ability to re-use patterns with different
 tracks playing state configurations:
 
-       Tracks can be turned on/off by left clicking on their digits.
+        Tracks can be turned on/off by left clicking on their digits.
        (Inactive tracks will be displayed with a darker font color).
        (Right clicking will solo/unmute all tracks alternatively).
        |
@@ -24,5 +24,5 @@ tracks playing state configurations:
  |
  Click on the position to position the seqeucner on it.
 
-(The mouse wheel can also be used to scroll through positions sequence).
+ (The mouse wheel can also be used to scroll through positions sequence).
 </pre>
