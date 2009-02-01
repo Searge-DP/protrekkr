@@ -1,3 +1,4 @@
+#summary How to install (Windows only)
 #sidebar sidebar
 <pre>
 Simply copy the files lame_acm.xml & lameACM.acm located in the install
