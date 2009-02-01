@@ -81,33 +81,33 @@ Tracking
                       C-3  04  ..  ..  09  00 ---> C-3  04  ..  ..  09  0D
                       C-3  04  ..  ..  09  10 ---> C-3  04  ..  ..  09  10
 
-                     Cool to make cutoff transitions, etc...
+                      Cool to make cutoff transitions, etc...
                      (You can also switch on the Slider Rec to On,
                       and perform parameter-live-recording, such as cutoff,
                       resonance or panning tweaking, etc..)
 
-                     Note: this command (as well as the randomize one below)
+                      Note: this command (as well as the randomize one below)
                            only works for volume/panning and fx datas columns.
 
-  LSHIFT + ARROWS
+   LSHIFT + ARROWS
            PREV. PAGE
            NEXT PAGE: Select a block
 
-  LCTRL + R:          Randomize the select columns of a selection,
+   LCTRL + R:          Randomize the select columns of a selection,
                       works similar to CTRL + I, but it randomizes values
                       instead of interpolating them.
 
-  LCTRL + U:          Transpose the note of a selection to 1 seminote higher
+   LCTRL + U:          Transpose the note of a selection to 1 seminote higher
   LCTRL + D:          Transpose the note of a selection to 1 seminote lower
   LCTRL + LSHIFT + U: Transpose the note of a selection to 1 seminote higher
                       (only for the current instrument)
   LCTRL + LSHIFT + D: Transpose the note of a selection to 1 seminote lower
                       (only for the current instrument)
 
-Misc.
+ Misc.
 -----
 
-  LALT + ENTER:       Switch between fullscreen / windowed mode
+   LALT + ENTER:       Switch between fullscreen / windowed mode
   LALT + F4:          Exit program
   LCTRL + S:          Save current module
 </pre>
