@@ -2,9 +2,9 @@
 <pre>
 Arguru:
 
-  The original NoiseTrekker (you may be gone but your code lives on).
+   The original NoiseTrekker (you may be gone but your code lives on).
 
-Daxx,
+ Daxx,
 Teis,
 Kaneel,
 Ne7,
@@ -22,38 +22,38 @@ Little bitchard,
 Lemmon,
 cp:
 
-  Beta testing, ideas & bugs reports.
+   Beta testing, ideas & bugs reports.
 
-Nula / Clrsrc:
+ Nula / Clrsrc:
 
-  Ordinary-Zero.ptk
+   Ordinary-Zero.ptk
 
-Mice / Brainstorm:
+ Mice / Brainstorm:
 
-  Bitchbiker.ptk
+   Bitchbiker.ptk
 
-Rhino / Torment:
+ Rhino / Torment:
 
-  Round A Bout.ptk
+   Round A Bout.ptk
   Jameson.ptk
   Money.ptk
   Dragon.ptk
   Chemistry.ptk
   Brass Tacks.ptk
 
-Tomchi:
+ Tomchi:
 
-  devenirunpoulet.ptk
+   devenirunpoulet.ptk
 
-Michael Wolniak, AAS Tao, Arguru:
+ Michael Wolniak, AAS Tao, Arguru:
 
-  Presets and instruments.
+   Presets and instruments.
 
-Leonid:
+ Leonid:
 
-  303 skin.
+   303 skin.
 
-Alien & Kenet:
+ Alien & Kenet:
 
-  The startup logo.
+   The startup logo.
 </pre>
