@@ -1,7 +1,7 @@
 #sidebar sidebar
 <pre>
-    General
-    -------
+== General ==
+----
 
      Command '00': No Effect
     Command '01': Pitch Up (Disabled when using Arpeggio)
@@ -45,8 +45,8 @@
 
      Command 'F0': Set BPM speed
 
-     303 Triggering
-    --------------
+== 303 Triggering ==
+-----
 
      Command '31xy': Trigger 303 Bassline (Unit 1) Bank 'x' (A-D)
                                                   Pattern 'y' (1-8),
@@ -56,8 +56,8 @@
                     also '00' will trigger current selected pattern.
 
 
-     303 Controllers
-    ---------------
+== 303 Controllers ==
+----
 
      Where 'xx' is a number between $00 and $FF (hex)
 
@@ -74,13 +74,13 @@
     Command '3Dxx': Set 303 (Unit 1) Tune
     Command '3Exx': Set 303 (Unit 2) Tune
 
-     Volume column
-    -------------
+== Volume column ==
+----
 
      Command 'F0': Note cut
 
-     Midi
-    ----
+== Midi ==
+----
 
      Command '80': Set Patch Bank (MIDI)
                   (might not work on all midi equipments)
