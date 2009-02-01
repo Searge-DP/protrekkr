@@ -3,34 +3,34 @@
 == General ==
 ----
 
-     Command '00': No Effect
-    Command '01': Pitch Up (Disabled when using Arpeggio)
-    Command '02': Pitch Down (Disabled when using Arpeggio)
-    Command '03': Volume
+     Command '00': No Effect.
+    Command '01': Pitch Up (Disabled when using Arpeggio).
+    Command '02': Pitch Down (Disabled when using Arpeggio).
+    Command '03': Volume.
 
-     Command '04': Trance Slicer
-    Command '05': Glider (Disabled when using Arpeggio)
-    Command '06': Pattern Loop (0600 sets the loop point; 06xx loops xx times)
-    Command '07': FX Synchro
-    Command '08': Set Filter CutOff
+     Command '04': Trance Slicer.
+    Command '05': Glider (Disabled when using Arpeggio).
+    Command '06': Pattern Loop (0600 sets the loop point; 06xx loops xx times).
+    Command '07': FX Synchro.
+    Command '08': Set Filter CutOff.
     Command '09': Set Sample Play Offset (256 bytes steps).
-    Command '0A': Randomize Filter CutOff
-    Command '0B': Filter CutOff Slide Up
-    Command '0C': Filter CutOff Slide Down
-    Command '0D': Jump To Next Sequencer Position (aka pattern break)
-    Command '0E': Note Retrigger
-    Command '0F': Set Number Of Ticks Per Beat
-    Command '10': Set Delay/Echo Send
-    Command '11': Set Reverb Send
-    Command '12': Set Distortion Threshold
-    Command '13': Set Distortion Clamp
-    Command '14': Set Filter Resonance
-    Command '15': Set Filter Type
-    Command '16': Reset Filter LFO
-    Command '17xx': Auto Fade In in 'xx' ticks
-    Command '18xx': Auto Fade Out in 'xx' ticks
-    Command '19': Volume Up
-    Command '1A': Volume Down
+    Command '0A': Randomize Filter CutOff.
+    Command '0B': Filter CutOff Slide Up.
+    Command '0C': Filter CutOff Slide Down.
+    Command '0D': Jump To Next Sequencer Position (aka pattern break).
+    Command '0E': Note Retrigger.
+    Command '0F': Set Number Of Ticks Per Beat.
+    Command '10': Set Delay/Echo Send.
+    Command '11': Set Reverb Send.
+    Command '12': Set Distortion Threshold.
+    Command '13': Set Distortion Clamp.
+    Command '14': Set Filter Resonance.
+    Command '15': Set Filter Type.
+    Command '16': Reset Filter LFO.
+    Command '17xx': Auto Fade In in 'xx' ticks.
+    Command '18xx': Auto Fade Out in 'xx' ticks.
+    Command '19': Volume Up.
+    Command '1A': Volume Down.
     Command '1B': Arpeggio (1Bxx to turn on / 1B00 to turn off):
 
                    C-7 00 .. .. 1B37 << Turn it on
@@ -43,7 +43,7 @@
                   --- .. .. .. 0000
                   --- .. .. .. 1B00 << Turn it off
 
-     Command 'F0': Set BPM speed
+     Command 'F0': Set BPM speed.
 
 == 303 Triggering ==
 -----
@@ -59,30 +59,30 @@
 == 303 Controllers ==
 ----
 
-     Where 'xx' is a number between $00 and $FF (hex)
+     Where 'xx' is a number between $00 and $FF (hex):
 
-     Command '33xx': Set 303 (Unit 1) Filter Cutoff
-    Command '34xx': Set 303 (Unit 2) Filter Cutoff
-    Command '35xx': Set 303 (Unit 1) Filter Resonance
-    Command '36xx': Set 303 (Unit 2) Filter Resonance
-    Command '37xx': Set 303 (Unit 1) Filter Env Mod
-    Command '38xx': Set 303 (Unit 2) Filter Env Mod
-    Command '39xx': Set 303 (Unit 1) Filter Decay
-    Command '3Axx': Set 303 (Unit 2) Filter Decay
-    Command '3Bxx': Set 303 (Unit 1) Accent
-    Command '3Cxx': Set 303 (Unit 2) Accent
-    Command '3Dxx': Set 303 (Unit 1) Tune
-    Command '3Exx': Set 303 (Unit 2) Tune
+     Command '33xx': Set 303 (Unit 1) Filter Cutoff.
+    Command '34xx': Set 303 (Unit 2) Filter Cutoff.
+    Command '35xx': Set 303 (Unit 1) Filter Resonance.
+    Command '36xx': Set 303 (Unit 2) Filter Resonance.
+    Command '37xx': Set 303 (Unit 1) Filter Env Mod.
+    Command '38xx': Set 303 (Unit 2) Filter Env Mod.
+    Command '39xx': Set 303 (Unit 1) Filter Decay.
+    Command '3Axx': Set 303 (Unit 2) Filter Decay.
+    Command '3Bxx': Set 303 (Unit 1) Accent.
+    Command '3Cxx': Set 303 (Unit 2) Accent.
+    Command '3Dxx': Set 303 (Unit 1) Tune.
+    Command '3Exx': Set 303 (Unit 2) Tune.
 
 == Volume column ==
 ----
 
-     Command 'F0': Note cut
+     Command 'F0': Note cut.
 
 == Midi ==
 ----
 
-     Command '80': Set Patch Bank (MIDI)
+     Command '80': Set Patch Bank (MIDI).
                   (might not work on all midi equipments)
                   (won't work in the replay routine)
                   (won't work if the tracker was compiled without midi support)
