@@ -3,12 +3,12 @@
     General
     -------
 
-    Command '00': No Effect
+     Command '00': No Effect
     Command '01': Pitch Up (Disabled when using Arpeggio)
     Command '02': Pitch Down (Disabled when using Arpeggio)
     Command '03': Volume
 
-    Command '04': Trance Slicer
+     Command '04': Trance Slicer
     Command '05': Glider (Disabled when using Arpeggio)
     Command '06': Pattern Loop (0600 sets the loop point; 06xx loops xx times)
     Command '07': FX Synchro
@@ -33,7 +33,7 @@
     Command '1A': Volume Down
     Command '1B': Arpeggio (1Bxx to turn on / 1B00 to turn off):
 
-                  C-7 00 .. .. 1B37 << Turn it on
+                   C-7 00 .. .. 1B37 << Turn it on
                   --- .. .. .. 0000
                   --- .. .. .. 0000
                   --- .. .. .. 0000
@@ -43,12 +43,12 @@
                   --- .. .. .. 0000
                   --- .. .. .. 1B00 << Turn it off
 
-    Command 'F0': Set BPM speed
+     Command 'F0': Set BPM speed
 
-    303 Triggering
+     303 Triggering
     --------------
 
-    Command '31xy': Trigger 303 Bassline (Unit 1) Bank 'x' (A-D)
+     Command '31xy': Trigger 303 Bassline (Unit 1) Bank 'x' (A-D)
                                                   Pattern 'y' (1-8),
                     also '00' will trigger current selected pattern.
     Command '32xy': Trigger 303 Bassline (Unit 2) Bank 'x' (A-D)
@@ -56,12 +56,12 @@
                     also '00' will trigger current selected pattern.
 
 
-    303 Controllers
+     303 Controllers
     ---------------
 
-    Where 'xx' is a number between $00 and $FF (hex)
+     Where 'xx' is a number between $00 and $FF (hex)
 
-    Command '33xx': Set 303 (Unit 1) Filter Cutoff
+     Command '33xx': Set 303 (Unit 1) Filter Cutoff
     Command '34xx': Set 303 (Unit 2) Filter Cutoff
     Command '35xx': Set 303 (Unit 1) Filter Resonance
     Command '36xx': Set 303 (Unit 2) Filter Resonance
@@ -74,20 +74,20 @@
     Command '3Dxx': Set 303 (Unit 1) Tune
     Command '3Exx': Set 303 (Unit 2) Tune
 
-    Volume column
+     Volume column
     -------------
 
-    Command 'F0': Note cut
+     Command 'F0': Note cut
 
-    Midi
+     Midi
     ----
 
-    Command '80': Set Patch Bank (MIDI)
+     Command '80': Set Patch Bank (MIDI)
                   (might not work on all midi equipments)
                   (won't work in the replay routine)
                   (won't work if the tracker was compiled without midi support)
 
-    Read in the [faq] how you can send midiout controller messages
+     Read in the [faq] how you can send midiout controller messages
     and read the manual of your gear to learn how send RRPN ones
     using midiout, also, you might find here the midi implementation table
     for your hardware.
