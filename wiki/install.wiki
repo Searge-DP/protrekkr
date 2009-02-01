@@ -8,5 +8,5 @@ directory into the system directory of the OS (usually Windows/system32).
 compared to the official one (thus producing slightly smaller files).
 
  Please note that this manipulation will only save a small amount of bytes
-so it may not be necessary.
+in compressed modules so it may not be necessary for casual users.
 </pre>
