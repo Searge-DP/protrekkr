@@ -34,12 +34,13 @@ cp:
 
  Rhino / Torment:
 
-   Round A Bout.ptk
+   Brass Tacks.ptk
+  Chemistry.ptk
+  Dragon.ptk
+  Dream Weaver.ptk
   Jameson.ptk
   Money.ptk
-  Dragon.ptk
-  Chemistry.ptk
-  Brass Tacks.ptk
+  Round A Bout.ptk
 
  Tomchi:
 
