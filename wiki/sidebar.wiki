@@ -6,7 +6,7 @@
   * [effects The effects]
   * [shortcuts Keyboard Shortcuts]
   * [localization Keyboard Localization (Linux only)]
-  * [compile Compilation and ports]
+  * [compile Compiling and porting]
   * [thanks Thanks to...]
 
 
