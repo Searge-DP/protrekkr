@@ -40,5 +40,6 @@ in release/distrib/replay/test with the filename of the .ptp module and compile.
    I'll try to come up with an acceptable solution for operating systems which do not
    come with codecs pre-installed.
 
-    Note that packing samples in .ptp files is not mandatory.
+    Note that packing samples in .ptp files is not mandatory
+   (the packing scheme for each sample can be to none in the tracker).
 </pre>
