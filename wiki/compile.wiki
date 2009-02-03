@@ -26,7 +26,11 @@ in release/distrib/replay/test with the filename of the .ptp module and compile.
  2. The midi drivers
 
     These can be disabled at compilation by using the __NOMIDI__ constant,
-   the midi oin/out drivers are located in src/midi/midi_drv_xxxxx.cpp files.
+   the midi in/out drivers are located in src/midi/midi_drv_xxxxx.cpp files.
+   
+    The functions of the drivers mainly concern enumerating the devices, opening
+   them, receiving/sending messages and calling the callback function for incoming
+   messages.
 
  3. The codecs
 
