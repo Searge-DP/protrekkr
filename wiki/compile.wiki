@@ -19,7 +19,7 @@ in release/distrib/replay/test with the filename of the .ptp module and compile.
 
    It is important for the keyboard to behave identically on every port.
   The input is usually handled differently depending on the computer or even the
-  operating system, for example the Windows version doesn't require a keyboard
+  operating system, for example the Windows version doesn't require keyboard
   definition files but the Linux does (on the same computer) and on Mac OS X
   the translation to unicode is handled differently.
 
