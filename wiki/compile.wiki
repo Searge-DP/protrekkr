@@ -14,7 +14,7 @@ in release/distrib/replay/test with the filename of the .ptp module and compile.
 
 == Porting ==
 
- In order to port the tracker to another operating system, several
+  In order to port the tracker to another operating system, several
  issues should be considered (beside crafting the relevant makefiles, that is):
 
  1. The keyboard handling :
