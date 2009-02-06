@@ -51,20 +51,21 @@ The MP3 compression might not work on a bare bone Windows 2000
  Note2:
 When a packing is selected for a sample (other than none)
 samples are reconstructed by interpolation.
+----
 
  Alongside with the .ptp are the optional .psm files which contain synchro
-informations related to the effect "07" used within the patterns,
-the .psm file format is as follow:
+informations related to the effect "07" used within the patterns;
+The .psm file format is as follow:
 
  Header:
 
- 1.w: number of synchros datas
+ 1.w: number of synchros data entries
 
- Synchro datas:
+ Synchro data:
 
  1.b: position
 1.b: row
-1.b: fx data
+1.b: fx data (as specified within the tracker)
 
  Note:
 The fx data part is removed from the .ptp files and moved to the .psm files.
