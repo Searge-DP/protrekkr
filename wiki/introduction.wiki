@@ -17,7 +17,7 @@ for small sized intros, demos or games.
 - Wav files import/export.
 - Multi fx engine with reverb, distortion, filters, delay, EQs, flanger, etc.
 - Midi in/out support.
-- .mod files import.
+- Protracker .mod files import.
 - Samples compressor handling Gsm/Mp3/TrueSpeech.
 - Replay routine to be included & used inside your own programs.
 
