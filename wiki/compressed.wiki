@@ -2,8 +2,14 @@
 <pre>
 These modules can be recognized as they're using the ".ptp" extension
 (normal modules use ".ptk"), they can be reloaded inside the tracker so the
-musician can actually hear how damaged by the lossy compression they've been,
-there's two commands related to compressed modules:
+musician can actually hear how damaged by the lossy compression they've been.
+
+ While these files may have a bigger size than their .ptk counterparts,
+they're internally organized to maximize packing ratio so using a any generic 
+data compressor on them will produce a much smaller file than what could be
+achieved by packing a .ptk file.
+
+ There are two commands related to compressed modules in the tracker:
 
  "Save .ptp":
 Create a module with extension ".ptp" in the current directory.
