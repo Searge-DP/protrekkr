@@ -5,14 +5,15 @@ These modules can be recognized as they're using the ".ptp" extension
 musician can actually hear how damaged by the lossy compression they've been,
 there's two commands related to compressed modules:
 
-Note that compressed modules generated on big endian platforms and little endian
-ones aren't compatible between them.
-
- Save .ptp:
+ "Save .ptp":
 Create a module with extension ".ptp" in the current directory.
-Calc .ptp:
+
+ "Calc .ptp":
 Calculate (roughly) the size that the module would take once used in an intro.
 
+ Note that compressed modules generated on big endian platforms and little endian
+ones aren't compatible between them.
+----
  Samples inside .ptp modules can be packed, the user have the ability to select
 the packing algorithm which'll be used (GSM, MP3, TRUESPEECH or no compression
 at all) on a per sample basis, the 3 available compression schemes are lossy.
