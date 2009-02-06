@@ -14,6 +14,7 @@ Calculate (roughly) the size that the module would take once used in an intro.
  Note that compressed modules generated on big endian platforms and little endian
 ones aren't compatible between them.
 ----
+ 
  Samples inside .ptp modules can be packed, the user have the ability to select
 the packing algorithm which'll be used (GSM, MP3, TRUESPEECH or no compression
 at all) on a per sample basis, the 3 available compression schemes are lossy.
