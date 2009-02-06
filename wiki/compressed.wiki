@@ -5,6 +5,9 @@ These modules can be recognized as they're using the ".ptp" extension
 musician can actually hear how damaged by the lossy compression they've been,
 there's two commands related to compressed modules:
 
+Note that compressed modules generated on big endian platforms and little endian
+ones aren't compatible between them.
+
  Save .ptp:
 Create a module with extension ".ptp" in the current directory.
 Calc .ptp:
