@@ -14,7 +14,7 @@ achieved by packing a .ptk file.
  "Save .ptp":
 Create a module with extension ".ptp" in the current directory.
 
- "Calc .ptp":
+ "Calc .ptp size":
 Calculate (roughly) the size that the module would take once used in an intro.
 
  Note that compressed modules generated on big endian platforms and little endian
