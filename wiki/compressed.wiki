@@ -1,7 +1,7 @@
 #sidebar sidebar
 <pre>
 These modules can be recognized as they're using the ".ptp" extension
-(normal modules use ".ptk"), they can be reloaded inside the tracker so the
+(regular modules use ".ptk"), they can be reloaded inside the tracker so the
 musician can actually hear how damaged by the lossy compression they've been.
 
  While these files may have a bigger size than their .ptk counterparts,
