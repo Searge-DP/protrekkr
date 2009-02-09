@@ -1,6 +1,12 @@
 #sidebar sidebar
 <pre>
-The tracker can be quite CPU intensive (especially when the CPU have to handle visuals as well but nowadays most of that is done on GPUs), a 1.5ghz processor may be the bare minimum when replaying heavy modules (16 tracks all effects/polyphony on).
+The tracker can be quite CPU intensive
+(especially when the CPU have to handle visuals as well but nowadays most of that
+is done on GPUs), a 1.5ghz processor may be the bare minimum
+when replaying heavy modules (16 tracks all effects/polyphony on).
 
-The only computer running under Mac OS X i have is a dual 450Mhz G4 and it doesn't make at all and there's a lot of hiccups (although the system monitor doesn't show more than 60% usage for both CPU so i may have made a mistake somewhere).
+ The only computer running under Mac OS X i have is a dual 450Mhz G4
+and it doesn't make at all and there's a lot of hiccups
+(although the system monitor doesn't show more than 60% usage for both CPU
+so i may have made a mistake somewhere).
 </pre>
