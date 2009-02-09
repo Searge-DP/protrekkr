@@ -4,7 +4,7 @@
 (formerly known as NoiseTrekker by Juan Antonio Arguelles Rius aka Arguru)
 is a tracker program combining a software synthesizer together with
 a traditional samples tracker which can (mainly) be used to create
-electronic music (like psytrance, IDM, chip, etc.)
+electronic music (like psytrance, IDM, chip, techno, etc.)
 for small sized intros, demos or games.
 
  It's available (so far) for Windows, Linux and Mac OS X.
