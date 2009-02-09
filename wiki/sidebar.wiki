@@ -1,4 +1,5 @@
   * [introduction Introduction]
+  * [minimum Minimum requirements]
   * [install How to install (Windows only)]
   * [compressed Compressed modules (.ptp)]
   * [faq FAQ/Troubleshooting]
