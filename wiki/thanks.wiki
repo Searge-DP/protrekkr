@@ -35,6 +35,7 @@ cp:
  Rhino / Torment:
 
    Brass Tacks.ptk
+  C-Masters.ptk
   Chemistry.ptk
   Dragon.ptk
   Dream Weaver.ptk
