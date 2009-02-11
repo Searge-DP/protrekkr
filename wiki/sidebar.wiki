@@ -8,6 +8,7 @@
   * [shortcuts Keyboard Shortcuts]
   * [localization Keyboard Localization (Linux only)]
   * [compile Compiling and porting]
+  * [psp The PSP replay routine]
   * [thanks Thanks to...]
 
 
