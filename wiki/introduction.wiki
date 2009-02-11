@@ -21,7 +21,9 @@ for small sized intros, demos or games.
 - Midi in/out support.
 - Protracker .mod files import.
 - Samples compressor handling Gsm/Mp3/TrueSpeech.
-- Replay routine to be included & used inside your own programs.
+- Replay routine to be included & used inside your own programs
+  (Also featuring a replay routine for the PSP).
+- Winamp/XMPlay plugin available.
 
  This is a FREEWARE tool, this means that you can use it for whatever
 you want and for free. There's NO GUARANTEE that this program will perform
