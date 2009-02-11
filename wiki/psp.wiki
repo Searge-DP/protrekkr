@@ -1,7 +1,7 @@
 #sidebar sidebar
 <pre>
   The replay routine of the tracker is available for the PlayStation Portable,
-  it uses the 2nd processor so the main CPU occupation time is really minimal.
+  it uses the 2nd processor so the occupation time of main CPU is really minimal.
 
    This is an experiment and this console isn't a PC so you'd better go very easy
   on the dsp effects and channels polyphony, especially the flanger is a really heavy
