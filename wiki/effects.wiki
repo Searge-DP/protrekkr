@@ -77,7 +77,7 @@
 == Volume column ==
 ----
 
-     Command 'F0': Note cut.
+     Command 'Fx': Note cut (x = row number where the note should be cut).
 
 == Midi ==
 ----
