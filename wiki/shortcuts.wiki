@@ -60,8 +60,6 @@
 
    LCTRL + A:          Select entire current track
   LCTRL + LSHIFT + A: Select entire current pattern
-  LCTRL + B:          Set start of a block
-  LCTRL + E:          Set end of a block
   LCTRL + X:          Cut the selected block and copy it into the block-buffer
   LCTRL + C:          Copy the selected block into the block-buffer
   LCTRL + V:          Paste the data from the block buffer into the pattern
