@@ -45,12 +45,11 @@
    1st and 2nd keys rows:           Upper octave row
   3rd and 4th keys rows:           Lower octave row
   RSHIFT:                          Insert a note off
-  / and `*` (Numeric keypad):        -1 or +1 octave
+  / and `*` (Numeric keypad) or
+  F1 F2:                           -1 or +1 octave
   INSERT / BACKSPACE:              Insert or Delete an empty line in current track
   LSHIFT + INSERT / BACKSPACE:     Insert or Delete an empty line in current pattern
   DELETE (NOT BACKSPACE):          Overwrite an empty note
-  F1:                              Select lower octave
-  F2:                              Select higher octave
 
 == Blocks ==
 ----
