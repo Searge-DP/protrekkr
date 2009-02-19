@@ -103,6 +103,6 @@
 ----
 
    LALT + ENTER:       Switch between fullscreen / windowed mode
-  LALT + F4:          Exit program (windows only)
+  LALT + F4:          Exit program (Windows only)
   LCTRL + S:          Save current module
 </pre>
