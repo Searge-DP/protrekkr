@@ -11,19 +11,21 @@ for small sized intros, demos or games.
 
  Main features:
 
- - 16 tracks sampler (256 virtual channels).
-- Sample editor (support up to 16 bits stereo samples).
-- Pattern based tracker style sequencer.
-- 16 tracks synthesizer with custom waveforms support.
+ - 16 multi-notes tracks (with 256 virtual channels).
+- Samples editor (can load up to 64 bits stereo samples).
+- Patterns based tracker style sequencer.
+- Synthesizer with custom waveforms support.
 - 2 303s units.
 - Wav files import/export.
-- Multi fx engine with reverb, distortion, filters, delay, EQs, flanger, etc.
-- Midi in/out support.
+- 16 or 32 bits wav rendering
+- Multi effects engine with reverb, distortion, filters, delay, EQs, flanger, etc...
+- Midi in/out support (not on Linux/Mac OS X yet).
 - Protracker .mod files import.
-- Samples compressor handling Gsm/Mp3/TrueSpeech.
-- Replay routine to be included & used inside your own programs
-  (Also featuring a replay routine for the PSP).
+- Samples compressor handling Gsm/Mp3/TrueSpeech (not on Linux/Mac OS X yet).
+- Replay routine source code to be included & used inside your own programs
+  (Also featuring a replay routine for the PlayStation Portable).
 - Winamp/XMPlay plugin available.
+- And maybe more...
 
  This is a FREEWARE tool, this means that you can use it for whatever
 you want and for free. There's NO GUARANTEE that this program will perform
