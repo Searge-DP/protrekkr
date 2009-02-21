@@ -7,7 +7,7 @@ a traditional samples tracker which can (mainly) be used to create
 electronic music (like psytrance, IDM, chip, techno, etc.)
 for small sized intros, demos or games.
 
- It's available (so far) for Windows, Linux and Mac OS X.
+ The tracker is available for Windows, Linux and Mac OS X.
 
  Main features:
 
