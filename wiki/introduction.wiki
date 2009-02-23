@@ -16,6 +16,7 @@ for small sized intros, demos or games.
 - Patterns based tracker style sequencer.
 - Synthesizer with custom waveforms support.
 - 2 303s units.
+- Cubic spline interpolation.
 - Wav files import/export.
 - 16 or 32 bits wav rendering
 - Multi effects engine with reverb, distortion, filters, delay, EQs, flanger, etc...
