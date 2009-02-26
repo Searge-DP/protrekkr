@@ -43,7 +43,8 @@
                   --- .. .. .. 0000
                   --- .. .. .. 1B00 << Turn it off
 
-     Command 'F0': Set BPM speed.
+     Command '1C': Set Global Volume.
+     Command 'F0': Set BPM Speed.
 
 == 303 Triggering ==
 -----
