@@ -7,8 +7,7 @@
     Command '01': Pitch Up (Disabled when using Arpeggio).
     Command '02': Pitch Down (Disabled when using Arpeggio).
     Command '03': Volume.
-
-     Command '04': Trance Slicer.
+    Command '04': Trance Slicer.
     Command '05': Glider (Disabled when using Arpeggio).
     Command '06': Pattern Loop (0600 sets the loop point; 06xx loops xx times).
     Command '07': FX Synchro.
