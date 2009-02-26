@@ -73,6 +73,8 @@
     Command '3Cxx': Set 303 (Unit 2) Accent.
     Command '3Dxx': Set 303 (Unit 1) Tune.
     Command '3Exx': Set 303 (Unit 2) Tune.
+    Command '41xx': Set 303 (Unit 1) Volume.
+    Command '42xx': Set 303 (Unit 2) Volume.
 
 == Volume column ==
 ----
