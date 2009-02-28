@@ -107,7 +107,9 @@
 == Misc. ==
 ----
 
-    LALT + ENTER:     Switch between full screen / windowed mode
-   LALT + F4:        Exit program (Windows only)
-  LCTRL + S:         Save current module
+     LALT + ENTER:     Switch between full screen / windowed mode
+    LALT + F4:        Exit program (Windows only)
+   LCTRL + S:         Save current module
+  LSHIFT + S:         Switch top right panel to synths list
+  LSHIFT + I:         Switch top right panel to instruments list
 </pre>
