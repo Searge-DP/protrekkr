@@ -1,11 +1,7 @@
 #sidebar sidebar
 <pre>
-Simply copy the files lame_acm.xml & lameACM.acm located in the install
-directory into the system directory of the OS (usually Windows/system32).
+Go to the install directory, right click on the "LameACM.inf" file and selected "install".
+Do the same for the "atrac3.inf" file, this will install both codecs in the system.
 
- The particular version of the lame mp3 encoder will strip some datas off
-compared to the official one (thus producing slightly smaller files).
-
- Please note that this manipulation will only save a small amount of bytes
-in compressed modules so it may not be necessary for casual users.
+ Without these 2 codec, ptk won't be able to pack samples in Mp3 or Atrac3 formats.
 </pre>
