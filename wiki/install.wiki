@@ -3,5 +3,6 @@
 Go to the install directory, right click on the "LameACM.inf" file and selected "install".
 Do the same for the "atrac3.inf" file, this will install both codecs in the system.
 
- Without these 2 codec, ptk won't be able to pack samples in Mp3 or Atrac3 (only used on PSP) formats.
+ Without these 2 codecs installed, ptk wouldn't be able to pack samples
+in Mp3 or Atrac3 (only used on PSP) formats.
 </pre>
