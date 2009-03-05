@@ -41,6 +41,7 @@
   LSHIFT + M:                      Toggle mute state of the current channel
    LCTRL + LSHIFT + M:             Solo the current track / Unmute all
   LSHIFT + F1 - F11:               Select a tab/panel
+   LCTRL + 1 - 4:                  Select a copy buffer
 
 == Tracking ==
 -----
@@ -103,6 +104,7 @@
                       (only for the current instrument)
   LCTRL + LSHIFT + D: Transpose the note of a selection to 1 semi-note lower
                       (only for the current instrument)
+  LCTRL + W:          Save the current selection into a file
 
 == Misc. ==
 ----
