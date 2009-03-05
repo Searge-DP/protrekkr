@@ -40,8 +40,8 @@
      LALT + LEFT / RIGHT:           Next / Previous instrument
   LSHIFT + M:                      Toggle mute state of the current channel
    LCTRL + LSHIFT + M:             Solo the current track / Unmute all
-  LSHIFT + F1 - F11:               Select a tab/panel
-   LCTRL + 1 - 4:                  Select a copy buffer
+  LSHIFT + F1 to F11:              Select a tab/panel
+   LCTRL + 1 to 4:                 Select a copy buffer
 
 == Tracking ==
 -----
