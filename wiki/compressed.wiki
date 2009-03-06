@@ -47,7 +47,7 @@ The samples (every 2 samples in fact) are packed to 8 bits
 and interpolated to 16 bits when depacked this give a bit better results
 than adpcm but compress less.
 
-None:
+ None:
 Suitable for very short (chiptune like) samples
 (if you want to keep perfect quality).
 
