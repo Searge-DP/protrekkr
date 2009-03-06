@@ -45,6 +45,9 @@
       Command '1C': Set Global Volume.
      Command '1Dxy': Vibrato (x = speed y = depth)
                      (triggering works like arpeggio).
+     Command '1E0x': Select playing way :
+                     0x1e00: Play forward.
+                     0x1e01: Play backward.
      Command 'F0': Set BPM Speed.
 
 == 303 Triggering ==
