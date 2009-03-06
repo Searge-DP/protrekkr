@@ -118,52 +118,54 @@
                     0 = Play forward
                     1 = Play backward
 
-     Command 'F0xx': Set BPM Speed.
+     Command 'F0xx': Set BPM Speed
                     xx = BPM
 
 == 303 Triggering ==
 -----
 
-     Command '31xy': Trigger 303 Bassline (Unit 1) Bank 'x' (A-D)
-                                                  Pattern 'y' (1-8),
-                    also '00' will trigger current selected pattern.
-    Command '32xy': Trigger 303 Bassline (Unit 2) Bank 'x' (A-D)
-                                                  Pattern 'y' (1-8),
-                    also '00' will trigger current selected pattern.
+     Command '31xy': Trigger 303 Bassline (Unit 1)
+                    x = Bank (A-D)
+                    y = Pattern (1-8)
+                    '00' will trigger current selected pattern
 
+     Command '32xy': Trigger 303 Bassline (Unit 2)
+                    x = Bank (A-D)
+                    y = Pattern (1-8)
+                    '00' will trigger current selected pattern
 
 == 303 Controllers ==
 ----
 
      Where 'xx' is a number between $00 and $FF (hex):
 
-     Command '33xx': Set 303 (Unit 1) Filter Cutoff.
-    Command '34xx': Set 303 (Unit 2) Filter Cutoff.
-    Command '35xx': Set 303 (Unit 1) Filter Resonance.
-    Command '36xx': Set 303 (Unit 2) Filter Resonance.
-    Command '37xx': Set 303 (Unit 1) Filter Env Mod.
-    Command '38xx': Set 303 (Unit 2) Filter Env Mod.
-    Command '39xx': Set 303 (Unit 1) Filter Decay.
-    Command '3Axx': Set 303 (Unit 2) Filter Decay.
-    Command '3Bxx': Set 303 (Unit 1) Accent.
-    Command '3Cxx': Set 303 (Unit 2) Accent.
-    Command '3Dxx': Set 303 (Unit 1) Tune.
-    Command '3Exx': Set 303 (Unit 2) Tune.
-    Command '41xx': Set 303 (Unit 1) Volume.
-    Command '42xx': Set 303 (Unit 2) Volume.
+     Command '33xx': Set 303 (Unit 1) Filter Cutoff
+    Command '34xx': Set 303 (Unit 2) Filter Cutoff
+    Command '35xx': Set 303 (Unit 1) Filter Resonance
+    Command '36xx': Set 303 (Unit 2) Filter Resonance
+    Command '37xx': Set 303 (Unit 1) Filter Env Mod
+    Command '38xx': Set 303 (Unit 2) Filter Env Mod
+    Command '39xx': Set 303 (Unit 1) Filter Decay
+    Command '3Axx': Set 303 (Unit 2) Filter Decay
+    Command '3Bxx': Set 303 (Unit 1) Accent
+    Command '3Cxx': Set 303 (Unit 2) Accent
+    Command '3Dxx': Set 303 (Unit 1) Tune
+    Command '3Exx': Set 303 (Unit 2) Tune
+    Command '41xx': Set 303 (Unit 1) Volume
+    Command '42xx': Set 303 (Unit 2) Volume
 
 == Volume column ==
 ----
 
-     Command 'Fx': Note cut (x = row number where the note should be cut).
+     Command 'Fx': Note cut
+                  x = row number where the note should be cut
 
 == Midi ==
 ----
 
-     Command '80': Set Patch Bank (MIDI).
-                  (might not work on all midi equipments)
-                  (won't work in the replay routine)
-                  (won't work if the tracker was compiled without midi support)
+     Command '80xx': Set Patch Bank (MIDI)
+                    (might not work on all midi equipments)
+                    (won't work in the replay routine)
 
      Read in the [faq] how you can send midiout controller messages
     and read the manual of your gear to learn how send RRPN ones
