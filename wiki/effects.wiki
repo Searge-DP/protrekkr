@@ -124,12 +124,12 @@
 == 303 Triggering ==
 -----
 
-     Command '31xy': Trigger 303 Bassline (Unit 1)
+     Command '31xy': Trigger 303 Bass Line (Unit 1)
                     x = Bank (A-D)
                     y = Pattern (1-8)
                     '00' will trigger current selected pattern
 
-     Command '32xy': Trigger 303 Bassline (Unit 2)
+     Command '32xy': Trigger 303 Bass Line (Unit 2)
                     x = Bank (A-D)
                     y = Pattern (1-8)
                     '00' will trigger current selected pattern
@@ -159,7 +159,7 @@
 
        Command 'xx': Set Volume
 
-       Command 'Fx': Note cut
+       Command 'Fx': Note Cut
                     x = row number where the note should be cut
 
 == Midi ==
