@@ -165,7 +165,7 @@
 == Midi ==
 ----
 
-     Command '80xx': Set Patch Bank (MIDI)
+     Command '80xx': Set Patch Bank
                     (might not work on all midi equipments)
                     (won't work in the replay routine)
 
