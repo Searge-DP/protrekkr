@@ -31,11 +31,23 @@ Suitable for drums/snares.
  MP3:
 Suitable for longer samples like cymbals (it's tuned to pack at 64kbits).
 
+ ADPCM:
+Can give better result than GSM (but samples are a bit bigger).
+
  True Speech:
 Suitable for human voices
 (you can use some track effects to cover the radio like quality).
 
- None:
+ At3 (PSP Only):
+This one is similar to MP3 compression, it will be handled in the PSP
+replay routine only (but it's not handled yet).
+
+ 8 Bit:
+The samples (every 2 samples in fact) are packed to 8 bits
+and interpolated to 16 bits when depacked this give a bit better results
+than adpcm but compress less.
+
+None:
 Suitable for very short (chiptune like) samples
 (if you want to keep perfect quality).
 
