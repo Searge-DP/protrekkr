@@ -22,8 +22,8 @@ ones aren't compatible between them.
 ----
  
 Samples inside .ptp modules can be packed, the user have the ability to select
-the packing algorithm which'll be used (GSM, MP3, TRUESPEECH or no compression
-at all) on a per sample basis, the 3 available compression schemes are lossy.
+the packing algorithm which'll be used on a per sample basis,
+the available compression schemes are all lossy.
 
  GSM:
 Suitable for drums/snares.
