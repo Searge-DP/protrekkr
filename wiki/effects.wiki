@@ -157,8 +157,10 @@
 == Volume column ==
 ----
 
-     Command 'Fx': Note cut
-                  x = row number where the note should be cut
+       Command 'xx': Set Volume
+
+       Command 'Fx': Note cut
+                    x = row number where the note should be cut
 
 == Midi ==
 ----
