@@ -15,14 +15,16 @@ for small sized intros, demos or games.
 - Samples editor (can load up to 64 bits stereo samples).
 - Patterns based tracker style sequencer.
 - Synthesizer with custom waveforms support.
+- Samples loop editor.
 - 2 303s units.
 - Cubic spline interpolation.
 - Wav files import/export.
 - 16 or 32 bits wav rendering
 - Multi effects engine with reverb, distortion, filters, delay, EQs, flanger, etc...
+- Fully customizable 10 combs reverb.
 - Midi in/out support.
 - Protracker .mod files import.
-- Samples compressor handling Gsm/Mp3/TrueSpeech (not on Linux/Mac OS X yet).
+- Samples compressor handling Gsm/Mp3/TrueSpeech/ADPCM (not on Linux or Mac OS X yet).
 - Replay routine source code to be included & used inside your own programs
   (Also featuring a replay routine for the PlayStation Portable).
 - Winamp/XMPlay plugin available.
