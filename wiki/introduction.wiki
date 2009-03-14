@@ -1,11 +1,11 @@
 #sidebar sidebar
 <pre>
 [http://code.google.com/p/protrekkr/ ProTrekkr]
-(formerly known as NoiseTrekker by Juan Antonio Arguelles Rius aka Arguru)
-is a tracker program combining a software synthesizer together with
-a traditional samples tracker which can (mainly) be used to create
-electronic music (like psytrance, IDM, chip, techno, etc.)
-for small sized intros, demos or games.
+(formerly known as NoiseTrekker by Juan Antonio Arguelles Rius
+aka Arguru) is a tracker program combining a software synthesizer
+together with a traditional samples tracker which can (mainly) be used
+to create electronic music (like psytrance, trance goa, hard acid, IDM,
+chip, techno, etc.) for small sized intros, demos or games.
 
  The tracker is available for Windows, Linux and Mac OS X.
 
