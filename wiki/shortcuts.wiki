@@ -29,8 +29,8 @@
   RIGHT ARROW:                     1 Row right
   PREV. PAGE:                      16 Arrows Up
   NEXT PAGE:                       16 Arrows Down
-  HOME / END:                      First / last track
-  LCTRL + HOME / END:              Top left / Bottom right of pattern
+  HOME / END:                      Top left / Bottom right of pattern
+  LCTRL + HOME / END:              First / last track
   F5, F6, F7, F8, F9:              Jump to 0, 16, 32, 48, 63 line
 
     + - (Numeric keypad):           Next / Previous pattern
