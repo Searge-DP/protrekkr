@@ -4,25 +4,17 @@ Arguru:
 
    The original NoiseTrekker (you may be gone but your code lives on).
 
- Daxx,
-Teis,
-Kaneel,
-Ne7,
-Preacher,
-Mice,
-Kmuland,
-Manwe,
-Manbearpig,
-Misioslaw,
-Raina,
-Grusbanan,
-Syphus,
-Nula,
-Little bitchard,
-Lemmon,
-cp,
-matchugovsky,
-Evil
+Fredrik Wikstrom:
+
+   Amiga OS 4 port.
+
+Fernando Mastandrea:
+
+   AROS port.
+
+ Daxx, Teis, Kaneel, Ne7, Preacher, Mice, Kmuland, Manwe,
+Manbearpig, Misioslaw, Raina, Grusbanan, Syphus, Nula,
+Little bitchard, Lemmon, cp, matchugovsky, Evil:
 
    Beta testing, ideas & bugs reports.
 
