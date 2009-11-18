@@ -4,11 +4,11 @@ Arguru:
 
    The original NoiseTrekker (you may be gone but your code lives on).
 
-Fredrik Wikstrom:
+ Fredrik Wikstrom:
 
    Amiga OS 4 port.
 
-Fernando Mastandrea:
+ Fernando Mastandrea:
 
    AROS port.
 
