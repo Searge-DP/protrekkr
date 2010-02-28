@@ -10,7 +10,7 @@
   * [compile Compiling and porting]
   * [psp The PSP replay routine]
   * [thanks Thanks to...]
-  * [http://protrekkr.googlecode.com/svn/trunk/TODO.txt Todo...]
+  * [http://protrekkr.googlecode.com/svn/trunk/TODO.txt Current todo list]
 
 
  
