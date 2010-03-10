@@ -69,7 +69,7 @@
      Command '15xx': Set Filter Type
                     xx = Filter to use
 
-     Command '16xx': Set Filter LFO carrier
+     Command '16xx': Set Filter LFO Carrier
                     xx = Amount
 
      Command '17xx': Auto Fade In
