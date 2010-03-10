@@ -69,7 +69,8 @@
      Command '15xx': Set Filter Type
                     xx = Filter to use
 
-     Command '1600': Reset Filter LFO
+     Command '16xx': Set Filter LFO carrier
+                    xx = Amount
 
      Command '17xx': Auto Fade In
                     xx = Ticks
