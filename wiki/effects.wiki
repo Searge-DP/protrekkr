@@ -195,10 +195,10 @@
 
        Command '90': Send Midi message
                     Send the command and data specified 
-                    in the fx/data columns to Midi device.
+                    in the fx/data columns to Midi OUT selected device.
 
-                ex: 90 4050
-                   Send command 0x40 with data 0x50.
+                 ex: 90 4050
+                    Send command 0x40 with data 0x50.
 
 == Midi ==
 ----
