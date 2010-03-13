@@ -140,7 +140,7 @@
                     --- .. .. .. 0000
                     --- .. .. .. 1D00 << Turn it off
 
-     Command '1E0x': Select playing way
+     Command '1E0x': Select instrument playing way
                     0 = Play forward
                     1 = Play backward
 
@@ -183,7 +183,7 @@
 == Volume column ==
 ----
 
-       Command 'xx': Set Volume
+       Command 'xx': Set Volume (00 to 40)
 
        Command 'Fx': Note Cut
                     x = row number where the note should be cut
