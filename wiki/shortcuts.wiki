@@ -105,6 +105,12 @@
                       (only for the current instrument)
   LCTRL + LSHIFT + D: Transpose the note of a selection to 1 semi-note lower
                       (only for the current instrument)
+  LCTRL + H:          Transpose the note of a selection to 1 octave higher
+  LCTRL + L:          Transpose the note of a selection to 1 octave lower
+  LCTRL + LSHIFT + H: Transpose the note of a selection to 1 octave higher
+                      (only for the current instrument)
+  LCTRL + LSHIFT + L: Transpose the note of a selection to 1 octave lower
+                      (only for the current instrument)
   LCTRL + W:          Save the current selection into a file
 
 == Misc. ==
