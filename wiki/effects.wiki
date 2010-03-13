@@ -188,6 +188,18 @@
        Command 'Fx': Note Cut
                     x = row number where the note should be cut
 
+== Panning column ==
+----
+
+       Command 'xx': Panning (00 to 80)
+
+       Command '90': Send Midi message
+                    Send the command and data specified 
+                    in the fx/data columns to Midi device.
+
+                ex: 90 4050
+                   Send command 0x40 with data 0x50.
+
 == Midi ==
 ----
 
