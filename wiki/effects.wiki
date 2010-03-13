@@ -3,7 +3,7 @@
 == General ==
 ----
 
-       Command '00': No Effect
+     Command '0000': No Effect
 
      Command '01xx': Pitch Up (Disabled when using Arpeggio or Vibrato)
                     xx = Speed
