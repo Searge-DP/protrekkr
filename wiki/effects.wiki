@@ -69,6 +69,31 @@
      Command '15xx': Set Filter Type
                     xx = Filter to use
 
+                     00 = LoPass -12db
+                    01 = HiPass
+                    02 = BandPass
+                    03 = BandReject
+                    04 = No Filter 
+                    05 = LoPass -24db
+                    06 = LoPass -48db
+                    07 = LP-24 [Stereo]
+                    08 = A. Mod. [Mono]
+                    09 = A. Mod. [Stereo]
+                    0A = Single [Mono]
+                    0B = Single [Stereo]
+                    0C = ParaEq -15db
+                    0D = ParaEq -6db
+                    0E = ParaEq +6db
+                    0F = ParaEq +15db
+                    10 = Custom Delta
+                    11 = Comp. Distort L
+                    12 = Comp. Distort M
+                    13 = Comp. Distort H
+                    14 = Comp. Distort
+                    15 = W-HP12 [Mono]
+                    16 = W-HP12 [Stereo]
+                    17 = W-HP24 [Mono]
+
      Command '16xx': Set Filter LFO Carrier
                     xx = Amount
 
