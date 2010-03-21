@@ -97,11 +97,11 @@
      Command '16xx': Set Filter LFO Carrier pôsition
                     xx = Position
 
-     Command '17xx': Auto Fade In
-                    xx = Ticks
+     Command '17xx': Auto Fade In Track
+                    xx = Ticks (0 = stop fade)
 
-     Command '18xx': Auto Fade Out
-                    xx = Ticks
+     Command '18xx': Auto Fade Out Track
+                    xx = Ticks (0 = stop fade)
 
      Command '19xx': Volume Up
                     xx = Speed
