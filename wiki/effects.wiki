@@ -100,14 +100,14 @@
      Command '17xx': Auto Fade In Track
                     xx = Ticks
 
-                      C-7 00 .. .. 1710 << Turn auto fading on
-                     --- .. .. .. 0000
-                     --- .. .. .. 0000
-                     G-6 00 .. .. 0000 << Volume will start at instrument level
-                     --- .. .. .. 0000    and will be faded in too
-                     --- .. .. .. 0000
-                     --- .. .. .. 0000
-                     --- .. .. .. 1700 << Turn it off (volume stays at current level)
+                     C-7 00 .. .. 1710 << Turn auto fading on
+                    --- .. .. .. 0000
+                    --- .. .. .. 0000
+                    G-6 00 .. .. 0000 << Volume will start at instrument level
+                    --- .. .. .. 0000    and will be faded in too
+                    --- .. .. .. 0000
+                    --- .. .. .. 0000
+                    --- .. .. .. 1700 << Turn it off (volume stays at current level)
 
      Command '18xx': Auto Fade Out Track
                     xx = Ticks
