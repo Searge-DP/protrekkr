@@ -15,7 +15,7 @@
                     xx = Volume level
 
      Command '04xx': Trance Slicer
-                    xx = Delay ticks before muting the volume.
+                    xx = Delay ticks before muting the volume
 
      Command '05xx': Glider (Disabled when using Arpeggio or Vibrato)
                     xx = Speed
@@ -94,8 +94,8 @@
                     16 = W-HP12 [Stereo] filter
                     17 = W-HP24 [Mono] filter
 
-     Command '16xx': Set Filter LFO Carrier
-                    xx = Amount
+     Command '16xx': Set Filter LFO Carrier pôsition
+                    xx = Position
 
      Command '17xx': Auto Fade In
                     xx = Ticks
