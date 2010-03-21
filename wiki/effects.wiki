@@ -15,7 +15,7 @@
                     xx = Volume level
 
      Command '04xx': Trance Slicer
-                    xx = Tick
+                    xx = Delay ticks before muting the volume.
 
      Command '05xx': Glider (Disabled when using Arpeggio or Vibrato)
                     xx = Speed
