@@ -114,10 +114,10 @@
 
                      Same behaviour as above.
 
-     Command '19xx': Volume Up
+     Command '19xx': Volume Slide Up
                     xx = Speed
 
-     Command '1Axx': Volume Down
+     Command '1Axx': Volume Slide Down
                     xx = Speed
 
      Command '1Bxy': Arpeggio
@@ -151,12 +151,19 @@
                     --- .. .. .. 0000
                     --- .. .. .. 1D00 << Turn it off
 
-     Command '1E0x': Select instrument playing way
+     Command '1E0x': Select Instrument Playing Way
                     0 = Play forward
                     1 = Play backward
 
-     Command '1Fxx': Position jump
+     Command '1Fxx': Position Jump
                     xx = New position
+
+     Command '20xx': Fine Volume Slide Up
+                    xx = Amount
+
+     Command '21xx': Fine Volume Slide Down
+                    xx = Amount
+
 
      Command 'F0xx': Set BPM Speed
                     xx = BPM
