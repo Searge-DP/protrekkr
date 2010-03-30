@@ -164,6 +164,11 @@
      Command '21xx': Fine Volume Slide Down
                     xx = Amount
 
+     Command '22xx': Fine Pitch Up
+                    xx = Amount
+
+     Command '23xx': Fine Pitch Down
+                    xx = Amount
 
      Command 'F0xx': Set BPM Speed
                     xx = BPM
