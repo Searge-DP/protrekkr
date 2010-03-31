@@ -3,10 +3,14 @@
 == Playing ==
 ----
 
-   RCTRL:                           Play song
-  RALT:                            Play pattern
-  Left mouse on 'Play Sng/Pttrn':  Play song.
-  Right mouse on 'Play Sng/Pttrn': Play pattern.
+   RCTRL:                          Play song from row 0.
+  LSHIFT + RCTRL:                  Play song from current row.
+  RALT:                            Play pattern from row 0.
+  LSHIFT + RALT:                   Play pattern from current row.
+  Left mouse on '>':               Play song from row 0.
+  Right mouse on '>':              Play song from current row.
+  Left mouse on '|>':              Play pattern from row 0.
+  Right mouse on '|>':             Play pattern from current row.
   Left mouse on 'Edit/Record':     Edit mode on/off.
   Right mouse on 'Edit/Record':    Record mode on/off.
 
