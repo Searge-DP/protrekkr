@@ -3,7 +3,7 @@
 == Playing ==
 ----
 
-   RCTRL:                          Play song from row 0.
+   RCTRL:                           Play song from row 0.
   LSHIFT + RCTRL:                  Play song from current row.
   RALT:                            Play pattern from row 0.
   LSHIFT + RALT:                   Play pattern from current row.
