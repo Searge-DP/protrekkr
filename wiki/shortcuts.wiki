@@ -103,11 +103,11 @@
                       works similar to CTRL + I, but it randomizes values
                       instead of interpolating them.
 
-   LCTRL + U:          Transpose the note of a selection to 1 semi-note higher
-  LCTRL + D:          Transpose the note of a selection to 1 semi-note lower
-  LCTRL + LSHIFT + U: Transpose the note of a selection to 1 semi-note higher
+   LCTRL + U:          Transpose the note of a selection to 1 seminote higher
+  LCTRL + D:          Transpose the note of a selection to 1 seminote lower
+  LCTRL + LSHIFT + U: Transpose the note of a selection to 1 seminote higher
                       (only for the current instrument)
-  LCTRL + LSHIFT + D: Transpose the note of a selection to 1 semi-note lower
+  LCTRL + LSHIFT + D: Transpose the note of a selection to 1 seminote lower
                       (only for the current instrument)
   LCTRL + H:          Transpose the note of a selection to 1 octave higher
   LCTRL + L:          Transpose the note of a selection to 1 octave lower
