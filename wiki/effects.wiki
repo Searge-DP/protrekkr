@@ -94,7 +94,7 @@
                     16 = W-HP12 [Stereo] filter
                     17 = W-HP24 [Mono] filter
 
-     Command '16xx': Set Filter LFO Carrier pôsition
+     Command '16xx': Set Filter LFO Carrier position
                     xx = Position
 
      Command '17xx': Auto Fade In Track
@@ -145,7 +145,7 @@
                     --- .. .. .. 0000
                     --- .. .. .. 0000
                     --- .. .. .. 0000
-                    --- .. .. .. 1D7F << Change datas
+                    --- .. .. .. 1D7F << Change data
                     --- .. .. .. 0000
                     --- .. .. .. 0000
                     --- .. .. .. 0000
@@ -169,6 +169,13 @@
 
      Command '23xx': Fine Pitch Down
                     xx = Amount
+
+     Command '23xx': Fine Pitch Down
+                    xx = Amount
+
+     Command '240x': Turn flanger on/off
+                    0 = Turn it off
+                    1 = Turn it on
 
      Command 'F0xx': Set BPM Speed
                     xx = BPM
