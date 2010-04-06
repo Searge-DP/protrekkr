@@ -42,11 +42,11 @@ Plan B> Buy a faster computer.
 
  Example:
 
-   --- .. .. .. 31A30000 << Play the 3th pattern of the bank A of the 1st 303 unit.
-  --- .. .. .. 00000000
-  --- .. .. .. 00000000
-  --- .. .. .. 00000000
-  Off .. .. .. 00000000 << Switch the 303 unit off.
+   --- .. .. .. 31A3.... << Play the 3th pattern of the bank A of the 1st 303 unit.
+  --- .. .. .. 0000....
+  --- .. .. .. 0000....
+  --- .. .. .. 0000....
+  Off .. .. .. 0000.... << Switch the 303 unit off.
 
  The 303 unit 1 will be assigned to the track 0 stream.
 
@@ -110,13 +110,13 @@ Well, just play with them :].
 
     ex:
 
-        C-3 02 .. .. 00000000 
+        C-3 02 .. .. 0000.... 
 
-        --- .. .. 90 xxyy0000 << This will change the value 
-       --- .. .. .. 00000000    of the controller n.'xx' to 'yy' (both in hex)
-       --- .. .. .. 00000000
+        --- .. .. 90 xxyy.... << This will change the value 
+       --- .. .. .. 0000....    of the controller n.'xx' to 'yy' (both in hex)
+       --- .. .. .. 0000....
 
-    So "--- .. .. 90 20400000" will change the controller number $20(32) to $40(64).
+    So "--- .. .. 90 2040...." will change the controller number $20(32) to $40(64).
 
     You will need the midi implementation table of your gear to know
    what you can change with midi controller messages.
