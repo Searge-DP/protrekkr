@@ -12,11 +12,11 @@
                     xx = Speed
 
      Command '03xx': Set Volume
-                    xx = Volume level0
+                    xx = Volume level
 
      Command '04xx': Trance Slicer
                     xx = Delay ticks before muting the volume (from 0 to 6)
-                    (note that the volume stays muted at the next rows).
+                    (note that the volume stays muted at the next rows)
 
      Command '05xx': Glider (Disabled when using Arpeggio or Vibrato)
                     xx = Speed
@@ -101,14 +101,14 @@
      Command '17xx': Auto Fade In Track
                     xx = Ticks
 
-                     C-7 00 .. .. 1710 << Turn auto fading on
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    G-6 00 .. .. 0000 << Volume will start at instrument level
-                    --- .. .. .. 0000    and will be faded in too
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 1700 << Turn it off (volume stays at current level)
+                     C-7 00 .. .. 1710.... << Turn auto fading on
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    G-6 00 .. .. 0000.... << Volume will start at instrument level
+                    --- .. .. .. 0000....    and will be faded in too
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 1700.... << Turn it off (volume stays at current level)
 
      Command '18xx': Auto Fade Out Track
                     xx = Ticks
@@ -125,15 +125,15 @@
                     x = Second relative semi tone
                     y = Third relative semi tone
 
-                     C-7 00 .. .. 1B37 << Turn it on
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 1B38 << Change datas
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 1B00 << Turn it off
+                     C-7 00 .. .. 1B37.... << Turn it on
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 1B38.... << Change datas
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 1B00.... << Turn it off
 
      Command '1Cxx': Set Global Volume
                     xx = Volume level
@@ -142,15 +142,15 @@
                     x = Speed
                     y = Depth
 
-                     C-7 00 .. .. 1D46 << Turn it on
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 1D7F << Change data
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 0000
-                    --- .. .. .. 1D00 << Turn it off
+                     C-7 00 .. .. 1D46.... << Turn it on
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 1D7F.... << Change data
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 0000....
+                    --- .. .. .. 1D00.... << Turn it off
 
      Command '1E0x': Select Instrument Playing Way
                     0 = Play forward
