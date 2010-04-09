@@ -26,6 +26,7 @@ Theorize, phecda:
  Mice / Brainstorm:
 
    Bitchbiker.ptk
+   Primitive.ptk
 
  Rhino / Torment:
 
