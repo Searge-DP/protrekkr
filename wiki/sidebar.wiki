@@ -6,7 +6,7 @@
   * [sequencer The sequencer]
   * [effects The effects]
   * [shortcuts Keyboard Shortcuts]
-  * [localization Keyboard Localization (Linux & Mac OS X)]
+  * [localization Keyboard Localization (Linux & OS X)]
   * [compile Compiling and porting]
   * [psp The PSP replay routine]
   * [thanks Thanks to...]
