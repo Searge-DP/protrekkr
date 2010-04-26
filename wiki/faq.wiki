@@ -112,11 +112,11 @@ Well, just play with them :].
 
         C-3 02 .. .. 0000.... 
 
-        --- .. .. 90 xxyy.... << This will change the value 
+        --- .. .. 90 xxyy.... << This will set the value 
        --- .. .. .. 0000....    of the controller n.'xx' to 'yy' (both in hex)
        --- .. .. .. 0000....
 
-    So "--- .. .. 90 2040...." will change the controller number $20(32) to $40(64).
+    So "--- .. .. 90 2040...." will set the controller number $20(32) to $40(64).
 
     You will need the midi implementation table of your gear to know
    what you can change with midi controller messages.
