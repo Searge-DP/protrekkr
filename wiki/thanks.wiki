@@ -2,7 +2,7 @@
 <pre>
 Arguru:
 
-   The original NoiseTrekker (you may be gone but your code lives on).
+   The original NoiseTrekker.
 
  Fredrik Wikstrom:
 
