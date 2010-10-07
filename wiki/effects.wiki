@@ -241,5 +241,5 @@
      Read in the [faq] how you can send midiout controller messages
     and read the manual of your gear to learn how send RRPN ones
     using midiout, also, you might find here the midi implementation table
-    for your hardware.
+    for your hardware (or it could also be displayed on the device's LCD screen).
 </pre>
