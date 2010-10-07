@@ -175,6 +175,10 @@
                     0 = Turn it off
                     1 = Turn it on
 
+     Command '25xx': Set shuffle value
+                    xx = Amount
+
+
      Command 'F0xx': Set BPM Speed
                     xx = BPM
 
