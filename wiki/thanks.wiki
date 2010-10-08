@@ -12,6 +12,10 @@ Arguru:
 
    AROS port.
 
+ Gary P. Scavone:
+
+   Rtmidi class.
+
  Daxx, Teis, Kaneel, Ne7, Preacher, Mice, Kmuland, Manwe,
 Manbearpig, Misioslaw, Raina, Grusbanan, Syphus, Nula,
 Little bitchard, Lemmon, cp, matchugovsky, Evil, Mike West,
@@ -19,29 +23,87 @@ Theorize, phecda:
 
    Beta testing, ideas & bugs reports.
 
- Nula / Clrsrc:
+ 99:
+
+   Lunch with the gods.ptk
+
+ Archangel:
+
+   Wonderland.ptk
+
+ Bassie:
+
+   Gone tipsy.ptk
+
+ Bionic:
+
+   Factory of hybrid.ptk
+
+ Dune:
+
+   Alterraid.ptk
+  Aulral.ptk   
+  Dne_wro3.ptk
+
+ Falcon:
+
+   Vacation climate.ptk
+  Without performer.ptk
+
+ Nula:
 
    Ordinary-Zero.ptk
 
- Mice / Brainstorm:
+ Maktone:
+
+   Comic Bakery Remix.ptk
+
+ Mice:
 
    Bitchbiker.ptk
   Primitive.ptk
 
- Rhino / Torment:
+ Okeanos:
 
-   Brass Tacks.ptk
+   Sudoku padawan.ptk
+
+ Rhino:
+
+   Brass tacks.ptk
   C-Masters.ptk
   Chemistry.ptk
   Dragon.ptk
-  Dream Weaver.ptk
+  Dream weaver.ptk
   Jameson.ptk
   Money.ptk
   Round A Bout.ptk
 
+ Scorpik:
+
+   Love me daddy.ptk
+
  Tomchi:
 
-   devenirunpoulet.ptk
+   Devenirunpoulet.ptk
+
+ Wal:
+
+   Elevator zax.ptk
+  Loop influenza.ptk
+
+ Wally:
+
+   Space game.ptk
+
+ Xtd:
+
+   Flight.ptk
+   Warlock.ptk
+
+ Yzi:
+
+   Amarillo.ptk
+   Spinning.ptk
 
  Michael Wolniak, AAS Tao, Arguru:
 
