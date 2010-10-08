@@ -98,12 +98,12 @@ Theorize, phecda:
  Xtd:
 
    Flight.ptk
-   Warlock.ptk
+  Warlock.ptk
 
  Yzi:
 
    Amarillo.ptk
-   Spinning.ptk
+  Spinning.ptk
 
  Michael Wolniak, AAS Tao, Arguru:
 
