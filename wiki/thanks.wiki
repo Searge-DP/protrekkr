@@ -19,7 +19,7 @@ Arguru:
  Daxx, Teis, Kaneel, Ne7, Preacher, Mice, Kmuland, Manwe,
 Manbearpig, Misioslaw, Raina, Grusbanan, Syphus, Nula,
 Little bitchard, Lemmon, cp, matchugovsky, Evil, Mike West,
-Theorize, phecda:
+Theorize, phecda, sk.syncsound:
 
    Beta testing, ideas & bugs reports.
 
