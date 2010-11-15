@@ -142,10 +142,10 @@ A2> Well, there is a nasty trick to synchronize both.
    you're using for this synth instrument, samples can be used as wavetables
    to replace the stock signals.
 
----
+----
  Q> Will you support VST instruments in a future?
 
- A> Yes, as specified here http://code.google.com/p/protrekkr/issues/list
-    but that's not really a priority, the main goal of the tracker is to be a
+ A> Yes, as specified here http://code.google.com/p/protrekkr/issues/list but
+    that's not really a priority, the main goal of the tracker is to be a
     all-in-one program with a compact & re-usable replay routine.
 </pre>
