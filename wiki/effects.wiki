@@ -178,6 +178,11 @@
      Command '25xx': Set shuffle value
                     xx = Amount
 
+     Command '26xx': Set reverb filter cutoff
+                    xx = Amount
+
+     Command '27xx': Set reverb filter resonance
+                    xx = Amount
 
      Command 'F0xx': Set BPM Speed
                     xx = BPM
