@@ -86,7 +86,7 @@ Theorize, phecda, sk.syncsound:
  Revisq:
 
    Goa.ptk
-   Trip to exp.ptk
+  Trip to exp.ptk
 
  Rhino:
 
