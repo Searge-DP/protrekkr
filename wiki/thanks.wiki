@@ -39,16 +39,32 @@ Theorize, phecda, sk.syncsound:
 
    Factory of hybrid.ptk
 
+ DJ Amfibia:
+
+   Our trip to syrius.ptk
+
+ Doktor:
+
+   Aquarium.ptk
+
  Dune:
 
    Alterraid.ptk
   Aulral.ptk   
   Dne_wro3.ptk
 
+ Drawer:
+
+   AcidTrance.ptk
+
  Falcon:
 
    Vacation climate.ptk
   Without performer.ptk
+
+ Ganja:
+
+   Plastic elements.ptk
 
  Nula:
 
@@ -66,6 +82,11 @@ Theorize, phecda, sk.syncsound:
  Okeanos:
 
    Sudoku padawan.ptk
+
+ Revisq:
+
+   Goa.ptk
+   Trip to exp.ptk
 
  Rhino:
 
