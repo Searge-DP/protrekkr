@@ -35,7 +35,7 @@
   NEXT PAGE:                       16 Arrows Down
   HOME / END:                      Top left / Bottom right of pattern
   LCTRL + HOME / END:              First / last track
-  F5, F6, F7, F8, F9:              Jump to 0, 16, 32, 48, 63 line
+  F5, F6, F7, F8, F9:              Jump to 0, 1/4, 2/4, 3/4, 4/4 lines of the patterns
 
     + - (Numeric keypad):           Next / Previous pattern
    LCTRL + LEFT / RIGHT:           Next / Previous pattern
