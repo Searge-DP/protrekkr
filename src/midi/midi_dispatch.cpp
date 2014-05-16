@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -69,6 +69,7 @@ void Midi_Song_Set_BPM(int Data)
     gui_bpm_action = TRUE;
 }
 
+#ifndef __LITE__
 // ------------------------------------------------------
 // 303: set tune (LIVE)
 void Midi_303_Set_Tune(int Unit, int Data)
@@ -231,6 +232,7 @@ void Midi_303_Switch(int Data)
     teac = 0;
     gui_action = GUI_CMD_REFRESH_TB303_PARAMS;
 }
+#endif // __LITE__
 
 // ------------------------------------------------------
 // Track panning (LIVE)
@@ -388,7 +390,7 @@ void Midi_Transport_LiveRec(int Data)
 // Set pattern row (EDIT)
 void Midi_Edit_Set_Row(int Data)
 {
-    if(!is_recording && !Songplaying)
+    if(!is_recording && !Song_Playing)
     {
         int Pos = Get_Song_Position();
         int Rows = patternLines[pSequence[Pos]];
@@ -405,7 +407,7 @@ void Midi_Edit_Set_Row(int Data)
 // Goto previous pattern row (EDIT)
 void Midi_Edit_Previous_Row(int Data)
 {
-    if(!is_recording && !Songplaying)
+    if(!is_recording && !Song_Playing)
     {
         gui_action = GUI_CMD_GOTO_PREVIOUS_ROW;
     }
@@ -415,7 +417,7 @@ void Midi_Edit_Previous_Row(int Data)
 // Goto next pattern row (EDIT)
 void Midi_Edit_Next_Row(int Data)
 {
-    if(!is_recording && !Songplaying)
+    if(!is_recording && !Song_Playing)
     {
         gui_action = GUI_CMD_GOTO_NEXT_ROW;
     }
@@ -518,6 +520,7 @@ MIDI_PTK_CMD Str_Midi_Commands[NBR_MIDI_AUTOMATION] =
     { T_ R_ A_ C_ K_ DDT_ SPC_ D_ I_ S_ T_ O_ SPC_ T_ H_ R_ E_ S_ H_ O_ L_ D_, &Midi_Track_Set_Disto_Threshold },
     { T_ R_ A_ C_ K_ DDT_ SPC_ D_ I_ S_ T_ O_ SPC_ C_ L_ A_ M_ P_, &Midi_Track_Set_Disto_Clamp },
 
+#ifndef __LITE__
     { _3 _0 _3 DOT_ _1 DDT_ SPC_ T_ U_ N_ E_, &Midi_303_Set_1_Tune },
     { _3 _0 _3 DOT_ _2 DDT_ SPC_ T_ U_ N_ E_, &Midi_303_Set_2_Tune },
     { _3 _0 _3 SPC_ OPA_ C_ U_ R_ R_ DOT_ CPA_ DDT_ SPC_ T_ U_ N_ E_, &Midi_303_Set_Cur_Tune },
@@ -540,6 +543,7 @@ MIDI_PTK_CMD Str_Midi_Commands[NBR_MIDI_AUTOMATION] =
     { _3 _0 _3 DOT_ _2 DDT_ SPC_ V_ O_ L_ U_ M_ E_, &Midi_303_Set_2_Volume },
     { _3 _0 _3 SPC_ OPA_ C_ U_ R_ R_ DOT_ CPA_ DDT_ SPC_ V_ O_ L_ U_ M_ E_, &Midi_303_Set_Cur_Volume },
     { _3 _0 _3 DDT_ SPC_ S_ W_ I_ T_ C_ H_, &Midi_303_Switch }
+#endif
 };
 
 // ------------------------------------------------------

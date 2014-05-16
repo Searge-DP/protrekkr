@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@
 
 // ------------------------------------------------------
 // Variables
-extern int Songplaying_Pattern;
+extern int Song_Playing_Pattern;
 extern int patt_highlight;
 extern char FullScreen;
 extern int Cur_Width;
@@ -150,7 +150,7 @@ void Actualize_Master_Ed(char gode)
         // Create a new sound buffer with the new latency amount
         if(gode == 5)
         {
-            SongStop();
+            Song_Stop();
             AUDIO_Stop_Sound_Buffer();
             AUDIO_Create_Sound_Buffer(AUDIO_Milliseconds);
             Init_Scopes_Buffers();

@@ -8,12 +8,12 @@ CFG=ProTrekkr - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "ProTrekkr.mak".
+!MESSAGE NMAKE /f "ProTrekkr_Lite.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "ProTrekkr.mak" CFG="ProTrekkr - Win32 Debug"
+!MESSAGE NMAKE /f "ProTrekkr_Lite.mak" CFG="ProTrekkr - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W3 /GX /O2 /Ob2 /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "__WINDOWS_MM__" /D "__MOT_SWAP__" /D "__MP3_CODEC__" /D "__AT3_CODEC__" /D "__GSM_CODEC__" /D "__ADPCM_CODEC__" /D "__TRUESPEECH_CODEC__" /FD /Gs /c
+# ADD CPP /nologo /W3 /GX /O2 /Ob2 /D "__WIN32__" /D "NDEBUG" /D "_WINDOWS" /D "__WINDOWS_MM__" /D "__MOT_SWAP__" /D "__MP3_CODEC__" /D "__AT3_CODEC__" /D "__GSM_CODEC__" /D "__ADPCM_CODEC__" /D "__TRUESPEECH_CODEC__" /D "__LITE__" /FD /Gs /c
 # SUBTRACT CPP /Fr
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
@@ -54,7 +54,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /machine:I386
-# ADD LINK32 kernel32.lib user32.lib sdl.lib dsound.lib msacm32.lib zlib.lib winmm.lib advapi32.lib sdl_draw.lib shlwapi.lib tinyxml.lib sdlmain.lib msvcrt.lib libcp.lib /nologo /subsystem:windows /pdb:none /machine:I386 /nodefaultlib /out:"release/distrib/ptk_win.exe"
+# ADD LINK32 kernel32.lib user32.lib sdl.lib dsound.lib msacm32.lib zlib.lib winmm.lib advapi32.lib sdl_draw.lib shlwapi.lib tinyxml.lib sdlmain.lib msvcrt.lib libcp.lib /nologo /subsystem:windows /pdb:none /machine:I386 /nodefaultlib /out:"release/distrib_lite/ptk_lite_win.exe"
 # SUBTRACT LINK32 /debug
 
 !ELSEIF  "$(CFG)" == "ProTrekkr - Win32 Debug"
@@ -71,7 +71,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /ML /W3 /Gm /GX /ZI /Od /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "__WINDOWS_MM__" /D "__MOT_SWAP__" /D "__MP3_CODEC__" /D "__AT3_CODEC__" /D "__GSM_CODEC__" /D "__ADPCM_CODEC__" /D "__TRUESPEECH_CODEC__" /FR /FD /Zm500 /GZ /c
+# ADD CPP /nologo /ML /W3 /Gm /GX /ZI /Od /D "__WIN32__" /D "_DEBUG" /D "_WINDOWS" /D "__WINDOWS_MM__" /D "__MOT_SWAP__" /D "__MP3_CODEC__" /D "__AT3_CODEC__" /D "__GSM_CODEC__" /D "__ADPCM_CODEC__" /D "__TRUESPEECH_CODEC__" /D "__LITE__" /FR /FD /Zm500 /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x407 /d "_DEBUG"
@@ -81,7 +81,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib sdl.lib sdl_draw.lib dsound.lib msacm32.lib winmm.lib advapi32.lib zlib.lib shlwapi.lib tinyxml.lib sdlmain.lib msvcrt.lib libcp.lib /nologo /subsystem:windows /pdb:none /debug /machine:I386 /nodefaultlib /out:"release/distrib/ptk_win.exe"
+# ADD LINK32 kernel32.lib user32.lib sdl.lib sdl_draw.lib dsound.lib msacm32.lib winmm.lib advapi32.lib zlib.lib shlwapi.lib tinyxml.lib sdlmain.lib msvcrt.lib libcp.lib /nologo /subsystem:windows /pdb:none /debug /machine:I386 /nodefaultlib /out:"release/distrib_lite/ptk_lite_win.exe"
 
 !ENDIF 
 
@@ -156,15 +156,7 @@ SOURCE=.\src\include\version.h
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\Editors\include\Editor_303.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\Editors\include\Editor_DiskIO.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\Editors\include\Editor_Fx_Setup.h
 # End Source File
 # Begin Source File
 
@@ -180,10 +172,6 @@ SOURCE=.\src\Editors\include\Editor_Pattern.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editors\include\editor_reverb.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\Editors\include\Editor_Sample.h
 # End Source File
 # Begin Source File
@@ -193,10 +181,6 @@ SOURCE=.\src\Editors\include\Editor_Sequencer.h
 # Begin Source File
 
 SOURCE=.\src\Editors\include\Editor_Setup.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\Editors\include\Editor_Synth.h
 # End Source File
 # Begin Source File
 
@@ -213,15 +197,7 @@ SOURCE=.\src\Editors\include\Patterns_Blocks.h
 # End Group
 # Begin Source File
 
-SOURCE=.\src\Editors\Editor_303.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\Editors\Editor_DiskIO.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\Editors\Editor_Fx_Setup.cpp
 # End Source File
 # Begin Source File
 
@@ -237,10 +213,6 @@ SOURCE=.\src\Editors\Editor_Pattern.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\editors\editor_reverb.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\Editors\Editor_Sample.cpp
 # End Source File
 # Begin Source File
@@ -250,10 +222,6 @@ SOURCE=.\src\Editors\Editor_Sequencer.cpp
 # Begin Source File
 
 SOURCE=.\src\Editors\Editor_Setup.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\Editors\Editor_Synth.cpp
 # End Source File
 # Begin Source File
 
@@ -276,10 +244,6 @@ SOURCE=.\src\Editors\Patterns_Blocks.cpp
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\Release\Distrib\Replay\lib\include\Cubic_Spline.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\release\distrib\replay\lib\include\endianness.h
 # End Source File
 # Begin Source File
@@ -293,26 +257,6 @@ SOURCE=.\Release\Distrib\Replay\lib\include\PtkReplay.h
 # Begin Source File
 
 SOURCE=.\Release\Distrib\Replay\lib\include\Replay.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\include\Samples_Unpack.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\release\distrib\replay\lib\include\spline.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\include\Synth.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\include\TB_303.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\release\distrib\replay\lib\include\wavpack.h
 # End Source File
 # End Group
 # Begin Group "SoundDriver"
@@ -338,26 +282,6 @@ SOURCE=.\release\distrib\replay\lib\endianness.cpp
 # Begin Source File
 
 SOURCE=.\Release\Distrib\Replay\lib\Replay.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\Samples_Unpack.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\release\distrib\replay\lib\spline.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\Synth.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Release\Distrib\Replay\lib\TB_303.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\release\distrib\replay\lib\wavpack.cpp
 # End Source File
 # End Group
 # Begin Group "UI"
@@ -416,10 +340,6 @@ SOURCE=.\src\UI\xml.cpp
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\files\include\303s.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\files\include\config.h
 # End Source File
 # Begin Source File
@@ -446,19 +366,7 @@ SOURCE=.\src\files\include\patterns.h
 
 SOURCE=.\src\files\include\ptps.h
 # End Source File
-# Begin Source File
-
-SOURCE=.\src\files\include\reverbs.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\files\include\synths.h
-# End Source File
 # End Group
-# Begin Source File
-
-SOURCE=.\src\files\303s.cpp
-# End Source File
 # Begin Source File
 
 SOURCE=.\src\files\config.cpp
@@ -490,14 +398,6 @@ SOURCE=.\src\files\patterns.cpp
 # Begin Source File
 
 SOURCE=.\src\files\ptps.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\files\reverbs.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\files\synths.cpp
 # End Source File
 # End Group
 # Begin Group "Midi"
@@ -587,45 +487,9 @@ SOURCE=.\src\samples\include\samples_ops.h
 SOURCE=.\src\samples\include\samples_pack.h
 # End Source File
 # End Group
-# Begin Group "Wavpack"
-
-# PROP Default_Filter ""
-# Begin Group "Wavpack Include"
-
-# PROP Default_Filter ""
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\include\wplocal.h
-# End Source File
-# End Group
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\bits.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\pack.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\tinypack.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\words.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\samples\wavpack\wputils.cpp
-# End Source File
-# End Group
 # Begin Source File
 
 SOURCE=.\src\samples\samples_ops.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\samples\samples_pack.cpp
 # End Source File
 # End Group
 # Begin Source File

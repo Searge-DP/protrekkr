@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -47,8 +47,8 @@ void Load_Reverb_Data(int (*Read_Function)(void *, int ,int, FILE *),
 void Save_Reverb_Data(int (*Write_Function)(void *, int ,int, FILE *),
                       int (*Write_Function_Swap)(void *, int ,int, FILE *),
                       FILE *in);
-void LoadReverb(char *FileName);
-void SaveReverb(void);
+void Load_Reverb(char *FileName);
+void Save_Reverb(void);
 void Load_Old_Reverb_Presets(int Type);
 
 #endif

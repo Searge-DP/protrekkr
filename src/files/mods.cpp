@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -274,7 +274,7 @@ int Conv_Amiga_Note(int note)
 
 // ------------------------------------------------------
 // Scale an amiga protracker .mod effect data
-float Scale_AmigaMod_Value(int value, float scale1, float scale2)
+float Scale_Amiga_Mod_Value(int value, float scale1, float scale2)
 {
     float newvalue = (float) value;
     newvalue /= scale1;
@@ -285,7 +285,7 @@ float Scale_AmigaMod_Value(int value, float scale1, float scale2)
 
 // ------------------------------------------------------
 // Load a .mod, .ft or .digi file
-void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooster)
+void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digibooster)
 {
     FILE *in;
     int t_hi;
@@ -341,7 +341,7 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
             fclose(in);
             Pos_Mod_Dat = 0;
 
-            Songplaying = FALSE;
+            Song_Playing = FALSE;
 
             Free_Samples();
             Clear_Patterns_Pool();
@@ -422,7 +422,7 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                 }
                 for(i = 0; i < 31; i++)
                 {
-                    Sample_Vol[i] = Scale_AmigaMod_Value(Getc_Mod(), 63.0f, 0.99f);
+                    Sample_Vol[i] = Scale_Amiga_Mod_Value(Getc_Mod(), 63.0f, 0.99f);
                 }
                 for(i = 0; i < 31; i++)
                 {
@@ -596,7 +596,7 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                     SampleLength[swrite][0] *= 2;
 
                     Finetune[swrite][0] = FineTune_Table[Getc_Mod() & 0xf];
-                    Sample_Vol[swrite] = Scale_AmigaMod_Value(Getc_Mod(), 63.0f, 0.99f);
+                    Sample_Vol[swrite] = Scale_Amiga_Mod_Value(Getc_Mod(), 63.0f, 0.99f);
 
                     // Calculate/Adapt AMIGA loop points to ptk LoopPoints
                     LoopStart[swrite][0] = Getc_Mod_Word();
@@ -859,12 +859,12 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
 
                                 // PITCH UP
                                 case 1:
-                                    Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat, (31 - (cur_speed - 1)) * 2.5f, 255.0f);
+                                    Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat, (31 - (cur_speed - 1)) * 2.5f, 255.0f);
                                     break;
 
                                 // PITCH DOWN
                                 case 2:
-                                    Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat, (31 - (cur_speed - 1)) * 2.5f, 255.0f);
+                                    Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat, (31 - (cur_speed - 1)) * 2.5f, 255.0f);
                                     break;
 
                                 // TONE PORTAMENTO
@@ -888,17 +888,17 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                     {
                                         // Vol SlideUp
                                         *(RawPatterns + tmo + PATTERN_FX2) = 0x19;
-                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_AmigaMod_Value(Cmd_Dat >> 4,
-                                                                                                            (31 - (cur_speed - 1)) * 2.5f,
-                                                                                                            255.0f);
+                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_Amiga_Mod_Value(Cmd_Dat >> 4,
+                                                                                                             (31 - (cur_speed - 1)) * 2.5f,
+                                                                                                             255.0f);
                                         Channels_Effects[pw2] = 2;
                                     }
                                     else
                                     {
                                         *(RawPatterns + tmo + PATTERN_FX2) = 0x1a;
-                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_AmigaMod_Value(Cmd_Dat & 0xf,
-                                                                                                            (31 - (cur_speed - 1)) * 2.5f,
-                                                                                                            255.0f);
+                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_Amiga_Mod_Value(Cmd_Dat & 0xf,
+                                                                                                             (31 - (cur_speed - 1)) * 2.5f,
+                                                                                                             255.0f);
                                         Channels_Effects[pw2] = 2;
                                     }
                                     // (The portamento retains the value initiated with command 3)
@@ -913,17 +913,17 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                     {
                                         // Vol SlideUp
                                         *(RawPatterns + tmo + PATTERN_FX2) = 0x19;
-                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_AmigaMod_Value(Cmd_Dat >> 4,
-                                                                                                            (31 - (cur_speed - 1)) * 2.5f,
-                                                                                                            255.0f);
+                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_Amiga_Mod_Value(Cmd_Dat >> 4,
+                                                                                                             (31 - (cur_speed - 1)) * 2.5f,
+                                                                                                             255.0f);
                                         Channels_Effects[pw2] = 2;
                                     }
                                     else
                                     {
                                         *(RawPatterns + tmo + PATTERN_FX2) = 0x1a;
-                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_AmigaMod_Value(Cmd_Dat & 0xf,
-                                                                                                            (31 - (cur_speed - 1)) * 2.5f,
-                                                                                                            255.0f);
+                                        *(RawPatterns + tmo + PATTERN_FXDATA2) = (int) Scale_Amiga_Mod_Value(Cmd_Dat & 0xf,
+                                                                                                             (31 - (cur_speed - 1)) * 2.5f,
+                                                                                                             255.0f);
                                         Channels_Effects[pw2] = 2;
                                     }
                                     // (The vibrato retains the value initiated with command 4)
@@ -965,9 +965,9 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                             if(Cmd_Dat == 0) Cmd_Dat = (last_vol_fade[pw2]);
                                             else last_vol_fade[pw2] = Cmd_Dat;
                                         }
-                                        Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat >> 4,
-                                                                             (31 - (cur_speed - 1)) * 2.5f,
-                                                                             255.0f);
+                                        Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat >> 4,
+                                                                              (31 - (cur_speed - 1)) * 2.5f,
+                                                                              255.0f);
 
                                     }
                                     else
@@ -978,9 +978,9 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                             if(Cmd_Dat == 0) Cmd_Dat = last_vol_fade[pw2];
                                             else last_vol_fade[pw2] = Cmd_Dat;
                                         }
-                                        Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat & 0xf,
-                                                                             (31 - (cur_speed - 1)) * 2.5f,
-                                                                             255.0f);
+                                        Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat & 0xf,
+                                                                              (31 - (cur_speed - 1)) * 2.5f,
+                                                                              255.0f);
                                     }
                                     break;
 
@@ -992,7 +992,7 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                 // VOLUME
                                 case 0xc:
                                     Cmd = 3;
-                                    Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat, 63.0f, 255.0f);
+                                    Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat, 63.0f, 255.0f);
                                     break;
 
                                 // PATTERN BREAK
@@ -1020,14 +1020,14 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                     if(Cmd_Dat >= 0x10 && Cmd_Dat < 0x20)
                                     {
                                         Cmd = 0x22;
-                                        Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat - 0x10, 15.0f, 255.0f);
+                                        Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat - 0x10, 15.0f, 255.0f);
                                     }
 
                                     // FINE PORTAMENTO DOWN
                                     if(Cmd_Dat >= 0x20 && Cmd_Dat < 0x30)
                                     {
                                         Cmd = 0x23;
-                                        Cmd_Dat = (int) Scale_AmigaMod_Value(Cmd_Dat - 0x20, 15.0f, 255.0f);
+                                        Cmd_Dat = (int) Scale_Amiga_Mod_Value(Cmd_Dat - 0x20, 15.0f, 255.0f);
                                     }
 
                                     // SET GLISS CONTROL (not supported)
@@ -1083,14 +1083,14 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                                     if(Cmd_Dat >= 0xa0 && Cmd_Dat < 0xb0)
                                     {
                                         Cmd = 0x20;
-                                        Cmd_Dat = (int) (Scale_AmigaMod_Value(Cmd_Dat - 0xa0, 16.0f, 255.0f) / 2.33333f);
+                                        Cmd_Dat = (int) (Scale_Amiga_Mod_Value(Cmd_Dat - 0xa0, 16.0f, 255.0f) / 2.33333f);
                                     }
 
                                     // FINEVOLUME SLIDEDOWN
                                     if(Cmd_Dat >= 0xb0 && Cmd_Dat < 0xc0)
                                     {
                                         Cmd = 0x21;
-                                        Cmd_Dat = (int) (Scale_AmigaMod_Value(Cmd_Dat - 0xb0, 16.0f, 255.0f) / 2.33333f);
+                                        Cmd_Dat = (int) (Scale_Amiga_Mod_Value(Cmd_Dat - 0xb0, 16.0f, 255.0f) / 2.33333f);
                                     }
 
                                     // NOTE CUT
@@ -1140,7 +1140,7 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
                 if(SampleLength[swrite][0] > 8)
                 {
                     // Reserving space for 16-Bit Signed Short Data.
-                    AllocateWave(swrite, 0, SampleLength[swrite][0], 1, FALSE, NULL, NULL);
+                    Allocate_Wave(swrite, 0, SampleLength[swrite][0], 1, FALSE, NULL, NULL);
                     for(x = 0; x < SampleLength[swrite][0]; x++)
                     {
                         *(RawSamples[swrite][0][0] + x) = ((short) Getc_Mod() << 8);
@@ -1170,8 +1170,9 @@ void LoadAmigaMod(char *Name, const char *FileName, int channels, int digibooste
             free(Mod_Dat);
             Mod_Dat = NULL;
 
+#ifndef __LITE__
             Load_Old_Reverb_Presets(0);
-
+#endif
             Init_Tracker_Context_After_ModLoad();
 
         }

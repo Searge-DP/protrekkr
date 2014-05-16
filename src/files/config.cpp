@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ extern char *cur_dir;
 
 // ------------------------------------------------------
 // Save the configuration file
-void SaveConfig(void)
+void Save_Config(void)
 {
     FILE *out;
     char extension[10];
@@ -134,7 +134,7 @@ void SaveConfig(void)
         Write_Data(&metronome_magnify, sizeof(int), 1, out);
 
         // Save the compelte midi automation config
-        Save_MidiCfg_Data(Write_Data, Write_Data_Swap, out);
+        Save_Midi_Cfg_Data(Write_Data, Write_Data_Swap, out);
 
         Write_Data_Swap(&Cur_Width, sizeof(int), 1, out);
         Write_Data_Swap(&Cur_Height, sizeof(int), 1, out);
@@ -159,7 +159,7 @@ void SaveConfig(void)
 
 // ------------------------------------------------------
 // Load the configuration file
-void LoadConfig(void)
+void Load_Config(void)
 {
     FILE *in;
     int i;
@@ -254,7 +254,7 @@ void LoadConfig(void)
             }
 
             // Reload the compelte midi automation config
-            Load_MidiCfg_Data(Read_Data, Read_Data_Swap, in);
+            Load_Midi_Cfg_Data(Read_Data, Read_Data_Swap, in);
 
             Read_Data_Swap(&Cur_Width, sizeof(int), 1, in);
             Read_Data_Swap(&Cur_Height, sizeof(int), 1, in);

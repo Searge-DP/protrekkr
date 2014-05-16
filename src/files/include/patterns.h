@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ void Load_Pattern_Data(int (*Read_Function)(void *, int ,int, FILE *),
 void Save_Pattern_Data(int (*Write_Function)(void *, int ,int, FILE *),
                       int (*Write_Function_Swap)(void *, int ,int, FILE *),
                       FILE *in);
-void LoadPattern(char *FileName);
-void SavePattern(void);
+void Load_Pattern(char *FileName);
+void Save_Pattern(void);
 
 #endif

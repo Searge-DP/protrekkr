@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -70,32 +70,44 @@
 #define GUI_CMD_SWITCH_TRACK_MUTE_STATE 27
 #define GUI_CMD_PLAY_SONG 28
 #define GUI_CMD_STOP_SONG 29
+
 #define GUI_CMD_RECORD_303 30
+
 #define GUI_CMD_CHANGE_BPM_TICKS_NBR 40
 #define GUI_CMD_CHANGE_TRACKS_NBR 41
+
 #define GUI_CMD_SET_TRACK_CUTOFF_FREQ 50
 #define GUI_CMD_SET_TRACK_RESONANCE 51
 #define GUI_CMD_SET_TRACK_INERTIA 52
+
 #define GUI_CMD_UPDATE_TRACK_ED 53
+
 #define GUI_CMD_SET_TRACK_THRESHOLD 54
 #define GUI_CMD_SET_TRACK_CLAMP 55
 #define GUI_CMD_SET_TRACK_REVERB_SEND 56
 #define GUI_CMD_SET_TRACK_PANNING 57
+
 #define GUI_CMD_CALC_LENGTH 58
 
 #define GUI_CMD_SELECT_REVERB_EDIT 59
+
 #define GUI_CMD_SELECT_DISKIO_EDIT 60
 #define GUI_CMD_SELECT_TRACK_EDIT 61
 #define GUI_CMD_SELECT_INSTRUMENT_EDIT 62
+
 #define GUI_CMD_SELECT_FX_EDIT 63
+
 #define GUI_CMD_SELECT_SEQUENCER 64
 #define GUI_CMD_SELECT_SCREEN_SETUP_EDIT 65
+
 #define GUI_CMD_SELECT_SYNTH_EDIT 66
 #define GUI_CMD_SELECT_TRACK_FX_EDIT 67
+
 #define GUI_CMD_SELECT_SAMPLE_EDIT 68
 #define GUI_CMD_SMALL_EDIT 69
 #define GUI_CMD_SAVE_INSTRUMENT 70
 #define GUI_CMD_MODULE_INFOS 71
+
 #define GUI_CMD_SELECT_TB303_EDIT 72
 #define GUI_CMD_REFRESH_TB303_PARAMS 73
 
@@ -131,7 +143,9 @@
 
 #define GUI_CMD_NEW_MODULE 109
 #define GUI_CMD_UPDATE_SEQ_ED 110
+
 #define GUI_CMD_UPDATE_FX_ED 112
+
 #define GUI_CMD_CHANGE_SHUFFLE 113
 #define GUI_CMD_UPDATE_SETUP_ED 114
 
@@ -140,13 +154,13 @@
 
 #define GUI_CMD_SAVE_FINAL 117
 #define GUI_CMD_CALC_FINAL 118
+
 #define GUI_CMD_SAVE_303_PATTERN 119
 
 #define GUI_CMD_SET_INSTR_SYNTH_LIST_SLIDER 120
 #define GUI_CMD_SET_INSTR_SYNTH_LIST_SELECT 121
 
 #define GUI_CMD_UPDATE_REVERB_ED 122
-
 #define GUI_CMD_REFRESH_TB303_PARAMS_EXTERNAL 123
 
 #define GUI_CMD_UPDATE_PATTERN 124
@@ -155,6 +169,7 @@
 #define GUI_CMD_NEXT_16_INSTR 126
 
 #define GUI_CMD_SAVE_REVERB 127
+
 #define GUI_CMD_SAVE_PATTERN 128
 
 #define GUI_CMD_REFRESH_PALETTE 129
@@ -170,7 +185,7 @@
 
 #define GUI_CMD_UPDATE_MIDI_ED 135
 
-#define GUI_CMD_SAVE_MIDICFG 136
+#define GUI_CMD_SAVE_MIDI_CFG 136
 
 #define GUI_CMD_FLASH_METRONOME_ON 137
 #define GUI_CMD_FLASH_METRONOME_OFF 138
@@ -399,7 +414,7 @@ extern char is_record_key;
 
 extern char sr_isrecording;
 
-extern int Songplaying;
+extern int Song_Playing;
 
 extern int Current_Edit_Steps;
 extern int Current_Octave;
@@ -415,7 +430,9 @@ extern char sas;
 extern float *Scope_Dats[MAX_TRACKS];
 extern float *Scope_Dats_LeftRight[2];
 
+#ifndef __LITE__
 extern SDL_Surface *SKIN303;
+#endif
 extern SDL_Surface *LOGOPIC;
 
 extern int MouseWheel_Multiplier;
@@ -449,9 +466,9 @@ void Initreverb(void);
 void init_sample_bank(void);
 int Get_Number_Of_Splits(int n_index);
 void Clear_Instrument_Dat(int n_index, int split, int lenfir);
-void AllocateWave(int n_index, int split, long lenfir,
-                  int samplechans, int clear,
-                  short *Waveform1, short *Waveform2);
+void Allocate_Wave(int n_index, int split, long lenfir,
+                   int samplechans, int clear,
+                   short *Waveform1, short *Waveform2);
 void LoadFile(int Freeindex, const char *str);
 void RefreshSample(void);
 void value_box(int x, int y, int val, int flags);
@@ -459,7 +476,7 @@ void value_box3(int x, int y, char val, int flags);
 void value_box4(int x, int y, char val);
 void Actualize_Track_Ed(char gode);
 void Actualize_Songname(int *newletter, char *nam);
-void GetPlayerValues(void);
+void Get_Player_Values(void);
 void Check_Loops(void);
 void Skincopy(int xd, int yd, int xs, int ys, int w, int h);
 void Go303(void);
@@ -470,8 +487,8 @@ void guiDial2(const char *str);
 void out_decchar(int x, int y, int number, char smith);
 
 void out_nibble(int x, int y, int color, int number);
-void SongPlay(void);
-void SongStop(void);
+void Song_Play(void);
+void Song_Stop(void);
 void Free_Samples(void);
 void draw_pated(int track, int line, int petrack, int row);
 void Actupated(int modac);
@@ -484,7 +501,7 @@ void DeleteInstrument(void);
 void Sp_Player(void);             
 void Pre_Song_Init(void);
 void Reverb_work(void);
-void StartRec(void);
+void Start_Rec(void);
 void Notify_Edit(void);
 void Notify_Play(void);
 void ComputeCoefs(int freq, int r, int t);

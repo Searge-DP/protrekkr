@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -322,7 +322,7 @@ void draw_pated(int track, int line, int petrack, int row)
         shadow_tracks[cur_track] = FALSE;
         if(!CHAN_ACTIVE_STATE[Cur_Position][cur_track])
         {
-            if(Songplaying)
+            if(Song_Playing)
             {
                 shadow_tracks[cur_track] = Use_Shadows;
             }
@@ -1433,7 +1433,7 @@ void draw_pated_highlight(int track, int line, int petrack, int row, int ypos)
             // Record live events
             if(sr_isrecording)
             {
-                if(liveparam > 0 && Track_Under_Caret == cur_track && Songplaying)
+                if(liveparam > 0 && Track_Under_Caret == cur_track && Song_Playing)
                 {
                     if(livevalue < 0) livevalue = 0;
                     if(livevalue > 255) livevalue = 255;
@@ -1564,7 +1564,7 @@ void Actupated(int modac)
         Notify_Edit();
     }
     
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         Pattern_Line_Visual = Pattern_Line;
     }
@@ -2692,7 +2692,7 @@ void Mouse_Sliders_Right_Pattern_Ed(void)
     }
 
     // Go to the row selected with the mouse
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         if(zcheckMouse(1, 183 + 15, CHANNELS_WIDTH, (Cur_Height - 371) + Patterns_Lines_Offset))
         {
@@ -2748,7 +2748,7 @@ void Mouse_Sliders_Pattern_Ed(void)
     if(Continuous_Scroll)
     {
         // Rows slider (vertical) (whole song)
-        if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 200, 16 + 1, (Cur_Height - 452) + Patterns_Lines_Offset) & !Songplaying)
+        if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 200, 16 + 1, (Cur_Height - 452) + Patterns_Lines_Offset) & !Song_Playing)
         {
             int max_length;
             int Max_Lines_Song;
@@ -2791,7 +2791,7 @@ void Mouse_Sliders_Pattern_Ed(void)
     else
     {
         // Rows slider (vertical) (pattern only)
-        if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 200 + (Continuous_Scroll * 80), 16 + 1, (Cur_Height - 452) - (Continuous_Scroll * 80) + Patterns_Lines_Offset) & !Songplaying)
+        if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 200 + (Continuous_Scroll * 80), 16 + 1, (Cur_Height - 452) - (Continuous_Scroll * 80) + Patterns_Lines_Offset) & !Song_Playing)
         {
             int final_row;
             int Cur_Position = Get_Song_Position();
@@ -2814,7 +2814,7 @@ void Mouse_Sliders_Pattern_Ed(void)
     }
 
     // End of the marking stuff
-    if(zcheckMouse(1, 183 + 15, MAX_PATT_SCREEN_X, (Cur_Height - 371) + Patterns_Lines_Offset) && !Songplaying)
+    if(zcheckMouse(1, 183 + 15, MAX_PATT_SCREEN_X, (Cur_Height - 371) + Patterns_Lines_Offset) && !Song_Playing)
     {
         int track;
         int column;
@@ -2832,7 +2832,7 @@ void Mouse_Left_Pattern_Ed(void)
     int tracks;
 
     // Start of the marking block
-    if(zcheckMouse(1, 183 + 15, MAX_PATT_SCREEN_X, (Cur_Height - 371) + Patterns_Lines_Offset) && !Songplaying)
+    if(zcheckMouse(1, 183 + 15, MAX_PATT_SCREEN_X, (Cur_Height - 371) + Patterns_Lines_Offset) && !Song_Playing)
     {
         int track;
         int column;
@@ -2842,13 +2842,13 @@ void Mouse_Left_Pattern_Ed(void)
     }
 
     // Prev row
-    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 184, 16 + 1, 14) & !Songplaying)
+    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 184, 16 + 1, 14) & !Song_Playing)
     {
         Goto_Previous_Row();
     }
 
     // Next row
-    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, (Cur_Height - 251) + Patterns_Lines_Offset, 16 + 1, 14) & !Songplaying)
+    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, (Cur_Height - 251) + Patterns_Lines_Offset, 16 + 1, 14) & !Song_Playing)
     {
         Goto_Next_Row();
     }
@@ -3045,13 +3045,13 @@ void Mouse_Right_Pattern_Ed(void)
     }
 
     // Prev page
-    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 184, 16 + 1, 14) & !Songplaying)
+    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 184, 16 + 1, 14) & !Song_Playing)
     {
         Goto_Previous_Page();
     }
 
     // Next page
-    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, (Cur_Height - 251) + Patterns_Lines_Offset, 16 + 1, 14) & !Songplaying)
+    if(zcheckMouse(MAX_PATT_SCREEN_X + 1, (Cur_Height - 251) + Patterns_Lines_Offset, 16 + 1, 14) & !Song_Playing)
     {
         Goto_Next_Page();
     }
@@ -3234,7 +3234,7 @@ void Goto_Song_Position(int Position)
 // Return the current sequence position
 int Get_Song_Position(void)
 {
-    if(Songplaying) return(Song_Position_Visual);
+    if(Song_Playing) return(Song_Position_Visual);
     else return(Song_Position);
 }
 
@@ -3242,7 +3242,7 @@ int Get_Song_Position(void)
 // Return the current pattern line
 int Get_Pattern_Line(void)
 {
-    if(Songplaying) return(Pattern_Line_Visual);
+    if(Song_Playing) return(Pattern_Line_Visual);
     else return(Pattern_Line);
 }
 
@@ -3259,7 +3259,7 @@ int Get_Song_Line(void)
     {
         Cur_Lines_Song += patternLines[pSequence[i]];
     }
-    if(Songplaying) return(Cur_Lines_Song + Pattern_Line_Visual);
+    if(Song_Playing) return(Cur_Lines_Song + Pattern_Line_Visual);
     else return(Cur_Lines_Song + Pattern_Line);
 }
 

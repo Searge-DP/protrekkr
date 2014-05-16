@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -280,11 +280,11 @@ void Mouse_Left_Midi_Ed(void)
         {
             if(File_Exist_Req("%s"SLASH"%s.pmi", Dir_MidiCfg, Midi_Name))
             {
-                Display_Requester(&Overwrite_Requester, GUI_CMD_SAVE_MIDICFG);
+                Display_Requester(&Overwrite_Requester, GUI_CMD_SAVE_MIDI_CFG);
             }
             else
             {
-                gui_action = GUI_CMD_SAVE_MIDICFG;
+                gui_action = GUI_CMD_SAVE_MIDI_CFG;
             }
         }
 

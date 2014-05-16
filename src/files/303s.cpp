@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -70,7 +70,7 @@ void Save_303_Data(int (*Write_Function)(void *, int ,int, FILE *),
 // ------------------------------------------------------
 // Load a 303 pattern
 #if !defined(__WINAMP__)
-void Load303(char *FileName)
+void Load_303(char *FileName)
 {
     FILE *in;
     in = fopen(FileName, "rb");
@@ -105,7 +105,7 @@ void Load303(char *FileName)
 
 // ------------------------------------------------------
 // Save a 303 pattern
-void Save303(void)
+void Save_303(void)
 {
     FILE *in;
     char Temph[MAX_PATH];
