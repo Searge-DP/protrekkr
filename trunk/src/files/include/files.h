@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -73,23 +73,23 @@ extern char Dir_Samples[MAX_PATH];
 extern char Use_Cubic;
 extern char Paste_Across;
 extern int wait_AutoSave;
+#ifndef __LITE__
 extern gear303 tb303engine[2];
 extern para303 tb303[2];
+#endif
 
 // ------------------------------------------------------
 // Functions
-int LoadPtk(char *FileName);
-int SavePtk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory);
+int Load_Ptk(char *FileName);
+int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory);
 void Backup_Module(char *FileName);
 int Pack_Module(char *FileName);
-int TestMod(void);
-void LoadSynth(char *FileName);
-void LoadInst(char *FileName);
-void SaveInst(void);
-void SaveSynth(void);
-void LoadSettings(void);
-void SaveSettings(void);
-void SongStop(void);
+int Test_Mod(void);
+void Load_Synth(char *FileName);
+void Load_Inst(char *FileName);
+void Save_Inst(void);
+void Save_Synth(void);
+void Song_Stop(void);
 void Free_Samples(void);
 Uint8 *Pack_Data(Uint8 *Memory, int *Len);
 Uint8 *Depack_Data(Uint8 *Memory, int Size, int size_out);

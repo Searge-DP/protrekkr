@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -808,7 +808,7 @@ void Actualize_Sequencer(void)
     int Cur_Position;
     int i;
 
-    if(Songplaying)
+    if(Song_Playing)
     {
         if(Song_Position < 0) Song_Position = 0;
         if(Song_Position > Song_Length - 1)

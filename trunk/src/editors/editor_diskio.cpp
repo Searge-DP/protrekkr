@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -351,7 +351,11 @@ void Mouse_Left_DiskIO_Ed(void)
         // Save song
         if(zcheckMouse(8, (Cur_Height - 112), 80, 16))
         {
+#ifndef __LITE__
             if(File_Exist_Req("%s"SLASH"%s.ptk", Dir_Mods, name))
+#else
+            if(File_Exist_Req("%s"SLASH"%s.ptl", Dir_Mods, name))
+#endif
             {
                 Display_Requester(&Overwrite_Requester, GUI_CMD_SAVE_MODULE);
             }

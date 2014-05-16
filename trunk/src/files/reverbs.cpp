@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,7 @@
 // Includes
 #include "include/reverbs.h"
 
+#ifndef __LITE__
 // ------------------------------------------------------
 // Load the data from a reverb file (or a module)
 void Load_Reverb_Data(int (*Read_Function)(void *, int ,int, FILE *),
@@ -85,7 +86,7 @@ void Save_Reverb_Data(int (*Write_Function)(void *, int ,int, FILE *),
 
 // ------------------------------------------------------
 // Load a reverb file
-void LoadReverb(char *FileName)
+void Load_Reverb(char *FileName)
 {
     FILE *in;
     int New_Reverb = FALSE;
@@ -132,7 +133,7 @@ void LoadReverb(char *FileName)
 
 // ------------------------------------------------------
 // Save a reverb file
-void SaveReverb(void)
+void Save_Reverb(void)
 {
     FILE *in;
     char Temph[96];
@@ -338,3 +339,4 @@ void Load_Old_Reverb_Presets(int Type)
         decays[i] = decays[i] * 0.015625f;
     }
 }
+#endif // __LITE__

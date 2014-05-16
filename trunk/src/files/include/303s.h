@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@
 
 // ------------------------------------------------------
 // Functions
-void Load303(char *FileName);
-void Save303(void);
+void Load_303(char *FileName);
+void Save_303(void);
 void Load_303_Data(int (*Read_Function)(void *, int ,int, FILE *),
                    int (*Read_Function_Swap)(void *, int ,int, FILE *),
                    FILE *in, int unit, int pattern);

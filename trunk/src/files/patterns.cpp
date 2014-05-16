@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -112,7 +112,7 @@ void Save_Pattern_Data(int (*Write_Function)(void *, int ,int, FILE *),
 
 // ------------------------------------------------------
 // Load a pattern file
-void LoadPattern(char *FileName)
+void Load_Pattern(char *FileName)
 {
     FILE *in;
     int version = 0;
@@ -158,7 +158,7 @@ void LoadPattern(char *FileName)
 
 // ------------------------------------------------------
 // Save a pattern block file
-void SavePattern(void)
+void Save_Pattern(void)
 {
     FILE *in;
     char Temph[96];

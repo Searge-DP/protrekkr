@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -37,9 +37,9 @@
 #if !defined(__WINAMP__)
 // ------------------------------------------------------
 // Load the data from a midi config file
-void Load_MidiCfg_Data(int (*Read_Function)(void *, int ,int, FILE *),
-                       int (*Read_Function_Swap)(void *, int ,int, FILE *),
-                       FILE *in)
+void Load_Midi_Cfg_Data(int (*Read_Function)(void *, int ,int, FILE *),
+                        int (*Read_Function_Swap)(void *, int ,int, FILE *),
+                        FILE *in)
 {
     int i;
 
@@ -52,9 +52,9 @@ void Load_MidiCfg_Data(int (*Read_Function)(void *, int ,int, FILE *),
 
 // ------------------------------------------------------
 // Save the data to a midi config file
-void Save_MidiCfg_Data(int (*Write_Function)(void *, int ,int, FILE *),
-                       int (*Write_Function_Swap)(void *, int ,int, FILE *),
-                       FILE *out)
+void Save_Midi_Cfg_Data(int (*Write_Function)(void *, int ,int, FILE *),
+                        int (*Write_Function_Swap)(void *, int ,int, FILE *),
+                        FILE *out)
 {
     int i;
 
@@ -67,7 +67,7 @@ void Save_MidiCfg_Data(int (*Write_Function)(void *, int ,int, FILE *),
 
 // ------------------------------------------------------
 // Load a reverb file
-void LoadMidiCfg(char *FileName)
+void Load_Midi_Cfg(char *FileName)
 {
     FILE *in;
     in = fopen(FileName, "rb");
@@ -84,7 +84,7 @@ void LoadMidiCfg(char *FileName)
             Status_Box("Loading midi config data...");
 
             Read_Data(Midi_Name, sizeof(char), 20, in);
-            Load_MidiCfg_Data(Read_Data, Read_Data_Swap, in);
+            Load_Midi_Cfg_Data(Read_Data, Read_Data_Swap, in);
             Actualize_Midi_Ed(0);
 
             Status_Box("Midi config data loaded ok.");
@@ -103,7 +103,7 @@ void LoadMidiCfg(char *FileName)
 
 // ------------------------------------------------------
 // Save a midi config file
-void SaveMidiCfg(void)
+void Save_Midi_Cfg(void)
 {
     FILE *in;
     char Temph[96];
@@ -120,7 +120,7 @@ void SaveMidiCfg(void)
         Write_Data(extension, sizeof(char), 9, in);
         Write_Data(Midi_Name, sizeof(char), 20, in);
 
-        Save_MidiCfg_Data(Write_Data, Write_Data_Swap, in);
+        Save_Midi_Cfg_Data(Write_Data, Write_Data_Swap, in);
 
         fclose(in);
         Read_SMPT();

@@ -20,7 +20,7 @@ DXIST = 0x11
 		.global me_stub
 		.global me_stub_end
 		.set    noreorder
-        
+
 # -----------------------------------------
     	.align   4
 me_disable_int:

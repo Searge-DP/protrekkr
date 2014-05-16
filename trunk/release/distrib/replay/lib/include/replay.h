@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,11 @@
 #define USE_FASTPOW
 
 #define MAX_TRACKS 16
+#ifndef __LITE__
 #define MAX_POLYPHONY 16
+#else
+#define MAX_POLYPHONY 1
+#endif
 #define DEFAULT_POLYPHONY 1
 #define MAX_FILTER 23
 #define MAX_COMB_FILTERS 10
@@ -430,9 +434,9 @@ extern float Player_FD[MAX_TRACKS];
 extern char sp_channelsample[MAX_TRACKS][MAX_POLYPHONY];
 extern char sp_split[MAX_TRACKS][MAX_POLYPHONY];
 #if defined(__PSP__)
-extern volatile int Songplaying;
+extern volatile int Song_Playing;
 #else
-extern int Songplaying;
+extern int Song_Playing;
 #endif
 extern int left_value;
 extern int right_value;
@@ -472,7 +476,7 @@ void Play_Instrument(int channel, int sub_channel);
 void ResetFilters(int tr);
 void ComputeStereo(int channel);
 void FixStereo(int channel);
-void GetPlayerValues(void);
+void Get_Player_Values(void);
 void noteoff303(char strack);
 void init_sample_bank(void);
 void KillInst(int inst_nbr, int all_splits);

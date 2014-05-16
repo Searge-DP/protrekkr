@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@
 
 // ------------------------------------------------------
 // Load an instrument
-void LoadInst(char *FileName)
+void Load_Inst(char *FileName)
 {
     int old_bug = FALSE;
     int Pack_Scheme = FALSE;
@@ -92,6 +92,8 @@ void LoadInst(char *FileName)
         int swrite = Current_Instrument;
 
         Read_Data(&Midiprg[swrite], sizeof(char), 1, in);
+
+#ifndef __LITE__
         Read_Data(&Synthprg[swrite], sizeof(char), 1, in);
 
         PARASynth[swrite].disto = 0;
@@ -111,7 +113,7 @@ void LoadInst(char *FileName)
         Read_Synth_Params(Read_Data, Read_Data_Swap, in, swrite,
                           !old_bug, new_adsr, tight,
                           Env_Modulation, New_Env, FALSE, Combine);
-
+#endif
         // Gsm by default
         if(Pack_Scheme)
         {
@@ -161,7 +163,7 @@ void LoadInst(char *FileName)
                 Read_Data_Swap(&Sample_Amplify[swrite][slwrite], sizeof(float), 1, in);
                 Read_Data_Swap(&FDecay[swrite][slwrite], sizeof(float), 1, in);
 
-                AllocateWave(swrite, slwrite, SampleLength[swrite][slwrite], 1, FALSE, NULL, NULL);
+                Allocate_Wave(swrite, slwrite, SampleLength[swrite][slwrite], 1, FALSE, NULL, NULL);
 
                 // Samples data
                 Read_Data(RawSamples[swrite][0][slwrite], sizeof(short), SampleLength[swrite][slwrite], in);
@@ -183,7 +185,9 @@ void LoadInst(char *FileName)
         fclose(in);
         Actualize_Patterned();
         Actualize_Instrument_Ed(2, 0);
+#ifndef __LITE__
         Actualize_Synth_Ed(UPDATE_SYNTH_ED_ALL);
+#endif
         Status_Box("Instrument loaded ok.");
     }
     else
@@ -196,12 +200,14 @@ void LoadInst(char *FileName)
 
 // ------------------------------------------------------
 // Save the current instrument
-void SaveInst(void)
+void Save_Inst(void)
 {
     FILE *in;
     char Temph[MAX_PATH];
     char extension[10];
+#ifndef __LITE__
     char synth_prg;
+#endif
     int synth_save;
 
     sprintf(extension, "TWNNINS9");
@@ -222,6 +228,8 @@ void SaveInst(void)
         int swrite = Current_Instrument;
 
         Write_Data(&Midiprg[swrite], sizeof(char), 1, in);
+
+#ifndef __LITE__
         switch(Synthprg[swrite])
         {
             case SYNTH_WAVE_OFF:
@@ -250,6 +258,7 @@ void SaveInst(void)
                 Write_Data(&At3_BitRate[swrite], sizeof(char), 1, in);
                 break;
         }
+#endif
 
         Write_Data_Swap(&Sample_Vol[swrite], sizeof(float), 1, in);
 

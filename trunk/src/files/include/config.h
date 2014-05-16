@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@
 
 // ------------------------------------------------------
 // Functions
-void SaveConfig(void);
-void LoadConfig(void);
+void Load_Config(void);
+void Save_Config(void);
 
 #endif

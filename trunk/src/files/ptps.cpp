@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -152,7 +152,7 @@ int Check_Range(int Idx, int Bound, int Start)
 // Save a packed (.ptp) module
 // (Only the samples are actually (if requested) packed,
 //  the rest is just "demangled" to ease packers compression ratio).
-int SavePtp(FILE *in, int Simulate, char *FileName)
+int Save_Ptp(FILE *in, int Simulate, char *FileName)
 {
     unsigned char *TmpPatterns;
     unsigned char *TmpPatterns_Tracks;
@@ -1796,18 +1796,19 @@ int SavePtp(FILE *in, int Simulate, char *FileName)
         }
         Write_Mod_Data(&Compress_Track, sizeof(char), Songtracks, in);
    }
-
+#ifndef __LITE__
     Write_Mod_Data(&Feedback, sizeof(float), 1, in);
     
     if(compressor)
     {
         Save_Reverb_Data(Write_Mod_Data, Write_Mod_Data, in);
     }
-
+#endif
     Write_Mod_Data(&lchorus_delay, sizeof(int), 1, in);
     Write_Mod_Data(&rchorus_delay, sizeof(int), 1, in);
     Write_Mod_Data(&lchorus_feedback, sizeof(float), 1, in);
     Write_Mod_Data(&rchorus_feedback, sizeof(float), 1, in);
+
     Write_Mod_Data(&shuffle, sizeof(int), 1, in);
 
     Save_Constant("PTK_TRACKFILTERS", Store_TrackFilters);
@@ -1923,6 +1924,7 @@ int SavePtp(FILE *in, int Simulate, char *FileName)
     Write_Mod_Data(&Reverb_Filter_Resonance, sizeof(float), 1, in);
     Write_Mod_Data(&Reverb_Stereo_Amount, sizeof(char), 1, in);
 
+#ifndef __LITE__
     Write_Mod_Data(&Store_303_1, sizeof(char), 1, in);
     if(Store_303_1)
     {
@@ -1959,6 +1961,7 @@ int SavePtp(FILE *in, int Simulate, char *FileName)
     
     if(Store_303_1) Write_Mod_Data(&tb303engine[0].tbVolume, sizeof(float), 1, in);
     if(Store_303_2) Write_Mod_Data(&tb303engine[1].tbVolume, sizeof(float), 1, in);
+#endif
 
     free(New_RawPatterns);
 

@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -494,7 +494,7 @@ extern SDL_NEED int SDL_main(int argc, char *argv[])
 
     // Set the default palette before loading the config file
     Restore_Default_Palette(Default_Palette1, Default_Beveled1);
-    LoadConfig();
+    Load_Config();
 
     if(!strlen(Keyboard_Name)) sprintf(Keyboard_Name, "%s", "kben.txt");
 
@@ -904,7 +904,7 @@ extern SDL_NEED int SDL_main(int argc, char *argv[])
 #endif
 
     }
-    SaveConfig();
+    Save_Config();
 
 	if(ExePath) free(ExePath);
 

@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -1596,7 +1596,7 @@ void Select_Track_Block(void)
 {
     int nlines;
 
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         Mark_Block_Start(0, Track_Under_Caret, 0);
         nlines = patternLines[pSequence[Song_Position]];
@@ -1613,7 +1613,7 @@ void Select_Pattern_Block(void)
 {
     int nlines;
 
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         Mark_Block_Start(0, 0, 0);
         nlines = patternLines[pSequence[Song_Position]];
@@ -1652,7 +1652,7 @@ void Select_Note_Block(void)
     int i;
     int column_to_select;
 
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         for(i = 0; i < Channels_MultiNotes[Track_Under_Caret] * 3; i++)
         {
@@ -1676,7 +1676,7 @@ void Select_All_Notes_Block(void)
 {
     int nlines;
 
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         Mark_Block_Start(0, Track_Under_Caret, 0);
         nlines = patternLines[pSequence[Song_Position]];
@@ -1712,7 +1712,7 @@ void Unselect_Selection(void)
 // Select a block via the keyboard
 void Select_Block_Keyboard(int Type)
 {
-    if(!Songplaying)
+    if(!Song_Playing)
     {
         if(Get_LShift())
         {
@@ -2140,6 +2140,7 @@ void Reset_Track(int Position, int Track)
 
     Track_Volume[Track] = 1.0f;
 
+#ifndef __LITE__
     FLANGER_ON[Track] = 0;
     FLANGER_AMOUNT[Track] = -0.8f;
     FLANGER_DEPHASE[Track] = 0.0174532f;
@@ -2154,6 +2155,7 @@ void Reset_Track(int Position, int Track)
     FLANGER_OFFSET1[Track] = float(FLANGER_OFFSET[Track] - FLANGER_DELAY[Track]);
 
     init_eq(&EqDat[Track]);
+#endif
 
     CHAN_MUTE_STATE[Track] = FALSE;
     for(i = 0; i < Song_Length; i++)

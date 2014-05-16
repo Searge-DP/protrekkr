@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2010 Franck Charlet.
+// Copyright (C) 2008-2011 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -183,7 +183,7 @@ int AUDIO_Init_Driver(void (*Mixer)(Uint8 *, Uint32))
 
 // ------------------------------------------------------
 // Name: AUDIO_malloc_64()
-// Desc: Create an audio buffer of given milliseconds
+// Desc: Allocate aligned memory
 void *AUDIO_malloc_64(int *size)
 {
     int mod_64 = *size & 0x3f;
@@ -313,7 +313,7 @@ void AUDIO_Stop(void)
 void AUDIO_Stop_Sound_Buffer(void)
 {
     AUDIO_Stop();
-    me_sceKernelDcacheWritebackInvalidateAll();	
+    me_sceKernelDcacheWritebackInvalidateAll();
     sceSysregMeResetEnable();
     sceSysregMeBusClockDisable();
     if(AUDIO_thid > 0) sceKernelDeleteThread(AUDIO_thid);

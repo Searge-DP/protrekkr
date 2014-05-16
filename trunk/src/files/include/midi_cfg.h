@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -41,13 +41,13 @@
 
 // ------------------------------------------------------
 // Functions
-void Load_MidiCfg_Data(int (*Read_Function)(void *, int ,int, FILE *),
-                       int (*Read_Function_Swap)(void *, int ,int, FILE *),
-                       FILE *in);
-void Save_MidiCfg_Data(int (*Write_Function)(void *, int ,int, FILE *),
-                       int (*Write_Function_Swap)(void *, int ,int, FILE *),
-                       FILE *in);
-void LoadMidiCfg(char *FileName);
-void SaveMidiCfg(void);
+void Load_Midi_Cfg_Data(int (*Read_Function)(void *, int ,int, FILE *),
+                        int (*Read_Function_Swap)(void *, int ,int, FILE *),
+                        FILE *in);
+void Save_Midi_Cfg_Data(int (*Write_Function)(void *, int ,int, FILE *),
+                        int (*Write_Function_Swap)(void *, int ,int, FILE *),
+                        FILE *in);
+void Load_Midi_Cfg(char *FileName);
+void Save_Midi_Cfg(void);
 
 #endif

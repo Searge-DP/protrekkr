@@ -2,7 +2,7 @@
 // Protrekkr
 // Based on Juan Antonio Arguelles Rius's NoiseTrekker.
 //
-// Copyright (C) 2008-2011 Franck Charlet.
+// Copyright (C) 2008-2014 Franck Charlet.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -126,7 +126,7 @@ int Get_FileType(int idx)
     return(SMPT_LIST[idx].Type);
 }
 
-int FileComp(const void *elem1, const void *elem2)
+int File_Comp(const void *elem1, const void *elem2)
 {
     int i;
     LPFILEENTRY Ent1 = (LPFILEENTRY) elem1;
@@ -142,7 +142,7 @@ int FileComp(const void *elem1, const void *elem2)
     return strcmp(UpName1, UpName2);
 }
 
-int FileComp_Files(const void *elem1, const void *elem2)
+int File_Comp_Files(const void *elem1, const void *elem2)
 {
     int i;
     LPFILEENTRY Ent1 = (LPFILEENTRY) elem1;
@@ -452,7 +452,7 @@ void Read_SMPT(void)
 
             if(sort_files)
             {
-                qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &FileComp_Files);
+                qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &File_Comp_Files);
                 //Insert_List_Separators();
             }
             //else
@@ -537,7 +537,7 @@ void Read_SMPT(void)
 
         if(sort_files)
         {
-            qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &FileComp_Files);
+            qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &File_Comp_Files);
             //Insert_List_Separators();
         }
         //else
@@ -555,7 +555,7 @@ void Read_SMPT(void)
 
     if(sort_files)
     {
-        qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &FileComp_Files);
+        qsort(&SMPT_LIST[0], list_counter[Scopish], sizeof(FILEENTRY), &File_Comp_Files);
         //Insert_List_Separators();
     }
     //else
