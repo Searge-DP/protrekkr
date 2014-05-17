@@ -327,7 +327,7 @@ extern unsigned char Synthprg[MAX_INSTRS];
 #if !defined(__STAND_ALONE__)
 extern char SamplesSwap[MAX_INSTRS];
 extern short *RawSamples_Swap[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
-extern Uint32 SampleLength_Packed[MAX_INSTRS][MAX_INSTRS_SPLITS];
+extern Uint32 Sample_Length_Packed[MAX_INSTRS][MAX_INSTRS_SPLITS];
 #endif
 
 extern char SampleType[MAX_INSTRS][MAX_INSTRS_SPLITS];
@@ -337,7 +337,7 @@ extern char Basenote[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern Uint32 LoopStart[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern Uint32 LoopEnd[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern char LoopType[MAX_INSTRS][MAX_INSTRS_SPLITS];
-extern Uint32 SampleLength[MAX_INSTRS][MAX_INSTRS_SPLITS];
+extern Uint32 Sample_Length[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern char Finetune[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float Sample_Amplify[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];

@@ -166,10 +166,12 @@ int Load_Ptk(char *FileName)
     int Fx2 = FALSE;
     int XtraFx = FALSE;
     int Combine = FALSE;
+#ifndef __LITE__
     int Stereo_Reverb = FALSE;
     int Reverb_Resonance = FALSE;
     int Tb303_Scaling = FALSE;
     char Comp_Flag;
+#endif
     int i;
     int j;
     int k;
@@ -187,17 +189,19 @@ int Load_Ptk(char *FileName)
     int tps_pos;
     int tps_trk;
     int twrite;
+#ifndef __LITE__
     int fake_value;
+#endif
     int Packed_Size;
     int UnPacked_Size;
     int Flanger_Bug = FALSE;
     unsigned char *Packed_Module = NULL;
+    FILE *in;
 
     Mod_Simulate = LOAD_READ;
     Mod_Mem_Pos = 0;
     Mod_Memory = NULL;
 
-    FILE *in;
     in = fopen(FileName, "rb");
     Old_Ntk = FALSE;
     Ntk_Beta = FALSE;
@@ -215,6 +219,7 @@ int Load_Ptk(char *FileName)
         char extension[10];
         Read_Data(extension, sizeof(char), 9, in);
 
+#ifndef __LITE__
         switch(extension[7])
         {
             case 'O':
@@ -273,12 +278,14 @@ int Load_Ptk(char *FileName)
         }
 
 Read_Mod_File:
+#endif
 
 #if !defined(__WINAMP__)
         Status_Box("Loading song -> Header...");
 #endif
         Free_Samples();
 
+#ifndef __LITE__
         mas_comp_threshold_Master = 100.0f;
         mas_comp_ratio_Master = 0.0f;
 
@@ -287,6 +294,7 @@ Read_Mod_File:
             mas_comp_threshold_Track[i] = 100.0f;
             mas_comp_ratio_Track[i] = 0.0f;
         }
+#endif
 
 #if !defined(__WINAMP__)
         allow_save = TRUE;
@@ -329,12 +337,14 @@ Read_Mod_File:
         Songtracks = MAX_TRACKS;
         Read_Mod_Data(&Song_Length, sizeof(char), 1, in);
 
+#ifndef __LITE__
         Use_Cubic = CUBIC_INT;
 
         if(Sel_Interpolation)
         {
             Read_Mod_Data(&Use_Cubic, sizeof(char), 1, in);
         }
+#endif
 
         Read_Mod_Data(pSequence, sizeof(char), 256, in);
 
@@ -349,11 +359,13 @@ Read_Mod_File:
             }
         }
 
+#ifndef __LITE__
         // Multi notes
         if(Multi)
         {
             Read_Mod_Data(Channels_MultiNotes, sizeof(char), MAX_TRACKS, in);
         }
+#endif
 
         // Up to 4 fx
         if(XtraFx)
@@ -397,6 +409,7 @@ Read_Mod_File:
                     TmpPatterns_Tracks = TmpPatterns_Rows + (k * PATTERN_BYTES);
                     // Rows
                     TmpPatterns_Notes = TmpPatterns_Tracks + (j * PATTERN_ROW_LEN);
+#ifndef __LITE__
                     if(Multi)
                     {
                         for(i = 0; i < MAX_POLYPHONY; i++)
@@ -407,9 +420,12 @@ Read_Mod_File:
                     }
                     else
                     {
+#endif
                         Read_Mod_Data(TmpPatterns_Notes + PATTERN_NOTE1, sizeof(char), 1, in);
                         Read_Mod_Data(TmpPatterns_Notes + PATTERN_INSTR1, sizeof(char), 1, in);
+#ifndef __LITE__
                     }
+#endif
                     Read_Mod_Data(TmpPatterns_Notes + PATTERN_VOLUME, sizeof(char), 1, in);
                     Read_Mod_Data(TmpPatterns_Notes + PATTERN_PANNING, sizeof(char), 1, in);
                     Read_Mod_Data(TmpPatterns_Notes + PATTERN_FX, sizeof(char), 1, in);
@@ -479,6 +495,7 @@ Read_Mod_File:
             }
 #endif
             // Compression type
+#ifndef __LITE__
             SampleCompression[swrite] = SMP_PACK_INTERNAL;
             if(Pack_Scheme)
             {
@@ -498,6 +515,7 @@ Read_Mod_File:
                 }
                 SampleCompression[swrite] = Fix_Codec(SampleCompression[swrite]);
             }
+#endif
             for(int slwrite = 0; slwrite < MAX_INSTRS_SPLITS; slwrite++)
             {
                 Read_Mod_Data(&SampleType[swrite][slwrite], sizeof(char), 1, in);
@@ -511,13 +529,13 @@ Read_Mod_File:
                     Read_Mod_Data_Swap(&LoopEnd[swrite][slwrite], sizeof(int), 1, in);
                     Read_Mod_Data(&LoopType[swrite][slwrite], sizeof(char), 1, in);
 
-                    Read_Mod_Data_Swap(&SampleLength[swrite][slwrite], sizeof(int), 1, in);
+                    Read_Mod_Data_Swap(&Sample_Length[swrite][slwrite], sizeof(int), 1, in);
                     Read_Mod_Data(&Finetune[swrite][slwrite], sizeof(char), 1, in);
                     Read_Mod_Data_Swap(&Sample_Amplify[swrite][slwrite], sizeof(float), 1, in);
                     Read_Mod_Data_Swap(&FDecay[swrite][slwrite], sizeof(float), 1, in);
 
-                    Allocate_Wave(swrite, slwrite, SampleLength[swrite][slwrite], 1, FALSE, NULL, NULL);
-                    Read_Mod_Data(RawSamples[swrite][0][slwrite], sizeof(short), SampleLength[swrite][slwrite], in);
+                    Allocate_Wave(swrite, slwrite, Sample_Length[swrite][slwrite], 1, FALSE, NULL, NULL);
+                    Read_Mod_Data(RawSamples[swrite][0][slwrite], sizeof(short), Sample_Length[swrite][slwrite], in);
                     Swap_Sample(RawSamples[swrite][0][slwrite], swrite, slwrite);
                     *RawSamples[swrite][0][slwrite] = 0;
 
@@ -525,9 +543,9 @@ Read_Mod_File:
                     Read_Mod_Data(&SampleChannels[swrite][slwrite], sizeof(char), 1, in);
                     if(SampleChannels[swrite][slwrite] == 2)
                     {
-                        RawSamples[swrite][1][slwrite] = (short *) malloc(SampleLength[swrite][slwrite] * sizeof(short) + 8);
-                        memset(RawSamples[swrite][1][slwrite], 0, SampleLength[swrite][slwrite] * sizeof(short) + 8);
-                        Read_Mod_Data(RawSamples[swrite][1][slwrite], sizeof(short), SampleLength[swrite][slwrite], in);
+                        RawSamples[swrite][1][slwrite] = (short *) malloc(Sample_Length[swrite][slwrite] * sizeof(short) + 8);
+                        memset(RawSamples[swrite][1][slwrite], 0, Sample_Length[swrite][slwrite] * sizeof(short) + 8);
+                        Read_Mod_Data(RawSamples[swrite][1][slwrite], sizeof(short), Sample_Length[swrite][slwrite], in);
                         Swap_Sample(RawSamples[swrite][1][slwrite], swrite, slwrite);
                         *RawSamples[swrite][1][slwrite] = 0;
                     }
@@ -544,13 +562,16 @@ Read_Mod_File:
         // Reading Track Properties
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
+#ifndef __LITE__
             Read_Mod_Data_Swap(&TCut[twrite], sizeof(float), 1, in);
             Read_Mod_Data_Swap(&ICut[twrite], sizeof(float), 1, in);
             if(ICut[twrite] > 0.0078125f) ICut[twrite] = 0.0078125f;
             if(ICut[twrite] < 0.00006103515625f) ICut[twrite] = 0.00006103515625f;
+#endif
             Read_Mod_Data_Swap(&TPan[twrite], sizeof(float), 1, in);
             ComputeStereo(twrite);
             FixStereo(twrite);
+#ifndef __LITE__
             Read_Mod_Data_Swap(&FType[twrite], sizeof(int), 1, in);
             Read_Mod_Data_Swap(&FRez[twrite], sizeof(int), 1, in);
             Read_Mod_Data_Swap(&DThreshold[twrite], sizeof(float), 1, in);
@@ -558,19 +579,23 @@ Read_Mod_File:
             Read_Mod_Data_Swap(&DSend[twrite], sizeof(float), 1, in);
             Read_Mod_Data_Swap(&CSend[twrite], sizeof(int), 1, in);
             if(Poly) Read_Mod_Data(&Channels_Polyphony[twrite], sizeof(char), 1, in);
+#endif
         }
 
         // Reading mod properties
+#ifndef __LITE__
         int cvalue;
         Read_Mod_Data_Swap(&cvalue, sizeof(int), 1, in);
         compressor = cvalue;
         Read_Mod_Data_Swap(&c_threshold, sizeof(int), 1, in);
+#endif
         Read_Mod_Data_Swap(&BeatsPerMin, sizeof(int), 1, in);
         Read_Mod_Data_Swap(&TicksPerBeat, sizeof(int), 1, in);
         Read_Mod_Data_Swap(&mas_vol, sizeof(float), 1, in);
         if(mas_vol < 0.01f) mas_vol = 0.01f;
         if(mas_vol > 1.0f) mas_vol = 1.0f;
 
+#ifndef __LITE__
         if(New_Comp)
         {
             Comp_Flag = 0;
@@ -599,7 +624,6 @@ Read_Mod_File:
                 Read_Mod_Data(&Compress_Track, sizeof(char), MAX_TRACKS, in);
             }
         }
-
         if(!New_Reverb) Read_Mod_Data_Swap(&delay_time, sizeof(int), 1, in);
         Read_Mod_Data_Swap(&Feedback, sizeof(float), 1, in);
         if(!New_Reverb) Read_Mod_Data_Swap(&DelayType, sizeof(int), 1, in);
@@ -607,6 +631,8 @@ Read_Mod_File:
         Read_Mod_Data_Swap(&rchorus_delay, sizeof(int), 1, in);
         Read_Mod_Data_Swap(&lchorus_feedback, sizeof(float), 1, in);
         Read_Mod_Data_Swap(&rchorus_feedback, sizeof(float), 1, in);
+#endif // __LITE__
+
         Read_Mod_Data_Swap(&shuffle, sizeof(int), 1, in);
 
         // Load the new reverb data
@@ -627,23 +653,24 @@ Read_Mod_File:
             }
         }
 
+#ifndef __LITE__
         for(int spl = 0; spl < Songtracks; spl++)
         {
             CCoef[spl] = float((float) CSend[spl] / 127.0f);
         }
-
+#endif
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
             Read_Mod_Data_Swap(&CHAN_MIDI_PRG[twrite], sizeof(int), 1, in);
         }
 
+#ifndef __LITE__
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
             Read_Mod_Data(&LFO_ON[twrite], sizeof(char), 1, in);
             Read_Mod_Data_Swap(&LFO_RATE[twrite], sizeof(float), 1, in);
             Read_Mod_Data_Swap(&LFO_AMPL[twrite], sizeof(float), 1, in);
         }
-
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
             Read_Mod_Data(&FLANGER_ON[twrite], sizeof(char), 1, in);
@@ -662,6 +689,7 @@ Read_Mod_File:
         {
             Read_Mod_Data_Swap(&FLANGER_DEPHASE, sizeof(float), 1, in);
         }
+#endif // __LITE__
 
         for(tps_trk = 0; tps_trk < Songtracks; tps_trk++)
         {
@@ -670,12 +698,13 @@ Read_Mod_File:
 
         Read_Mod_Data(&Songtracks, sizeof(char), 1, in);
 
+#ifndef __LITE__
         for(tps_trk = 0; tps_trk < MAX_TRACKS; tps_trk++)
         {
             Read_Mod_Data(&Disclap[tps_trk], sizeof(char), 1, in);
             if(!Portable) Read_Mod_Data(&fake_value, sizeof(char), 1, in);
         }
-
+#endif
         if(!Ntk_Beta)       // Nothing like that in ntk beta
         {
             Read_Mod_Data(artist, sizeof(char), 20, in);
@@ -690,6 +719,7 @@ Read_Mod_File:
                 Read_Mod_Data_Swap(&beatlines[i], sizeof(short), 1, in);
             }
 
+#ifndef __LITE__
             Read_Mod_Data_Swap(&Reverb_Filter_Cutoff, sizeof(float), 1, in);
 
             if(Reverb_Resonance)
@@ -700,7 +730,7 @@ Read_Mod_File:
             {
                 Read_Mod_Data(&Reverb_Stereo_Amount, sizeof(char), 1, in);
             }
-
+#endif
             for(i = 0; i < MAX_INSTRS; i++)
             {
                 Read_Mod_Data_Swap(&Sample_Vol[i], sizeof(float), 1, in);
@@ -1306,8 +1336,9 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
 */
             Write_Mod_Data(&nPatterns, sizeof(char), 1, in);
             Write_Mod_Data(&Song_Length, sizeof(char), 1, in);
+#ifndef __LITE__
             Write_Mod_Data(&Use_Cubic, sizeof(char), 1, in);
-
+#endif
             Write_Mod_Data(pSequence, sizeof(char), MAX_SEQUENCES, in);
 
             Swap_Short_Buffer(patternLines, MAX_ROWS);
@@ -1320,13 +1351,14 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             {
                 Write_Mod_Data_Swap(&Track_Volume[i], sizeof(float), 1, in);
             }
+#ifndef __LITE__
             for(i = 0; i < MAX_TRACKS; i++)
             {
                 Write_Mod_Data_Swap(&EqDat[i].lg, sizeof(float), 1, in);
                 Write_Mod_Data_Swap(&EqDat[i].mg, sizeof(float), 1, in);
                 Write_Mod_Data_Swap(&EqDat[i].hg, sizeof(float), 1, in);
             }
-
+#endif
             // Clean the unused patterns garbage (doesn't seem to do much)
             for(i = Songtracks; i < MAX_TRACKS; i++)
             {
@@ -1404,7 +1436,7 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                         Write_Mod_Data_Swap(&LoopEnd[swrite][slwrite], sizeof(int), 1, in);
                         Write_Mod_Data(&LoopType[swrite][slwrite], sizeof(char), 1, in);
                         
-                        Write_Mod_Data_Swap(&SampleLength[swrite][slwrite], sizeof(int), 1, in);
+                        Write_Mod_Data_Swap(&Sample_Length[swrite][slwrite], sizeof(int), 1, in);
                         Write_Mod_Data(&Finetune[swrite][slwrite], sizeof(char), 1, in);
                         Write_Mod_Data_Swap(&Sample_Amplify[swrite][slwrite], sizeof(float), 1, in);
                         Write_Mod_Data_Swap(&FDecay[swrite][slwrite], sizeof(float), 1, in);
@@ -1418,11 +1450,13 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             // Writing Track Properties
             for(twrite = 0; twrite < MAX_TRACKS; twrite++)
             {
+#ifndef __LITE__
                 Write_Mod_Data_Swap(&TCut[twrite], sizeof(float), 1, in);
                 Write_Mod_Data_Swap(&ICut[twrite], sizeof(float), 1, in);
-
+#endif
                 Write_Mod_Data_Swap(&TPan[twrite], sizeof(float), 1, in);
 
+#ifndef __LITE__
                 Write_Mod_Data_Swap(&FType[twrite], sizeof(int), 1, in);
                 Write_Mod_Data_Swap(&FRez[twrite], sizeof(int), 1, in);
                 Write_Mod_Data_Swap(&DThreshold[twrite], sizeof(float), 1, in);
@@ -1430,13 +1464,16 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                 Write_Mod_Data_Swap(&DSend[twrite], sizeof(float), 1, in);
                 Write_Mod_Data_Swap(&CSend[twrite], sizeof(int), 1, in);
                 Write_Mod_Data(&Channels_Polyphony[twrite], sizeof(char), 1, in);
+#endif
             }
 
             // Writing mod properties
             int cvalue;   
             cvalue = compressor;
+#ifndef __LITE__
             Write_Mod_Data_Swap(&cvalue, sizeof(int), 1, in);
             Write_Mod_Data_Swap(&c_threshold, sizeof(int), 1, in);
+#endif
             Write_Mod_Data_Swap(&BeatsPerMin, sizeof(int), 1, in);
             Write_Mod_Data_Swap(&TicksPerBeat, sizeof(int), 1, in);
             Write_Mod_Data_Swap(&mas_vol, sizeof(float), 1, in);
@@ -1489,6 +1526,7 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                 Write_Mod_Data_Swap(&CHAN_MIDI_PRG[twrite], sizeof(int), 1, in);
             }
 
+#ifndef __LITE__
             for(twrite = 0; twrite < MAX_TRACKS; twrite++)
             {
                 Write_Mod_Data(&LFO_ON[twrite], sizeof(char), 1, in);
@@ -1506,7 +1544,7 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                 Write_Mod_Data_Swap(&FLANGER_FEEDBACK[twrite], sizeof(float), 1, in);
                 Write_Mod_Data_Swap(&FLANGER_DELAY[twrite], sizeof(int), 1, in);
             }
-
+#endif
             // Was a bug
             //Write_Mod_Data_Swap(&FLANGER_DEPHASE, sizeof(float), 1, in);
 
@@ -1516,11 +1554,12 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             }
             Write_Mod_Data(&Songtracks, sizeof(char), 1, in);
 
+#ifndef __LITE__
             for(tps_trk = 0; tps_trk < MAX_TRACKS; tps_trk++)
             {
                 Write_Mod_Data(&Disclap[tps_trk], sizeof(char), 1, in);
             }
-
+#endif
             rtrim_string(artist, 20);
             Write_Mod_Data(artist, sizeof(char), 20, in);
             rtrim_string(style, 20);
@@ -1532,10 +1571,11 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             {
                 Write_Mod_Data_Swap(&beatlines[i], sizeof(short), 1, in);
             }
+#ifndef __LITE__
             Write_Mod_Data_Swap(&Reverb_Filter_Cutoff, sizeof(float), 1, in);
             Write_Mod_Data_Swap(&Reverb_Filter_Resonance, sizeof(float), 1, in);
             Write_Mod_Data(&Reverb_Stereo_Amount, sizeof(char), 1, in);
-
+#endif
             for(i = 0; i < 128; i++)
             {
                 Write_Mod_Data_Swap(&Sample_Vol[i], sizeof(float), 1, in);
@@ -1835,7 +1875,7 @@ void Swap_Short_Buffer(short *buffer, int size)
 void Swap_Sample(short *buffer, int sample, int bank)
 {
 #if defined(__BIG_ENDIAN__)
-    Swap_Short_Buffer(buffer, SampleLength[sample][bank]);
+    Swap_Short_Buffer(buffer, Sample_Length[sample][bank]);
 #endif
 }
 
@@ -1844,9 +1884,9 @@ void Swap_Sample(short *buffer, int sample, int bank)
 short *Swap_New_Sample(short *buffer, int sample, int bank)
 {
 #if defined(__BIG_ENDIAN__)
-    short *new_buffer = (short *) malloc(SampleLength[sample][bank] * sizeof(short) + 8);
-    memset(new_buffer, 0, SampleLength[sample][bank] * sizeof(short) + 8);
-    memcpy(new_buffer, buffer, SampleLength[sample][bank] * sizeof(short));
+    short *new_buffer = (short *) malloc(Sample_Length[sample][bank] * sizeof(short) + 8);
+    memset(new_buffer, 0, Sample_Length[sample][bank] * sizeof(short) + 8);
+    memcpy(new_buffer, buffer, Sample_Length[sample][bank] * sizeof(short));
     Swap_Sample(new_buffer, sample, bank);
     return(new_buffer);
 #else
@@ -1864,12 +1904,12 @@ void Write_Unpacked_Sample(int (*Write_Function)(void *, int ,int, FILE *),
     swap_buffer = Swap_New_Sample(Get_WaveForm(sample, 0, bank), sample, bank);
     if(swap_buffer)
     {
-        Write_Function(swap_buffer, sizeof(short), SampleLength[sample][bank], in);
+        Write_Function(swap_buffer, sizeof(short), Sample_Length[sample][bank], in);
         free(swap_buffer);
     }
     else
     {
-        Write_Function(Get_WaveForm(sample, 0, bank), sizeof(short), SampleLength[sample][bank], in);
+        Write_Function(Get_WaveForm(sample, 0, bank), sizeof(short), Sample_Length[sample][bank], in);
     }
 
     Write_Function(&SampleChannels[sample][bank], sizeof(char), 1, in);
@@ -1878,12 +1918,12 @@ void Write_Unpacked_Sample(int (*Write_Function)(void *, int ,int, FILE *),
         swap_buffer = Swap_New_Sample(Get_WaveForm(sample, 1, bank), sample, bank);
         if(swap_buffer)
         {
-            Write_Function(swap_buffer, sizeof(short), SampleLength[sample][bank], in);
+            Write_Function(swap_buffer, sizeof(short), Sample_Length[sample][bank], in);
             free(swap_buffer);
         }
         else
         {
-            Write_Function(Get_WaveForm(sample, 1, bank), sizeof(short), SampleLength[sample][bank], in);
+            Write_Function(Get_WaveForm(sample, 1, bank), sizeof(short), Sample_Length[sample][bank], in);
         }
     }
 }
@@ -2186,7 +2226,7 @@ void Clear_Instrument_Dat(int n_index, int split, int lenfir)
     LoopStart[n_index][split] = 0;
     LoopEnd[n_index][split] = lenfir;
     LoopType[n_index][split] = SMP_LOOP_NONE;
-    SampleLength[n_index][split] = lenfir;
+    Sample_Length[n_index][split] = lenfir;
     Finetune[n_index][split] = 0;
     Sample_Amplify[n_index][split] = 1.0f;
     FDecay[n_index][split] = 0.0f;
@@ -2206,8 +2246,10 @@ void Clear_Instrument_Dat(int n_index, int split, int lenfir)
 #else
         SampleCompression[n_index] = SMP_PACK_NONE;
 #endif
+#ifndef __LITE__
         Mp3_BitRate[n_index] = 0;
         At3_BitRate[n_index] = 0;
+#endif
     }
 }
 

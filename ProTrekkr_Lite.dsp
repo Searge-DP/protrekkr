@@ -1,10 +1,10 @@
-# Microsoft Developer Studio Project File - Name="ProTrekkr" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="ProTrekkr_Lite" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=ProTrekkr - Win32 Debug
+CFG=ProTrekkr_Lite - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,12 +13,12 @@ CFG=ProTrekkr - Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "ProTrekkr_Lite.mak" CFG="ProTrekkr - Win32 Debug"
+!MESSAGE NMAKE /f "ProTrekkr_Lite.mak" CFG="ProTrekkr_Lite - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "ProTrekkr - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "ProTrekkr - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "ProTrekkr_Lite - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "ProTrekkr_Lite - Win32 Debug" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -29,7 +29,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "ProTrekkr - Win32 Release"
+!IF  "$(CFG)" == "ProTrekkr_Lite - Win32 Release"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 0
@@ -57,7 +57,7 @@ LINK32=link.exe
 # ADD LINK32 kernel32.lib user32.lib sdl.lib dsound.lib msacm32.lib zlib.lib winmm.lib advapi32.lib sdl_draw.lib shlwapi.lib tinyxml.lib sdlmain.lib msvcrt.lib libcp.lib /nologo /subsystem:windows /pdb:none /machine:I386 /nodefaultlib /out:"release/distrib_lite/ptk_lite_win.exe"
 # SUBTRACT LINK32 /debug
 
-!ELSEIF  "$(CFG)" == "ProTrekkr - Win32 Debug"
+!ELSEIF  "$(CFG)" == "ProTrekkr_Lite - Win32 Debug"
 
 # PROP BASE Use_MFC 0
 # PROP BASE Use_Debug_Libraries 1
@@ -87,8 +87,8 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "ProTrekkr - Win32 Release"
-# Name "ProTrekkr - Win32 Debug"
+# Name "ProTrekkr_Lite - Win32 Release"
+# Name "ProTrekkr_Lite - Win32 Debug"
 # Begin Group "SDL"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
@@ -129,10 +129,10 @@ SOURCE=.\src\Support\Resources.rc
 SOURCE=.\src\Support\timer.cpp
 # End Source File
 # End Group
-# Begin Group "ProTrekkr"
+# Begin Group "ProTrekkr_Lite"
 
 # PROP Default_Filter ""
-# Begin Group "ProTrekkr Include"
+# Begin Group "ProTrekkr_Lite Include"
 
 # PROP Default_Filter ""
 # Begin Source File

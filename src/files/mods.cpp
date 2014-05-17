@@ -409,7 +409,7 @@ void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digiboos
 
                 for(i = 0; i < 31; i++)
                 {
-                    SampleLength[i][0] = Getc_Mod_Dword();
+                    Sample_Length[i][0] = Getc_Mod_Dword();
                 }
                 for(i = 0; i < 31; i++)
                 {
@@ -506,10 +506,10 @@ void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digiboos
                 // Copy the samples
                 for(i = 0; i < 31; i++)
                 {
-                    if(SampleLength[i][0])
+                    if(Sample_Length[i][0])
                     {
-                        Read_Mod(bDigi_Mod, SampleLength[i][0]);
-                        bDigi_Mod += SampleLength[i][0];
+                        Read_Mod(bDigi_Mod, Sample_Length[i][0]);
+                        bDigi_Mod += Sample_Length[i][0];
                     }
                 }
 
@@ -592,8 +592,8 @@ void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digiboos
                 {
                     Clear_Instrument_Dat(swrite, 0, 0);
 
-                    SampleLength[swrite][0] = Getc_Mod_Word();
-                    SampleLength[swrite][0] *= 2;
+                    Sample_Length[swrite][0] = Getc_Mod_Word();
+                    Sample_Length[swrite][0] *= 2;
 
                     Finetune[swrite][0] = FineTune_Table[Getc_Mod() & 0xf];
                     Sample_Vol[swrite] = Scale_Amiga_Mod_Value(Getc_Mod(), 63.0f, 0.99f);
@@ -618,13 +618,13 @@ void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digiboos
                 }
                 else
                 {
-                    LoopEnd[swrite][0] = SampleLength[swrite][0];
+                    LoopEnd[swrite][0] = Sample_Length[swrite][0];
                     LoopType[swrite][0] = SMP_LOOP_NONE;
                 }
 
-                if(LoopEnd[swrite][0] > SampleLength[swrite][0])
+                if(LoopEnd[swrite][0] > Sample_Length[swrite][0])
                 {
-                    LoopEnd[swrite][0] = LoopEnd[swrite][0] - SampleLength[swrite][0];
+                    LoopEnd[swrite][0] = LoopEnd[swrite][0] - Sample_Length[swrite][0];
                 }
             } // FOR
 
@@ -1137,11 +1137,11 @@ void Load_Amiga_Mod(char *Name, const char *FileName, int channels, int digiboos
             // Load the samples
             for(swrite = 0; swrite < 31; swrite++)
             {
-                if(SampleLength[swrite][0] > 8)
+                if(Sample_Length[swrite][0] > 8)
                 {
                     // Reserving space for 16-Bit Signed Short Data.
-                    Allocate_Wave(swrite, 0, SampleLength[swrite][0], 1, FALSE, NULL, NULL);
-                    for(x = 0; x < SampleLength[swrite][0]; x++)
+                    Allocate_Wave(swrite, 0, Sample_Length[swrite][0], 1, FALSE, NULL, NULL);
+                    for(x = 0; x < Sample_Length[swrite][0]; x++)
                     {
                         *(RawSamples[swrite][0][0] + x) = ((short) Getc_Mod() << 8);
                     }

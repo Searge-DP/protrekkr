@@ -141,7 +141,7 @@ void Draw_Wave_Data(void)
         {
             // Redraw the bottom slider
             Realslider_Horiz(WAVE_LEFT + 18, (Cur_Height - 41), sed_display_start, sed_display_length,
-                             SampleLength[Current_Instrument][Current_Instrument_Split],
+                             Sample_Length[Current_Instrument][Current_Instrument_Split],
                              LARGE_SMP_VIEW + 2 - (18 * 2), TRUE);
 
             // Layout around the waveform
@@ -328,7 +328,7 @@ void Renew_Sample_Ed(void)
 {
     draw_sampled_wave = TRUE;
     sed_display_start = 0;
-    sed_display_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+    sed_display_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
     sed_range_start = 0;
     sed_range_end = 0;
     sed_range_mode = FALSE;
@@ -789,7 +789,7 @@ void Mouse_Right_Sample_Ed(void)
         // Bottom arrow left
         if(zcheckMouse(WAVE_LEFT, (Cur_Height - 41), 16, 16))
         {
-            if(SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
                 sed_display_start -= sed_display_length;
                 if((int) sed_display_start < 0) sed_display_start = 0;
@@ -801,9 +801,9 @@ void Mouse_Right_Sample_Ed(void)
         // Bottom arrow right
         if(zcheckMouse(WAVE_LEFT + LARGE_SMP_VIEW - (18 * 1) + 3, (Cur_Height - 41), 16, 16))
         {
-            if(SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
-                int max_length = SampleLength[Current_Instrument][Current_Instrument_Split] - sed_display_length;
+                int max_length = Sample_Length[Current_Instrument][Current_Instrument_Split] - sed_display_length;
                 sed_display_start += sed_display_length;
                 if((int) sed_display_start > max_length) sed_display_start = max_length;
                 gui_action = GUI_CMD_REFRESH_SAMPLE_ED;
@@ -860,7 +860,7 @@ void Mouse_Left_Sample_Ed(void)
                 if(LoopType[Current_Instrument][Current_Instrument_Split] == SMP_LOOP_NONE)
                 {
                     LoopType[Current_Instrument][Current_Instrument_Split] = SMP_LOOP_FORWARD;
-                    LoopEnd[Current_Instrument][Current_Instrument_Split] = SampleLength[Current_Instrument][Current_Instrument_Split];
+                    LoopEnd[Current_Instrument][Current_Instrument_Split] = Sample_Length[Current_Instrument][Current_Instrument_Split];
                 }
 
                 draw_sampled_wave = TRUE;
@@ -1069,7 +1069,7 @@ void Mouse_Left_Sample_Ed(void)
             {
                 rs_coef = 32768;
                 sed_display_start = 0;
-                sed_display_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+                sed_display_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
                 draw_sampled_wave = TRUE;
                 teac = 3;
                 gui_action = GUI_CMD_REFRESH_SAMPLE_ED;
@@ -1105,7 +1105,7 @@ void Mouse_Left_Sample_Ed(void)
             {
                 sed_range_mode = TRUE;
                 sed_range_start = 0;
-                sed_range_end = SampleLength[Current_Instrument][Current_Instrument_Split];
+                sed_range_end = Sample_Length[Current_Instrument][Current_Instrument_Split];
                 draw_sampled_wave = TRUE;
                 teac = 0;
                 gui_action = GUI_CMD_REFRESH_SAMPLE_ED;
@@ -1137,7 +1137,7 @@ void Mouse_Left_Sample_Ed(void)
             // Bottom arrow left
             if(zcheckMouse(WAVE_LEFT, (Cur_Height - 41), 16, 16))
             {
-                if(SampleLength[Current_Instrument][Current_Instrument_Split])
+                if(Sample_Length[Current_Instrument][Current_Instrument_Split])
                 {
                     sed_display_start--;
                     if((int) sed_display_start < 0) sed_display_start = 0;
@@ -1149,9 +1149,9 @@ void Mouse_Left_Sample_Ed(void)
             // Bottom arrow right
             if(zcheckMouse(WAVE_LEFT + LARGE_SMP_VIEW - (18 * 1) + 3, (Cur_Height - 41), 16, 16))
             {
-                if(SampleLength[Current_Instrument][Current_Instrument_Split])
+                if(Sample_Length[Current_Instrument][Current_Instrument_Split])
                 {
-                    int max_length = SampleLength[Current_Instrument][Current_Instrument_Split] - sed_display_length;
+                    int max_length = Sample_Length[Current_Instrument][Current_Instrument_Split] - sed_display_length;
                     sed_display_start++;
                     if((int) sed_display_start > max_length) sed_display_start = max_length;
                     gui_action = GUI_CMD_REFRESH_SAMPLE_ED;
@@ -1171,7 +1171,7 @@ void Mouse_Wheel_Sample_Ed(int roll_amount)
     {
         if(zcheckMouse(WAVE_LEFT + 1, (Cur_Height - 150), LARGE_SMP_VIEW, 109 + 16))
         {
-            int max_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+            int max_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
             sed_display_start += roll_amount * (sed_display_length / 16);
 
             if(sed_display_start < 0) sed_display_start = 0;
@@ -1205,7 +1205,7 @@ void Mouse_Sliders_Sample_Ed(void)
                 Mouse_Pos = (Mouse.x - WAVE_LEFT) - 1;
                 if(Mouse_Pos < 0) Mouse_Pos = 0;
                 if(Mouse_Pos > LARGE_SMP_VIEW) Mouse_Pos = LARGE_SMP_VIEW;
-                axswave = SampleLength[Current_Instrument][Current_Instrument_Split];
+                axswave = Sample_Length[Current_Instrument][Current_Instrument_Split];
                 sed_range_mode = TRUE;
                 test = (double) (((int64) Mouse_Pos * (int64) sed_display_length)) / LARGE_SMP_VIEW;
                 sed_range_end = sed_display_start + (int32) test;
@@ -1243,9 +1243,9 @@ void Mouse_Sliders_Sample_Ed(void)
         // Bottom slider
         if(zcheckMouse(WAVE_LEFT + 18, (Cur_Height - 41), LARGE_SMP_VIEW + 2 - (18 * 2), 16))
         {
-            if(SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
-                int max_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+                int max_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
                 int Center = Slider_Get_Center(sed_display_length, max_length, LARGE_SMP_VIEW + 2 - (18 * 2));
                 float Pos_Mouse = ((float) ((Mouse.x - (WAVE_LEFT + 18)) - (Center / 2))) / (float) (LARGE_SMP_VIEW + 2 - (18 * 2));
                 if(Pos_Mouse > 1.0f) Pos_Mouse = 1.0f;
@@ -1284,19 +1284,19 @@ void Mouse_Sliders_Sample_Ed(void)
 void Check_Loops(void)
 {
     if(LoopStart[Current_Instrument][Current_Instrument_Split] < 0) LoopStart[Current_Instrument][Current_Instrument_Split] = 0;
-    if(LoopStart[Current_Instrument][Current_Instrument_Split] > SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(LoopStart[Current_Instrument][Current_Instrument_Split] > Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        LoopStart[Current_Instrument][Current_Instrument_Split] = SampleLength[Current_Instrument][Current_Instrument_Split];
+        LoopStart[Current_Instrument][Current_Instrument_Split] = Sample_Length[Current_Instrument][Current_Instrument_Split];
     }
     if(LoopEnd[Current_Instrument][Current_Instrument_Split] < 0) LoopEnd[Current_Instrument][Current_Instrument_Split] = 0;
-    if(LoopEnd[Current_Instrument][Current_Instrument_Split] > SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(LoopEnd[Current_Instrument][Current_Instrument_Split] > Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        LoopEnd[Current_Instrument][Current_Instrument_Split] = SampleLength[Current_Instrument][Current_Instrument_Split];
+        LoopEnd[Current_Instrument][Current_Instrument_Split] = Sample_Length[Current_Instrument][Current_Instrument_Split];
     }
     if(LoopStart[Current_Instrument][Current_Instrument_Split] == LoopEnd[Current_Instrument][Current_Instrument_Split])
     {
         LoopStart[Current_Instrument][Current_Instrument_Split] = 0;
-        LoopEnd[Current_Instrument][Current_Instrument_Split] = SampleLength[Current_Instrument][Current_Instrument_Split];
+        LoopEnd[Current_Instrument][Current_Instrument_Split] = Sample_Length[Current_Instrument][Current_Instrument_Split];
     }
 }
 
@@ -1315,13 +1315,13 @@ void Refresh_Sample(int clear_sel)
     }
 
     // Adjust after the cut
-    if(sed_display_length > (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(sed_display_length > (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        sed_display_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+        sed_display_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
     }
-    if(sed_display_length + sed_display_start > (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(sed_display_length + sed_display_start > (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        sed_display_start = SampleLength[Current_Instrument][Current_Instrument_Split] - sed_display_length;
+        sed_display_start = Sample_Length[Current_Instrument][Current_Instrument_Split] - sed_display_length;
     }
     if(clear_sel)
     {
@@ -1393,7 +1393,7 @@ void Zoom_In_Sel()
         }
         sed_display_length = (sed_range_end - sed_range_start);
         sed_display_start = sed_range_start;
-        max_length = SampleLength[Current_Instrument][Current_Instrument_Split] - sed_display_length;
+        max_length = Sample_Length[Current_Instrument][Current_Instrument_Split] - sed_display_length;
         if((int) sed_display_start > max_length) sed_display_start = max_length;
 
         draw_sampled_wave = TRUE;
@@ -1412,13 +1412,13 @@ void Zoom_Out_Sel()
     if(start_test < 0) sed_display_start = 0;
     sed_display_length *= 3;
 
-    if(sed_display_length > (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(sed_display_length > (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        sed_display_length = SampleLength[Current_Instrument][Current_Instrument_Split];
+        sed_display_length = Sample_Length[Current_Instrument][Current_Instrument_Split];
     }
-    if(sed_display_length + sed_display_start > (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+    if(sed_display_length + sed_display_start > (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
     {
-        sed_display_start = SampleLength[Current_Instrument][Current_Instrument_Split] - sed_display_length;
+        sed_display_start = Sample_Length[Current_Instrument][Current_Instrument_Split] - sed_display_length;
     }
     sed_range_start = sed_display_start;
     sed_range_end = sed_display_start + sed_display_length;

@@ -736,8 +736,8 @@ SYNTH_DATA PARASynth[128];
 char LoopType[MAX_INSTRS][MAX_INSTRS_SPLITS];
 Uint32 LoopStart[MAX_INSTRS][MAX_INSTRS_SPLITS];
 Uint32 LoopEnd[MAX_INSTRS][MAX_INSTRS_SPLITS];
-Uint32 SampleLength[MAX_INSTRS][MAX_INSTRS_SPLITS];
-Uint32 SampleLength_Packed[MAX_INSTRS][MAX_INSTRS_SPLITS];
+Uint32 Sample_Length[MAX_INSTRS][MAX_INSTRS_SPLITS];
+Uint32 Sample_Length_Packed[MAX_INSTRS][MAX_INSTRS_SPLITS];
 char beatsync[MAX_INSTRS];
 short beatlines[MAX_INSTRS];
 int64 sp_Step[MAX_TRACKS][MAX_POLYPHONY];
@@ -1480,11 +1480,11 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
                     Mod_Dat_Read(&LoopStart[swrite][slwrite], sizeof(int));
                     Mod_Dat_Read(&LoopEnd[swrite][slwrite], sizeof(int));
                     Mod_Dat_Read(&LoopType[swrite][slwrite], sizeof(char));
-                    Mod_Dat_Read(&SampleLength[swrite][slwrite], sizeof(int));
+                    Mod_Dat_Read(&Sample_Length[swrite][slwrite], sizeof(int));
                     Mod_Dat_Read(&Finetune[swrite][slwrite], sizeof(char));
                     Mod_Dat_Read(&Sample_Amplify[swrite][slwrite], sizeof(float));
                     Mod_Dat_Read(&FDecay[swrite][slwrite], sizeof(float));
-                    Save_Len = SampleLength[swrite][slwrite];
+                    Save_Len = Sample_Length[swrite][slwrite];
 
                     Apply_Interpolation = SampleCompression[swrite] == SMP_PACK_NONE ? FALSE : TRUE;
 
@@ -1956,7 +1956,7 @@ void Reset_Values(void)
                 sp_Stage2[stopper][stopper_poly] = PLAYING_NOSAMPLE;
                 sp_Stage3[stopper][stopper_poly] = PLAYING_NOSAMPLE;
 #endif
-#endif
+#endif // __LITE__
 
 #if defined(PTK_INSTRUMENTS)
                 sp_Stage[stopper][stopper_poly] = PLAYING_NOSAMPLE;
@@ -4169,7 +4169,7 @@ void Play_Instrument(int channel, int sub_channel)
                     Synthesizer[channel][sub_channel].NoteOn(note2,
                                                              vol,
                                                              LoopType[associated_sample][split],
-                                                             LoopType[associated_sample][split] > SMP_LOOP_NONE ? LoopEnd[associated_sample][split]: (SampleLength[associated_sample][split] - 2),
+                                                             LoopType[associated_sample][split] > SMP_LOOP_NONE ? LoopEnd[associated_sample][split]: (Sample_Length[associated_sample][split] - 2),
                                                              LoopEnd[associated_sample][split] - LoopStart[associated_sample][split]
 #if defined(PTK_INSTRUMENTS)
                                                              ,note
@@ -4281,7 +4281,7 @@ void Play_Instrument(int channel, int sub_channel)
 
                 if(beatsync[associated_sample])
                 {
-                    double spreadnote = (double) (SampleLength[associated_sample][split]) / ((double) beatlines[associated_sample] * (double) SamplesPerTick);
+                    double spreadnote = (double) (Sample_Length[associated_sample][split]) / ((double) beatlines[associated_sample] * (double) SamplesPerTick);
                     spreadnote *= 4294967296.0f;
 
 #if defined(PTK_FX_ARPEGGIO)
@@ -4359,13 +4359,13 @@ void Play_Instrument(int channel, int sub_channel)
                 {
                     Player_LS[channel][sub_channel] = LoopStart[associated_sample][split];
                     Player_LE[channel][sub_channel] = LoopEnd[associated_sample][split];
-                    Player_NS[channel][sub_channel] = SampleLength[associated_sample][split];
+                    Player_NS[channel][sub_channel] = Sample_Length[associated_sample][split];
                     if(!glide) if(!no_retrig_note) sp_Position[channel][sub_channel].half.first = offset << 8;
                 }
 #else
                 Player_LS[channel][sub_channel] = LoopStart[associated_sample][split];
                 Player_LE[channel][sub_channel] = LoopEnd[associated_sample][split];
-                Player_NS[channel][sub_channel] = SampleLength[associated_sample][split];
+                Player_NS[channel][sub_channel] = Sample_Length[associated_sample][split];
                 if(!glide) if(!no_retrig_note) sp_Position[channel][sub_channel].half.first = offset << 8;
 #endif
                 Player_LL[channel][sub_channel] = Player_LE[channel][sub_channel] - Player_LS[channel][sub_channel];
@@ -4413,10 +4413,10 @@ void Play_Instrument(int channel, int sub_channel)
             }
 
             // Sample is out of range
-            // (synths can have SampleLength = 0)
-            if(SampleLength[associated_sample][split])
+            // (synths can have Sample_Length = 0)
+            if(Sample_Length[associated_sample][split])
             {
-                if((int) sp_Position[channel][sub_channel].half.first >= (int) SampleLength[associated_sample][split])
+                if((int) sp_Position[channel][sub_channel].half.first >= (int) Sample_Length[associated_sample][split])
                 {
                     if(LoopType[associated_sample][split])
                     {
@@ -6167,7 +6167,7 @@ void KillInst(int inst_nbr, int all_splits)
         LoopStart[inst_nbr][z] = 0;
         LoopEnd[inst_nbr][z] = 0;
         LoopType[inst_nbr][z] = SMP_LOOP_NONE;
-        SampleLength[inst_nbr][z] = 0;
+        Sample_Length[inst_nbr][z] = 0;
         Finetune[inst_nbr][z] = 0;
         Sample_Amplify[inst_nbr][z] = 0.0f;
         FDecay[inst_nbr][z] = 0.0f;

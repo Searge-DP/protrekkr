@@ -114,6 +114,7 @@ void Load_Inst(char *FileName)
                           !old_bug, new_adsr, tight,
                           Env_Modulation, New_Env, FALSE, Combine);
 #endif
+#ifndef __LITE__
         // Gsm by default
         if(Pack_Scheme)
         {
@@ -138,6 +139,7 @@ void Load_Inst(char *FileName)
             }
         }
         SampleCompression[swrite] = Fix_Codec(SampleCompression[swrite]);
+#endif
 
         Sample_Vol[swrite] = 1.0f;
         if(Glob_Vol)
@@ -158,15 +160,15 @@ void Load_Inst(char *FileName)
                 Read_Data_Swap(&LoopEnd[swrite][slwrite], sizeof(int), 1, in);
                 Read_Data(&LoopType[swrite][slwrite], sizeof(char), 1, in);
                 
-                Read_Data_Swap(&SampleLength[swrite][slwrite], sizeof(int), 1, in);
+                Read_Data_Swap(&Sample_Length[swrite][slwrite], sizeof(int), 1, in);
                 Read_Data(&Finetune[swrite][slwrite], sizeof(char), 1, in);
                 Read_Data_Swap(&Sample_Amplify[swrite][slwrite], sizeof(float), 1, in);
                 Read_Data_Swap(&FDecay[swrite][slwrite], sizeof(float), 1, in);
 
-                Allocate_Wave(swrite, slwrite, SampleLength[swrite][slwrite], 1, FALSE, NULL, NULL);
+                Allocate_Wave(swrite, slwrite, Sample_Length[swrite][slwrite], 1, FALSE, NULL, NULL);
 
                 // Samples data
-                Read_Data(RawSamples[swrite][0][slwrite], sizeof(short), SampleLength[swrite][slwrite], in);
+                Read_Data(RawSamples[swrite][0][slwrite], sizeof(short), Sample_Length[swrite][slwrite], in);
                 Swap_Sample(RawSamples[swrite][0][slwrite], swrite, slwrite);
                 *RawSamples[swrite][0][slwrite] = 0;
 
@@ -174,9 +176,10 @@ void Load_Inst(char *FileName)
                 Read_Data(&SampleChannels[swrite][slwrite], sizeof(char), 1, in);
                 if(SampleChannels[swrite][slwrite] == 2)
                 {
-                    RawSamples[swrite][1][slwrite] = (short *) malloc(SampleLength[swrite][slwrite] * sizeof(short) + 8);
-                    memset(RawSamples[swrite][1][slwrite], 0, SampleLength[swrite][slwrite] * sizeof(short) + 8);
-                    Read_Data(RawSamples[swrite][1][slwrite], sizeof(short), SampleLength[swrite][slwrite], in);
+                    // Stereo
+                    RawSamples[swrite][1][slwrite] = (short *) malloc(Sample_Length[swrite][slwrite] * sizeof(short) + 8);
+                    memset(RawSamples[swrite][1][slwrite], 0, Sample_Length[swrite][slwrite] * sizeof(short) + 8);
+                    Read_Data(RawSamples[swrite][1][slwrite], sizeof(short), Sample_Length[swrite][slwrite], in);
                     Swap_Sample(RawSamples[swrite][1][slwrite], swrite, slwrite);
                     *RawSamples[swrite][1][slwrite] = 0;
                 }
@@ -276,7 +279,7 @@ void Save_Inst(void)
                 Write_Data_Swap(&LoopEnd[swrite][slwrite], sizeof(int), 1, in);
                 Write_Data(&LoopType[swrite][slwrite], sizeof(char), 1, in);
                 
-                Write_Data_Swap(&SampleLength[swrite][slwrite], sizeof(int), 1, in);
+                Write_Data_Swap(&Sample_Length[swrite][slwrite], sizeof(int), 1, in);
                 Write_Data(&Finetune[swrite][slwrite], sizeof(char), 1, in);
                 Write_Data_Swap(&Sample_Amplify[swrite][slwrite], sizeof(float), 1, in);
                 Write_Data_Swap(&FDecay[swrite][slwrite], sizeof(float), 1, in);
