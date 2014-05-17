@@ -212,7 +212,7 @@ int Sample_Crop(int32 range_start, int32 range_end)
             RawSamples[Current_Instrument][1][Current_Instrument_Split] = NewBuffer[1];
             Player_WR[Current_Instrument][Current_Instrument_Split] = NewBuffer[1];
         }
-        SampleLength[Current_Instrument][Current_Instrument_Split] = cropsize;
+        Sample_Length[Current_Instrument][Current_Instrument_Split] = cropsize;
 
         Status_Box("Crop done.");
         AUDIO_Play();
@@ -279,7 +279,7 @@ int Sample_Paste(int32 range_start)
     char nc;
     long p_s;
     long cutsize = Sample_Back_Size[cur_sample_buffer];
-    long newsize = SampleLength[Current_Instrument][Current_Instrument_Split] + cutsize;
+    long newsize = Sample_Length[Current_Instrument][Current_Instrument_Split] + cutsize;
 
     if(cutsize)
     {
@@ -325,10 +325,10 @@ int Sample_Paste(int32 range_start)
             p_s++;
         }
 
-        if((SampleLength[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
+        if((Sample_Length[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
         {
             // Add the rest of the original data
-            for(i = range_start; i < (int32) SampleLength[Current_Instrument][Current_Instrument_Split]; i++)
+            for(i = range_start; i < (int32) Sample_Length[Current_Instrument][Current_Instrument_Split]; i++)
             {
                 *(NewBuffer[0] + p_s) = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + i);
                 if(nc == 2) *(NewBuffer[1] + p_s) = *(RawSamples[Current_Instrument][1][Current_Instrument_Split] + i);
@@ -346,7 +346,7 @@ int Sample_Paste(int32 range_start)
             RawSamples[Current_Instrument][1][Current_Instrument_Split] = NewBuffer[1];
             Player_WR[Current_Instrument][Current_Instrument_Split] = NewBuffer[1];
         }
-        SampleLength[Current_Instrument][Current_Instrument_Split] = newsize;
+        Sample_Length[Current_Instrument][Current_Instrument_Split] = newsize;
 
         Status_Box("Paste done.");
         AUDIO_Play();
@@ -364,7 +364,7 @@ int Sample_Cut(int32 range_start, int32 range_end, int do_copy)
     char nc;
     long p_s;
     long cutsize = (range_end - range_start);
-    long newsize = SampleLength[Current_Instrument][Current_Instrument_Split] - cutsize;
+    long newsize = Sample_Length[Current_Instrument][Current_Instrument_Split] - cutsize;
 
     if(newsize)
     {
@@ -410,10 +410,10 @@ int Sample_Cut(int32 range_start, int32 range_end, int do_copy)
             }
         }
 
-        if((SampleLength[Current_Instrument][Current_Instrument_Split] - range_end) > 0)
+        if((Sample_Length[Current_Instrument][Current_Instrument_Split] - range_end) > 0)
         {
             // Add the data located after the range end
-            for(i = range_end; i < (int32) SampleLength[Current_Instrument][Current_Instrument_Split]; i++)
+            for(i = range_end; i < (int32) Sample_Length[Current_Instrument][Current_Instrument_Split]; i++)
             {
                 *(NewBuffer[0] + p_s) = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + i);
                 if(nc == 2) *(NewBuffer[1] + p_s) = *(RawSamples[Current_Instrument][1][Current_Instrument_Split] + i);
@@ -431,7 +431,7 @@ int Sample_Cut(int32 range_start, int32 range_end, int do_copy)
             RawSamples[Current_Instrument][1][Current_Instrument_Split] = NewBuffer[1];
             Player_WR[Current_Instrument][Current_Instrument_Split] = NewBuffer[1];
         }
-        SampleLength[Current_Instrument][Current_Instrument_Split] = newsize;
+        Sample_Length[Current_Instrument][Current_Instrument_Split] = newsize;
 
         Status_Box("Cut done.");
         AUDIO_Play();
@@ -671,7 +671,7 @@ int Sample_Duplicate(int32 range_start, int32 range_end)
     char nc;
     long p_s;
     long cutsize = range_end - range_start;
-    long newsize = SampleLength[Current_Instrument][Current_Instrument_Split] + cutsize;
+    long newsize = Sample_Length[Current_Instrument][Current_Instrument_Split] + cutsize;
 
     if(cutsize)
     {
@@ -717,10 +717,10 @@ int Sample_Duplicate(int32 range_start, int32 range_end)
             p_s++;
         }
 
-        if((SampleLength[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
+        if((Sample_Length[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
         {
             // Add the rest of the original data
-            for(i = range_start; i < (int32) SampleLength[Current_Instrument][Current_Instrument_Split]; i++)
+            for(i = range_start; i < (int32) Sample_Length[Current_Instrument][Current_Instrument_Split]; i++)
             {
                 *(NewBuffer[0] + p_s) = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + i);
                 if(nc == 2) *(NewBuffer[1] + p_s) = *(RawSamples[Current_Instrument][1][Current_Instrument_Split] + i);
@@ -738,7 +738,7 @@ int Sample_Duplicate(int32 range_start, int32 range_end)
             RawSamples[Current_Instrument][1][Current_Instrument_Split] = NewBuffer[1];
             Player_WR[Current_Instrument][Current_Instrument_Split] = NewBuffer[1];
         }
-        SampleLength[Current_Instrument][Current_Instrument_Split] = newsize;
+        Sample_Length[Current_Instrument][Current_Instrument_Split] = newsize;
 
         Status_Box("Insert zeroes done.");
         AUDIO_Play();
@@ -756,7 +756,7 @@ int Sample_InsertZero(int32 range_start, int32 range_end)
     char nc;
     long p_s;
     long cutsize = range_end - range_start;
-    long newsize = SampleLength[Current_Instrument][Current_Instrument_Split] + cutsize;
+    long newsize = Sample_Length[Current_Instrument][Current_Instrument_Split] + cutsize;
 
     if(cutsize)
     {
@@ -797,10 +797,10 @@ int Sample_InsertZero(int32 range_start, int32 range_end)
         // Skip a buffer of the selection's size
         p_s += cutsize;
 
-        if((SampleLength[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
+        if((Sample_Length[Current_Instrument][Current_Instrument_Split] - range_start) > 0)
         {
             // Add the rest of the original data
-            for(i = range_start; i < (int32) SampleLength[Current_Instrument][Current_Instrument_Split]; i++)
+            for(i = range_start; i < (int32) Sample_Length[Current_Instrument][Current_Instrument_Split]; i++)
             {
                 *(NewBuffer[0] + p_s) = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + i);
                 if(nc == 2) *(NewBuffer[1] + p_s) = *(RawSamples[Current_Instrument][1][Current_Instrument_Split] + i);
@@ -818,7 +818,7 @@ int Sample_InsertZero(int32 range_start, int32 range_end)
             RawSamples[Current_Instrument][1][Current_Instrument_Split] = NewBuffer[1];
             Player_WR[Current_Instrument][Current_Instrument_Split] = NewBuffer[1];
         }
-        SampleLength[Current_Instrument][Current_Instrument_Split] = newsize;
+        Sample_Length[Current_Instrument][Current_Instrument_Split] = newsize;
 
         Status_Box("Duplicate done.");
         AUDIO_Play();

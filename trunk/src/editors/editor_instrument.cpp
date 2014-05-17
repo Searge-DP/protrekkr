@@ -240,7 +240,7 @@ void Actualize_Instrument_Ed(int typex, char gode)
 
                 if(gode == 0 || gode == 4)
                 {
-                    outlong(448, (Cur_Height - 134), SampleLength[Current_Instrument][Current_Instrument_Split], 0);
+                    outlong(448, (Cur_Height - 134), Sample_Length[Current_Instrument][Current_Instrument_Split], 0);
                 }
 
                 if(gode == 0 || gode == 5)
@@ -508,11 +508,11 @@ void Actualize_Instrument_Ed(int typex, char gode)
                     }
                     if(SamplesSwap[Current_Instrument])
                     {
-                        outlong(729, (Cur_Height - 134) + (18 * 4), SampleLength_Packed[Current_Instrument][Current_Instrument_Split], 0);
+                        outlong(729, (Cur_Height - 134) + (18 * 4), Sample_Length_Packed[Current_Instrument][Current_Instrument_Split], 0);
                     }
                     else
                     {
-                        outlong(729, (Cur_Height - 134) + (18 * 4), SampleLength[Current_Instrument][Current_Instrument_Split], 0);
+                        outlong(729, (Cur_Height - 134) + (18 * 4), Sample_Length[Current_Instrument][Current_Instrument_Split], 0);
                     }
                 }
 
@@ -622,7 +622,7 @@ void Mouse_Left_Instrument_Ed(void)
             teac = 5;
         }
         if(zcheckMouse(376, (Cur_Height - 130), 16, 16) &&
-           LoopEnd[Current_Instrument][Current_Instrument_Split] < SampleLength[Current_Instrument][Current_Instrument_Split] &&
+           LoopEnd[Current_Instrument][Current_Instrument_Split] < Sample_Length[Current_Instrument][Current_Instrument_Split] &&
            SampleType[Current_Instrument][Current_Instrument_Split])
         {
             LoopEnd[Current_Instrument][Current_Instrument_Split]++;
@@ -1064,12 +1064,12 @@ void Mouse_Right_Instrument_Ed(void)
                 if(SamplesSwap[Current_Instrument])
                 {
                     Gui_Draw_Button_Box(729, (Cur_Height - 116) + (18 * 4), 60, 16, "Lock / All", Allow_Global_Pushed | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE);
-                    outlong(729, (Cur_Height - 134) + (18 * 4), SampleLength_Packed[Current_Instrument][Current_Instrument_Split], 0);
+                    outlong(729, (Cur_Height - 134) + (18 * 4), Sample_Length_Packed[Current_Instrument][Current_Instrument_Split], 0);
                 }
                 else
                 {
                     Gui_Draw_Button_Box(729, (Cur_Height - 116) + (18 * 4), 60, 16, "Lock / All", Allow_Global | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE);
-                    outlong(729, (Cur_Height - 134) + (18 * 4), SampleLength[Current_Instrument][Current_Instrument_Split], 0);
+                    outlong(729, (Cur_Height - 134) + (18 * 4), Sample_Length[Current_Instrument][Current_Instrument_Split], 0);
                 }
                 Actualize_Instruments_Synths_List(1);
             }
@@ -1105,7 +1105,7 @@ void Afloop(void)
         for(int a = 0; a < 200; a++)
         {
             Uint32 ose = a + LoopStart[Current_Instrument][Current_Instrument_Split];
-            if(ose < SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(ose < Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
                 int v = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + ose) / 1024;
                 DrawVLine(a + 222, (Cur_Height - 46), (Cur_Height - 78) - v, COL_VUMETER);
@@ -1128,7 +1128,7 @@ void Afloop(void)
         {
             Uint32 ose = (LoopEnd[Current_Instrument][Current_Instrument_Split] - 200) + b;
             iose = ose;
-            if(iose > -1 && ose < SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(iose > -1 && ose < Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
                 int v = *(RawSamples[Current_Instrument][0][Current_Instrument_Split] + ose) / 1024;
                 DrawVLine(b + 22, (Cur_Height - 46), (Cur_Height - 78) - v, COL_VUMETERPEAK);
@@ -1174,7 +1174,7 @@ void Mouse_Left_Repeat_Instrument_Ed(void)
             gui_action = GUI_CMD_UPDATE_LOOP_EDITOR_ED;
             teac = 5;
         }
-        if(zcheckMouse(394, (Cur_Height - 130), 16, 16) && *Cur_Loop_End < (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+        if(zcheckMouse(394, (Cur_Height - 130), 16, 16) && *Cur_Loop_End < (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
         {
             *Cur_Loop_End += 1;
             gui_action = GUI_CMD_UPDATE_LOOP_EDITOR_ED;
@@ -1217,12 +1217,12 @@ void Mouse_Sliders_Right_Instrument_Ed(void)
             teac = 5;
         }
         if(zcheckMouse(394, (Cur_Height - 130), 16, 16) && *Cur_Loop_End <
-           (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+           (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
         {
             *Cur_Loop_End += 10;
-            if(*Cur_Loop_End > (int32) SampleLength[Current_Instrument][Current_Instrument_Split])
+            if(*Cur_Loop_End > (int32) Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
-                *Cur_Loop_End = SampleLength[Current_Instrument][Current_Instrument_Split];
+                *Cur_Loop_End = Sample_Length[Current_Instrument][Current_Instrument_Split];
             }
             gui_action = GUI_CMD_UPDATE_LOOP_EDITOR_ED;
             teac = 5;
@@ -1582,7 +1582,7 @@ void Lock_Sample(int instr_nbr, int split)
         Dest_Buffer = NULL;
         Sample_Dest_Buffer = NULL;
         Smp_Dats = NULL;
-        Size = SampleLength[instr_nbr][split];
+        Size = Sample_Length[instr_nbr][split];
         Sample = RawSamples[instr_nbr][i][split];
         Pack_Type = SampleCompression[instr_nbr];
         BitRate = SampleCompression[instr_nbr] == SMP_PACK_MP3 ?
@@ -1699,7 +1699,7 @@ void Lock_Sample(int instr_nbr, int split)
         // Depack it now
         if(PackedLen)
         {
-            SampleLength_Packed[instr_nbr][split] = PackedLen;
+            Sample_Length_Packed[instr_nbr][split] = PackedLen;
             switch(Pack_Type)
             {
 #if defined(__AT3_CODEC__)
@@ -1738,7 +1738,7 @@ void Lock_Sample(int instr_nbr, int split)
         }
         else
         {
-            SampleLength_Packed[instr_nbr][split] = Size;
+            Sample_Length_Packed[instr_nbr][split] = Size;
             if(Pack_Type != SMP_PACK_NONE)
             {
                 memcpy(Dest_Buffer, Sample, Size * 2);
@@ -1784,7 +1784,7 @@ void Save_WaveForm(int Instr_Nbr, int Channel, int Split)
 
     if(RawSamples[Instr_Nbr][Channel][Split] && RawSamples_Swap[Instr_Nbr][Channel][Split])
     {
-        for(i = 0; i < (int) SampleLength[Instr_Nbr][Split]; i++)
+        for(i = 0; i < (int) Sample_Length[Instr_Nbr][Split]; i++)
         {
             RawSamples_Swap[Instr_Nbr][Channel][Split][i] = RawSamples[Instr_Nbr][Channel][Split][i];
         }
@@ -1799,7 +1799,7 @@ void Restore_WaveForm(int Instr_Nbr, int Channel, int Split)
 
     if(RawSamples[Instr_Nbr][Channel][Split] && RawSamples_Swap[Instr_Nbr][Channel][Split])
     {
-        for(i = 0; i < (int) SampleLength[Instr_Nbr][Split]; i++)
+        for(i = 0; i < (int) Sample_Length[Instr_Nbr][Split]; i++)
         {
             RawSamples[Instr_Nbr][Channel][Split][i] = RawSamples_Swap[Instr_Nbr][Channel][Split][i];
         }

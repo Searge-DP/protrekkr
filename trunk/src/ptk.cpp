@@ -1348,7 +1348,7 @@ int Screen_Update(void)
             short *eSamples = RawSamples[Current_Instrument][0][Current_Instrument_Split];
             short *erSamples = RawSamples[Current_Instrument][1][Current_Instrument_Split];
 
-            while(woff < SampleLength[Current_Instrument][Current_Instrument_Split])
+            while(woff < Sample_Length[Current_Instrument][Current_Instrument_Split])
             {
                 if(t_stereo) RF.WriteStereoSample(*eSamples++, *erSamples++);
                 else RF.WriteMonoSample(*eSamples++);
@@ -3179,7 +3179,7 @@ void ShowInfo(void)
         {
             if(SampleType[pp][z] != 0)
             {
-                sampsize += SampleChannels[pp][z] * SampleLength[pp][z];
+                sampsize += SampleChannels[pp][z] * Sample_Length[pp][z];
                 nbr_samp++;
             }
         }
@@ -4369,13 +4369,14 @@ void Keyboard_Handler(void)
                     Draw_Scope_Files_Button();
                 }
 
+#ifndef __LITE__
                 // Display synths list
                 if(Keys[SDLK_s - UNICODE_OFFSET1])
                 {
                     Scopish = SCOPE_ZONE_SYNTH_LIST;
                     Draw_Scope_Files_Button();
                 }
-
+#endif
             }
         }
 
@@ -5441,11 +5442,13 @@ void Mouse_Handler(void)
         }
 
         // Synths list
+#ifndef __LITE__
         if(zcheckMouse(MAX_PATT_SCREEN_X + 1, 6, 18, 16))
         {
             Scopish = SCOPE_ZONE_SYNTH_LIST;
             Draw_Scope_Files_Button();
         }
+#endif
 
 #ifndef __LITE__
         Mouse_Left_303_Ed();
@@ -5515,6 +5518,7 @@ void Mouse_Handler(void)
             Pattern_Line = 0;
             gui_action = GUI_CMD_PLAY_SONG;
         }
+        // Stop the playing song
         if(zcheckMouse(8, 46, 80, 16))
         {
             gui_action = GUI_CMD_STOP_SONG;
@@ -6785,7 +6789,11 @@ void Display_Dirs_Icons(int Idx)
     Gui_Draw_Button_Box(Cur_Width - 18, 24, 16, 16, "A", Tab_Highlight[6 + Idx] | BUTTON_TEXT_CENTERED);
     
     Gui_Draw_Button_Box(Cur_Width - 36, 6, 16, 16, "In", Tab_Highlight[7 + Idx] | BUTTON_TEXT_CENTERED);
+#ifndef __LITE__
     Gui_Draw_Button_Box(Cur_Width - 18, 6, 16, 16, "Sy", Tab_Highlight[8 + Idx] | BUTTON_TEXT_CENTERED);
+#else
+    Gui_Draw_Button_Box(Cur_Width - 18, 6, 16, 16, "Sy", Tab_Highlight[8 + Idx] | BUTTON_TEXT_CENTERED | BUTTON_DISABLED);
+#endif
 }
 
 void Draw_Scope_Files_Button(void)
