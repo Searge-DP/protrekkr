@@ -1973,6 +1973,7 @@ void LoadFile(int Freeindex, const char *str)
         //fseek(in, 8, SEEK_SET);
         //fread(rebext, sizeof(char), 4, in);
 
+#ifndef __LITE__
         if(strcmp(extension, "TWNNINS0") == 0 ||
            strcmp(extension, "TWNNINS1") == 0 ||
            strcmp(extension, "TWNNINS2") == 0 ||
@@ -1984,6 +1985,10 @@ void LoadFile(int Freeindex, const char *str)
            strcmp(extension, "TWNNINS8") == 0 ||
            strcmp(extension, "TWNNINS9") == 0)
         {
+#else
+        if(strcmp(extension, "PTKINST1") == 0)
+        {
+#endif
             sprintf(instrname, "%s", FileName);
             Stop_Current_Instrument();
             Load_Inst(instrname);
@@ -2057,6 +2062,13 @@ void LoadFile(int Freeindex, const char *str)
 #ifndef __LITE__
         else if((strcmp(extension, "TWNNBLK1") == 0) ||
                 (strcmp(extension, "PROTBLK2") == 0)
+               )
+        {
+            sprintf(namerev, "%s", FileName);
+            Load_Pattern(namerev);
+        }
+#else
+        else if((strcmp(extension, "PTKLBLK3") == 0)
                )
         {
             sprintf(namerev, "%s", FileName);
@@ -5389,20 +5401,23 @@ void Mouse_Handler(void)
             Draw_Scope_Files_Button();
         }
 
+#ifndef __LITE__
         // Presets dir.
         if(zcheckMouse(Cur_Width - 72, 24, 18, 16))
         {
             Scopish = SCOPE_ZONE_PRESET_DIR;
             Draw_Scope_Files_Button();
         }
+#endif
 
         // Reverbs dir.
+#ifndef __LITE__
         if(zcheckMouse(Cur_Width - 54, 24, 18, 16))
         {
             Scopish = SCOPE_ZONE_REVERB_DIR;
             Draw_Scope_Files_Button();
         }
-
+#endif
         // Patterns dir.
         if(zcheckMouse(Cur_Width - 36, 24, 18, 16))
         {
@@ -5410,7 +5425,7 @@ void Mouse_Handler(void)
             Draw_Scope_Files_Button();
         }
 
-        // Patterns dir.
+        // Midi dir.
         if(zcheckMouse(Cur_Width - 18, 24, 18, 16))
         {
             Scopish = SCOPE_ZONE_MIDICFG_DIR;
@@ -6783,8 +6798,13 @@ void Display_Dirs_Icons(int Idx)
     Gui_Draw_Button_Box(Cur_Width - 126, 24, 16, 16, "M", Tab_Highlight[0 + Idx] | BUTTON_TEXT_CENTERED);
     Gui_Draw_Button_Box(Cur_Width - 108, 24, 16, 16, "I", Tab_Highlight[1 + Idx] | BUTTON_TEXT_CENTERED);
     Gui_Draw_Button_Box(Cur_Width - 90, 24, 16, 16, "S", Tab_Highlight[2 + Idx] | BUTTON_TEXT_CENTERED);
+#ifndef __LITE__
     Gui_Draw_Button_Box(Cur_Width - 72, 24, 16, 16, "P", Tab_Highlight[3 + Idx] | BUTTON_TEXT_CENTERED);
     Gui_Draw_Button_Box(Cur_Width - 54, 24, 16, 16, "R", Tab_Highlight[4 + Idx] | BUTTON_TEXT_CENTERED);
+#else
+    Gui_Draw_Button_Box(Cur_Width - 72, 24, 16, 16, "P", Tab_Highlight[3 + Idx] | BUTTON_TEXT_CENTERED | BUTTON_DISABLED);
+    Gui_Draw_Button_Box(Cur_Width - 54, 24, 16, 16, "R", Tab_Highlight[4 + Idx] | BUTTON_TEXT_CENTERED | BUTTON_DISABLED);
+#endif
     Gui_Draw_Button_Box(Cur_Width - 36, 24, 16, 16, "B", Tab_Highlight[5 + Idx] | BUTTON_TEXT_CENTERED);
     Gui_Draw_Button_Box(Cur_Width - 18, 24, 16, 16, "A", Tab_Highlight[6 + Idx] | BUTTON_TEXT_CENTERED);
     

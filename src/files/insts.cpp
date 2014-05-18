@@ -57,12 +57,15 @@ void Load_Inst(char *FileName)
         char extension[10];
         Read_Data(extension, sizeof(char), 9, in);
 
+#ifndef __LITE__
         switch(extension[7])
         {
             case '9':
                 Combine = TRUE;
             case '8':
+#endif
                 Glob_Vol = TRUE;
+#ifndef __LITE__
             case '7':
                 New_Env = TRUE;
             case '6':
@@ -81,7 +84,7 @@ void Load_Inst(char *FileName)
                 old_bug = TRUE;
                 break;
         }
-
+#endif
         KillInst(Current_Instrument, TRUE);
         Status_Box("Loading Instrument -> Header..."); 
         Read_Data(&nameins[Current_Instrument], sizeof(char), 20, in);
@@ -154,6 +157,7 @@ void Load_Inst(char *FileName)
             {
                 if(old_bug) Read_Data(&SampleName[swrite][slwrite], sizeof(char), 256, in);
                 else Read_Data(&SampleName[swrite][slwrite], sizeof(char), 64, in);
+                
                 Read_Data(&Basenote[swrite][slwrite], sizeof(char), 1, in);
                 
                 Read_Data_Swap(&LoopStart[swrite][slwrite], sizeof(int), 1, in);
@@ -213,7 +217,11 @@ void Save_Inst(void)
 #endif
     int synth_save;
 
+#ifndef __LITE__
     sprintf(extension, "TWNNINS9");
+#else
+    sprintf(extension, "PTKINST1");
+#endif
     if(!strlen(nameins[Current_Instrument])) sprintf(nameins[Current_Instrument], "Untitled");
     sprintf (Temph, "Saving '%s.pti' instrument in instruments directory...", nameins[Current_Instrument]);
     Status_Box(Temph);
@@ -238,7 +246,9 @@ void Save_Inst(void)
             case SYNTH_WAVE_OFF:
             case SYNTH_WAVE_CURRENT:
                 synth_prg = Synthprg[swrite];
+#endif
                 synth_save = swrite;
+#ifndef __LITE__
                 break;
             default:
                 synth_prg = SYNTH_WAVE_CURRENT;

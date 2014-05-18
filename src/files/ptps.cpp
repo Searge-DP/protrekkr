@@ -443,6 +443,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                         switch(i)
                         {
                             case  PATTERN_INSTR1:
+#ifndef __LITE__
                             case  PATTERN_INSTR2:
                             case  PATTERN_INSTR3:
                             case  PATTERN_INSTR4:
@@ -458,6 +459,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                             case  PATTERN_INSTR14:
                             case  PATTERN_INSTR15:
                             case  PATTERN_INSTR16:
+#endif
                                 if(TmpPatterns_Notes[i] < MAX_INSTRS)
                                 {
                                     if(Used_Instr[TmpPatterns_Notes[i]].new_order == -1)
