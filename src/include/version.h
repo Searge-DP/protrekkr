@@ -35,13 +35,16 @@
 // ------------------------------------------------------
 // Constants
 #define TITLE "Protrekkr"
+#ifndef __LITE__
 #define VER_VER "2"
 #define VER_REV "5"
 #define VER_REVSMALL "5"
-#ifndef __LITE__
 #define VERSION TITLE " v"VER_VER"."VER_REV"."VER_REVSMALL
 #else
-#define VERSION TITLE " v"VER_VER"."VER_REV"."VER_REVSMALL" **LITE**"
+#define VER_VER "1"
+#define VER_REV "0"
+#define VER_REVSMALL "0"
+#define VERSION TITLE " LITE " " v"VER_VER"."VER_REV"."VER_REVSMALL
 #endif
 
 #endif
