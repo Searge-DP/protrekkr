@@ -278,7 +278,30 @@ int Load_Ptk(char *FileName)
         }
 
 Read_Mod_File:
-#endif
+#else
+        //Tb303_Scaling = TRUE;
+        //Reverb_Resonance = TRUE;
+        //Stereo_Reverb = TRUE;
+        XtraFx = TRUE;
+        Combine = TRUE;
+        Compress_Tracks = TRUE;
+        Flanger_Bug = TRUE;
+        Fx2 = TRUE;
+        New_Env = TRUE;
+        Env_Modulation = TRUE;
+        New_Reverb = TRUE;
+        Sel_Interpolation = TRUE;
+        Mp3_Scheme = TRUE;
+        Multi = TRUE;
+        Poly = TRUE;
+        Portable = TRUE;
+        Mod_Simulate = LOAD_READMEM;
+        New_Comp = TRUE;
+        New_adsr = TRUE;
+        Pack_Scheme = TRUE;
+        new_disto = TRUE;
+        Old_Bug = FALSE;
+#endif // __LITE__
 
 #if !defined(__WINAMP__)
         Status_Box("Loading song -> Header...");
@@ -346,7 +369,7 @@ Read_Mod_File:
         }
 #endif
 
-        Read_Mod_Data(pSequence, sizeof(char), 256, in);
+        Read_Mod_Data(pSequence, sizeof(char), MAX_SEQUENCES, in);
 
         Clear_Patterns_Pool();
 
@@ -554,7 +577,7 @@ Read_Mod_File:
         }
 
 #if !defined(__WINAMP__)
-        Status_Box("Loading song -> Track info, patterns and sequence...");   
+        Status_Box("Loading song -> Track info, patterns and sequences...");   
 #endif
 
         Set_Default_Channels_Polyphony();
@@ -568,7 +591,7 @@ Read_Mod_File:
             if(ICut[twrite] > 0.0078125f) ICut[twrite] = 0.0078125f;
             if(ICut[twrite] < 0.00006103515625f) ICut[twrite] = 0.00006103515625f;
 #endif
-            Read_Mod_Data_Swap(&TPan[twrite], sizeof(float), 1, in);
+            Read_Mod_Data_Swap²(&TPan[twrite], sizeof(float), 1, in);
             ComputeStereo(twrite);
             FixStereo(twrite);
 #ifndef __LITE__
@@ -1345,7 +1368,9 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             Write_Mod_Data(patternLines, sizeof(short), MAX_ROWS, in);
             Swap_Short_Buffer(patternLines, MAX_ROWS);
 
+#ifndef __LITE__
             Write_Mod_Data(Channels_MultiNotes, sizeof(char), MAX_TRACKS, in);
+#endif
             Write_Mod_Data(Channels_Effects, sizeof(char), MAX_TRACKS, in);
             for(i = 0; i < MAX_TRACKS; i++)
             {
@@ -1375,7 +1400,6 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                             cur_pattern[PATTERN_NOTE1 + l] = 121;
                             cur_pattern[PATTERN_INSTR1 + l] = 255;
                         }
-
                         cur_pattern[PATTERN_VOLUME] = 255;
                         cur_pattern[PATTERN_PANNING] = 255;
                         cur_pattern[PATTERN_FX] = 0;
@@ -1576,7 +1600,7 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             Write_Mod_Data_Swap(&Reverb_Filter_Resonance, sizeof(float), 1, in);
             Write_Mod_Data(&Reverb_Stereo_Amount, sizeof(char), 1, in);
 #endif
-            for(i = 0; i < 128; i++)
+            for(i = 0; i < MAX_INSTRS; i++)
             {
                 Write_Mod_Data_Swap(&Sample_Vol[i], sizeof(float), 1, in);
             }
@@ -1588,7 +1612,7 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
                 rtrim_string(tb303[0].pattern_name[i], 20);
                 rtrim_string(tb303[1].pattern_name[i], 20);
             }
-            
+
             for(j = 0; j < 2; j++)
             {
                 Write_Mod_Data(&tb303[j].enabled, sizeof(char), 1, in);

@@ -164,12 +164,15 @@ float CCut[MAX_TRACKS];
 
 char Use_Cubic = CUBIC_INT;
 
+#ifndef __LITE__
 float TCut[MAX_TRACKS];
 float ICut[MAX_TRACKS];
+#endif
 float LVol[MAX_TRACKS];
 float Old_LVol[MAX_TRACKS];
 float RVol[MAX_TRACKS];
 float Old_RVol[MAX_TRACKS];
+#ifndef __LITE__
 int FType[MAX_TRACKS];
 int FRez[MAX_TRACKS];
 float DThreshold[MAX_TRACKS];
@@ -182,6 +185,7 @@ float rbuff_chorus[131072];
 float coef[5];
 float coeftab[5][128][128][4];
 #endif
+#endif // __LITE__
 
 #if defined(__PSP__)
 volatile int Song_Playing;
@@ -1626,18 +1630,20 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
         // Reading Track Properties
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
+#ifndef __LITE__
             Mod_Dat_Read(&TCut[twrite], sizeof(float));
             Mod_Dat_Read(&ICut[twrite], sizeof(float));
-
+#endif
             Mod_Dat_Read(&TPan[twrite], sizeof(float));
             ComputeStereo(twrite);
             FixStereo(twrite);
 
+#ifndef __LITE__
             Mod_Dat_Read(&FType[twrite], sizeof(int));
             Mod_Dat_Read(&FRez[twrite], sizeof(int));
             Mod_Dat_Read(&DThreshold[twrite], sizeof(float));
             Mod_Dat_Read(&DClamp[twrite], sizeof(float));
-
+#endif
 #if defined(PTK_COMPRESSOR)
             if(compressor)
             {
@@ -1645,18 +1651,25 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             }
 #endif
 
+#ifndef __LITE__
             Mod_Dat_Read(&CSend[twrite], sizeof(int));
             Mod_Dat_Read(&Channels_Polyphony[twrite], sizeof(char));
+#endif
         }
 
+#ifndef __LITE__
         Mod_Dat_Read(&c_threshold, sizeof(int));
+#endif
         Mod_Dat_Read(&BeatsPerMin, sizeof(int));
         Mod_Dat_Read(&TicksPerBeat, sizeof(int));
         Mod_Dat_Read(&mas_vol, sizeof(float));
 
+#ifndef __LITE__
         char Comp_Flag;
         Mod_Dat_Read(&Comp_Flag, sizeof(char));
+#endif
 
+#ifndef __LITE__
 #if defined(PTK_LIMITER_MASTER)
         // Master compressor
         if(Comp_Flag)
@@ -1665,7 +1678,8 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             Mod_Dat_Read(&mas_ratio_Master, sizeof(float));
         }
 #endif
-
+#endif
+#ifndef __LITE__
         // Tracks compressors
         Mod_Dat_Read(&Comp_Flag, sizeof(char));
 #if defined(PTK_LIMITER_TRACKS)
@@ -1676,7 +1690,7 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             Mod_Dat_Read(&Compress_Track, sizeof(char) * Songtracks);
         }
 #endif
-
+        
         Mod_Dat_Read(&Feedback, sizeof(float));
 
 #if defined(PTK_COMPRESSOR)
@@ -1699,6 +1713,8 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
         Mod_Dat_Read(&rchorus_delay, sizeof(int));
         Mod_Dat_Read(&lchorus_feedback, sizeof(float));
         Mod_Dat_Read(&rchorus_feedback, sizeof(float));
+#endif // __LITE__
+
         Mod_Dat_Read(&shuffle, sizeof(int));
 
         // Reading track part sequence
@@ -1710,6 +1726,7 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             }
         }
 
+#ifndef __LITE__
         for(int spl = 0; spl < Songtracks; spl++)
         {
             CCoef[spl] = float((float) CSend[spl] / 127.0f);
@@ -1784,6 +1801,7 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
         if(tb303_1_enabled) Mod_Dat_Read(&tb303engine[0].tbVolume, sizeof(float));
         if(tb303_2_enabled) Mod_Dat_Read(&tb303engine[1].tbVolume, sizeof(float));
 #endif
+#endif // __LITE__
 
         Song_Position = start_position;
         Post_Song_Init();
@@ -2182,6 +2200,8 @@ void Pre_Song_Init(void)
         DClamp[ini] = 32767;
         Disclap[ini] = 0;
 #endif
+#else
+        TPan[ini] = Default_Pan[ini];
 #endif // __LITE__
 
         ramper[ini] = 0;
@@ -2452,7 +2472,9 @@ void Post_Song_Init(void)
     // Start as the last known position
     for(int spl = 0; spl < MAX_TRACKS; spl++)
     {
+#ifndef __LITE__
         CCoef[spl] = float((float) CSend[spl] / 127.0f);
+#endif
         ComputeStereo(spl);
         FixStereo(spl);
     }
@@ -4836,8 +4858,18 @@ void Do_Effects_Ticks_X(void)
 #if defined(PTK_INSTRUMENTS)
                         if(sp_Stage[trackef][i] == PLAYING_SAMPLE)
                         {
-                            if(FType[trackef] == 4) sp_Stage[trackef][i] = PLAYING_SAMPLE_NOTEOFF;
-                            else sp_Tvol_Mod[trackef] = 0.001f;
+#ifndef __LITE__
+                            if(FType[trackef] == 4)
+                            {
+#endif
+                                sp_Stage[trackef][i] = PLAYING_SAMPLE_NOTEOFF;
+#ifndef __LITE__
+                            }
+                            else
+                            {
+                                sp_Tvol_Mod[trackef] = 0.001f;
+                            }
+#endif
                         }
 #endif
 
@@ -4919,11 +4951,13 @@ void Do_Effects_Ticks_X(void)
                         break;
 #endif
 
+#ifndef __LITE__
 #if defined(PTK_FX_SENDTODELAYCOMMAND)
                     // $10 Send to delay Command
                     case 0x10:
                         CCoef[trackef] = (float) pltr_dat_row[k] / 255.0f;
                         break;
+#endif
 #endif
 
 #ifndef __LITE__
@@ -5185,7 +5219,7 @@ void Do_Effects_Ticks_X(void)
                     break;
 #endif
 #endif
-#endif
+#endif // __LITE__
 
 #if defined(PTK_FX_AUTOFADEIN)
                 // $17 Auto fade in xx ticks

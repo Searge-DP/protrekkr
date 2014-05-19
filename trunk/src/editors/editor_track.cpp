@@ -92,7 +92,7 @@ void Actualize_Track_Ed(char gode)
             Gui_Draw_Button_Box(456, (Cur_Height - 98), 40, 16, "Flat2T", BUTTON_TEXT_CENTERED | BUTTON_NORMAL | BUTTON_DISABLED);
 #endif
         }
-
+#ifndef __LITE__
         if(gode == 0 || gode == 1 || gode == 15)
         {
             if(TCut[Track_Under_Caret] < 0)
@@ -103,13 +103,12 @@ void Actualize_Track_Ed(char gode)
             {
                 TCut[Track_Under_Caret] = 127;
             }
-#ifndef __LITE__
             Realslider(77, (Cur_Height - 116), (int) TCut[Track_Under_Caret], FType[Track_Under_Caret] != 4);
-#else
-            Realslider(77, (Cur_Height - 116), (int) TCut[Track_Under_Caret], FALSE);
-#endif
         }
+//            Realslider(77, (Cur_Height - 116), (int) TCut[Track_Under_Caret], FALSE);
+#endif
 
+#ifndef __LITE__
         if(gode == 0 || gode == 2 || gode == 15)
         {
             if(FRez[Track_Under_Caret] < 0)
@@ -120,13 +119,13 @@ void Actualize_Track_Ed(char gode)
             {
                 FRez[Track_Under_Caret] = 127;
             }
-#ifndef __LITE__
             Realslider(77, (Cur_Height - 98), FRez[Track_Under_Caret], FType[Track_Under_Caret] != 4);
-#else
-            Realslider(77, (Cur_Height - 98), FRez[Track_Under_Caret], FALSE);
-#endif
         }
+#else
+        Realslider(77, (Cur_Height - 98), 0, FALSE);
+#endif
 
+#ifndef __LITE__
         if(gode == 0 || gode == 3 || gode == 15)
         {
             if(ICut[Track_Under_Caret] > 0.0078125f)
@@ -137,15 +136,15 @@ void Actualize_Track_Ed(char gode)
             {
                 ICut[Track_Under_Caret] = 0.00006103515625f;
             }
-#ifndef __LITE__
             Realslider(77, (Cur_Height - 62), (int) (ICut[Track_Under_Caret] * 16384.0f), FType[Track_Under_Caret] != 4);
-#else
-            Realslider(77, (Cur_Height - 62), (int) (ICut[Track_Under_Caret] * 16384.0f), FALSE);
-#endif
         }
+#else
+        Realslider(77, (Cur_Height - 62), 0, FALSE);
+#endif
 
         if(gode == 0 || gode == 4 || gode == 15)
         {
+#ifndef __LITE__
             if(FType[Track_Under_Caret] < 0)
             {
                 FType[Track_Under_Caret] = 0;
@@ -181,10 +180,11 @@ void Actualize_Track_Ed(char gode)
                 case 22: Gui_Draw_Button_Box(141, (Cur_Height - 80), 82, 16, "W-HP12 [Stereo]", BUTTON_NORMAL | BUTTON_DISABLED); break;
                 case 23: Gui_Draw_Button_Box(141, (Cur_Height - 80), 82, 16, "W-HP24 [Mono]", BUTTON_NORMAL | BUTTON_DISABLED); break;
             }
+#endif
 #ifndef __LITE__
             value_box(79, (Cur_Height - 80), FType[Track_Under_Caret], BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE);
 #else
-            value_box(79, (Cur_Height - 80), FType[Track_Under_Caret], BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE | BUTTON_DISABLED);
+            value_box(79, (Cur_Height - 80), 0, BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE | BUTTON_DISABLED);
 #endif
         }
 
@@ -217,15 +217,16 @@ void Actualize_Track_Ed(char gode)
             }
 #ifndef __LITE__
             value_box(570, (Cur_Height - 114), CSend[Track_Under_Caret], BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE);
-#else
-            value_box(570, (Cur_Height - 114), CSend[Track_Under_Caret], BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_DISABLED | BUTTON_RIGHT_MOUSE);
-#endif
             if(gode == 6)
             {
                 CCoef[Track_Under_Caret] = float((float) CSend[Track_Under_Caret] / 127.0f);
             }
+#else
+            value_box(570, (Cur_Height - 114), 0, BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_DISABLED | BUTTON_RIGHT_MOUSE);
+#endif
         }
 
+#ifndef __LITE__
         if(gode == 0 || gode == 7 || gode == 15)
         {
             if(DThreshold[Track_Under_Caret] < 0)
@@ -236,13 +237,13 @@ void Actualize_Track_Ed(char gode)
             {
                 DThreshold[Track_Under_Caret] = 32767;
             }
-#ifndef __LITE__
             Realslider(308, (Cur_Height - 116), (int) DThreshold[Track_Under_Caret] / 256, Disclap[Track_Under_Caret]);
-#else
-            Realslider(308, (Cur_Height - 116), (int) DThreshold[Track_Under_Caret] / 256, FALSE);
-#endif
         }
+#else
+            Realslider(308, (Cur_Height - 116), 0, FALSE);
+#endif
 
+#ifndef __LITE__
         if(gode == 0 || gode == 8 || gode == 15)
         {
             if(DClamp[Track_Under_Caret] < 0)
@@ -253,12 +254,12 @@ void Actualize_Track_Ed(char gode)
             {
                 DClamp[Track_Under_Caret] = 32767;
             }
-#ifndef __LITE__
+
             Realslider(308, (Cur_Height - 98), (int) DClamp[Track_Under_Caret] / 256, Disclap[Track_Under_Caret]);
-#else
-            Realslider(308, (Cur_Height - 98), (int) DClamp[Track_Under_Caret] / 256, FALSE);
-#endif
         }
+#else
+        Realslider(308, (Cur_Height - 98), 0, FALSE);
+#endif
 
         if(gode == 0 || gode == 9 || gode == 15)
         {
@@ -311,14 +312,14 @@ void Actualize_Track_Ed(char gode)
                 Gui_Draw_Button_Box(570, (Cur_Height - 52), 60, 16, "Distort Off", BUTTON_NORMAL | BUTTON_TEXT_CENTERED);
             }
 #else
-            if(Disclap[Track_Under_Caret])
-            {
-                Gui_Draw_Button_Box(570, (Cur_Height - 52), 60, 16, "Distort On", BUTTON_PUSHED | BUTTON_DISABLED | BUTTON_TEXT_CENTERED);
-            }
-            else
-            {
+            //if(Disclap[Track_Under_Caret])
+            //{
+                //Gui_Draw_Button_Box(570, (Cur_Height - 52), 60, 16, "Distort On", BUTTON_PUSHED | BUTTON_DISABLED | BUTTON_TEXT_CENTERED);
+            //}
+            //else
+            //{
                 Gui_Draw_Button_Box(570, (Cur_Height - 52), 60, 16, "Distort Off", BUTTON_NORMAL | BUTTON_DISABLED | BUTTON_TEXT_CENTERED);
-            }
+            //}
 #endif
         }
 
@@ -459,7 +460,7 @@ void Mouse_Left_Track_Ed(void)
         }
 #endif
 
-        // Channel panning
+        // Channel panning (centering)
         if(zcheckMouse(456, (Cur_Height - 62), 40, 16))
         {
             TPan[Track_Under_Caret] = 0.5f;

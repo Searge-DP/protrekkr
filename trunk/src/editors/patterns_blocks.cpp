@@ -2112,9 +2112,12 @@ void Reset_Track(int Position, int Track)
     Channels_Effects[Track] = 1;
 
     TPan[Track] = Default_Pan[Track];
+
+#ifndef __LITE__
     TCut[Track] = 126.0f;
     ICut[Track] = 0.0039062f;
     FType[Track] = 4;
+#endif
 
     Compress_Track[Track] = FALSE;
     mas_comp_threshold_Track[Track] = 100.0f;
@@ -2129,11 +2132,14 @@ void Reset_Track(int Position, int Track)
     LFO_RATE[Track] = 0.0001f;
     LFO_AMPL[Track] = 0;
 
+#ifndef __LITE__
     FRez[Track] = 64;
 
     DThreshold[Track] = 32767;
+
     DClamp[Track] = 32767;
     Disclap[Track] = 0;
+#endif
 
     DSend[Track] = 0;
     CSend[Track] = 0;
@@ -2211,26 +2217,31 @@ void Copy_Track(int Position, int Track_Src, int Track_Dst)
     mas_comp_ratio_Track[Track_Dst] = mas_comp_ratio_Track[Track_Src];
 
     TPan[Track_Dst] = TPan[Track_Src];
+#ifndef __LITE__
     TCut[Track_Dst] = TCut[Track_Src];
     ICut[Track_Dst] = ICut[Track_Src];
     FType[Track_Dst] = FType[Track_Src];
+#endif
 
     oldspawn[Track_Dst] = oldspawn[Track_Src];
     roldspawn[Track_Dst] = roldspawn[Track_Src];
 
     CHAN_MIDI_PRG[Track_Dst] = CHAN_MIDI_PRG[Track_Src];
 
+#ifndef __LITE__
     FRez[Track_Dst] = FRez[Track_Src];
     
     DThreshold[Track_Dst] = DThreshold[Track_Src];
     DClamp[Track_Dst] = DClamp[Track_Src];
     Disclap[Track_Dst] = Disclap[Track_Src];
-
+    
     DSend[Track_Dst] = DSend[Track_Src];
     CSend[Track_Dst] = CSend[Track_Src];
+#endif
     
     Track_Volume[Track_Dst] = Track_Volume[Track_Src];
 
+#ifndef __LITE__
     LFO_ON[Track_Dst] = LFO_ON[Track_Src];
     LFO_RATE[Track_Dst] = LFO_RATE[Track_Src];
     LFO_AMPL[Track_Dst] = LFO_AMPL[Track_Src];
@@ -2249,6 +2260,7 @@ void Copy_Track(int Position, int Track_Src, int Track_Dst)
     FLANGER_OFFSET1[Track_Dst] = FLANGER_OFFSET1[Track_Src];
 
     memcpy(&EqDat[Track_Dst], &EqDat[Track_Src], sizeof(EQSTATE));
+#endif
 
     for(i = 0; i < Song_Length; i++)
     {
