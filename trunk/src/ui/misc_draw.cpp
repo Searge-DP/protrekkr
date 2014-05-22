@@ -2950,8 +2950,8 @@ int Set_Pictures_Colors(void)
     max_colors_303++;
 #endif
 
-    max_colors_logo = 0;
     Pix = (unsigned char *) LOGOPIC->pixels;
+    max_colors_logo = 0;
     for(i = 0; i < LOGOPIC->w * LOGOPIC->h; i++)
     {
         if(Pix[i] > max_colors_logo) max_colors_logo = Pix[i];
@@ -2971,7 +2971,11 @@ int Set_Pictures_Colors(void)
 #endif
 
     Pic_Palette = POINTER->format->palette;
+#ifndef __LITE__
     for(i = 0; i < max_colors_303; i++)
+#else
+    for(i = 0; i < max_colors_logo; i++)
+#endif
     {
         Palette_Pointer[i].r = Pic_Palette->colors[i].r;
         Palette_Pointer[i].g = Pic_Palette->colors[i].g;
