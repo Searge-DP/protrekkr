@@ -556,6 +556,7 @@ unsigned char Metronome_Dats[] =
 
 int Subicounter;
 
+//#ifndef __LITE__
 #if defined(PTK_MP3)
 char Mp3_BitRate[MAX_INSTRS];
 int Type_Mp3_BitRate[] =
@@ -571,6 +572,7 @@ int Type_At3_BitRate[] =
     66, 105, 132
 };
 #endif
+//#endif // __LITE__
 
 #if defined(PTK_FX_PATTERNBREAK) || defined(PTK_FX_POSJUMP)
 // 255 when no jump or yes on patbreak < 128 = line to jump.
@@ -750,6 +752,7 @@ char SampleChannels[MAX_INSTRS][MAX_INSTRS_SPLITS];
 float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];
 short *RawSamples[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
 
+#ifndef __LITE__
 #if defined(PTK_COMPRESSOR)
     int currentCounter;
     int delayedCounter[10];
@@ -782,12 +785,14 @@ float fy2[2][MAX_TRACKS];
 float xi0[2][MAX_TRACKS];
 float xi1[2][MAX_TRACKS];
 float xi2[2][MAX_TRACKS];
+#endif // __LITE__
 
 #if !defined(__STAND_ALONE__) && !defined(__WINAMP__)
 extern int gui_thread_action;
 extern int gui_bpm_action;
 #endif
 
+#ifndef __LITE__
 #if !defined(__STAND_ALONE__) || defined(__WINAMP__)
     float lchorus_feedback = 0.6f;
     float rchorus_feedback = 0.5f;
@@ -820,6 +825,7 @@ char compressor;
     float Reverb_Filter_Resonance;
     unsigned char Reverb_Stereo_Amount;
 #endif
+#endif // __LITE__
 
 int Reserved_Sub_Channels[MAX_TRACKS][MAX_POLYPHONY];
 int Note_Sub_Channels[MAX_TRACKS][MAX_POLYPHONY];
@@ -2446,10 +2452,13 @@ void Post_Song_Init(void)
 
     }
 
+#ifndef __LITE__
     lchorus_counter = MIX_RATE;
     rchorus_counter = MIX_RATE;
     lchorus_counter2 = MIX_RATE - lchorus_delay;
     rchorus_counter2 = MIX_RATE - rchorus_delay;
+#endif
+
     SamplesPerTick = (int) ((60 * MIX_RATE) / (BeatsPerMin * TicksPerBeat));
     PosInTick = 0;
     PosInTick_Delay = 0;
@@ -6804,7 +6813,7 @@ float do_eq(LPEQSTATE es, float sample, int Left)
     return(l + m + h);
 }
 #endif
-#endif
+#endif // __LITE__
 
 #if defined(PTK_SHUFFLE)
 void Update_Shuffle(void)

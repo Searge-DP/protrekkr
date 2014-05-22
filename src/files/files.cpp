@@ -591,7 +591,7 @@ Read_Mod_File:
             if(ICut[twrite] > 0.0078125f) ICut[twrite] = 0.0078125f;
             if(ICut[twrite] < 0.00006103515625f) ICut[twrite] = 0.00006103515625f;
 #endif
-            Read_Mod_Data_Swap²(&TPan[twrite], sizeof(float), 1, in);
+            Read_Mod_Data_Swap(&TPan[twrite], sizeof(float), 1, in);
             ComputeStereo(twrite);
             FixStereo(twrite);
 #ifndef __LITE__
@@ -1492,9 +1492,9 @@ int Save_Ptk(char *FileName, int NewFormat, int Simulate, Uint8 *Memory)
             }
 
             // Writing mod properties
+#ifndef __LITE__
             int cvalue;   
             cvalue = compressor;
-#ifndef __LITE__
             Write_Mod_Data_Swap(&cvalue, sizeof(int), 1, in);
             Write_Mod_Data_Swap(&c_threshold, sizeof(int), 1, in);
 #endif

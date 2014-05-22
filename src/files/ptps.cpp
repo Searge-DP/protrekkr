@@ -252,6 +252,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     int Store_FX_RevCuto = FALSE;
     int Store_FX_RevReso = FALSE;
 
+#ifndef __LITE__
     int Store_Synth = FALSE;
 
     int Store_TrackFilters = FALSE;
@@ -287,6 +288,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     int Store_Synth_Pulse = FALSE;
     int Store_Synth_WhiteNoise = FALSE;
     int Store_Synth_PinkNoise = FALSE;
+#endif // __LITE__
 
     int Number_Fx = 0;
     int Empty_Var = 0;
@@ -657,7 +659,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                         {
                             switch(TmpPatterns_Notes[i])
                             {
-                                // $01 Pitch Up 
+                                // $01 Pitch Up
                                 case 0x1:
                                     Store_FX_PitchUp = TRUE;
                                     break;
@@ -922,7 +924,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                                     Store_FX_RevCuto = TRUE;
                                     break;
 
-                                // $27 Set reverb resonane
+                                // $27 Set reverb resonance
                                 case 0x27:
                                     Store_FX_RevReso = TRUE;
                                     break;
@@ -1422,7 +1424,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
 
                 Write_Mod_Data(&PARASynth[swrite].osc_combine, sizeof(char), 1, in);
             }
-#endif
+#endif // __LITE__
 
 #ifndef __LITE__
             // Compression type
@@ -1676,7 +1678,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     Save_Constant("PTK_INTERNAL", Store_Internal);
 
     Write_Mod_Data(&compressor, sizeof(char), 1, in);
-#endif
+#endif // __LITE__
 
 #ifndef __LITE__
     for(twrite = 0; twrite < Songtracks; twrite++)
@@ -1771,7 +1773,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
             Write_Mod_Data(&Channels_Polyphony[twrite], sizeof(char), 1, in);
         }
     }
-#endif
+#endif // __LITE__
 
     // Writing mod properties
 #ifndef __LITE__
@@ -1972,7 +1974,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
         }
     }
     Save_Constant("PTK_DISCLAP", Store_Disclap);
-#endif
+#endif // __LITE__
 
     Save_Constant("PTK_TRACK_VOLUME", Store_Track_Volume);
 

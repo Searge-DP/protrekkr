@@ -2549,6 +2549,7 @@ void Newmod(void)
         TicksPerBeat = 4;
         DelayType = 1;
         mas_vol = 1.0f;
+#ifndef __LITE__
         Reverb_Filter_Cutoff = 0.08f;
         Reverb_Filter_Resonance = 0.5f;
         Reverb_Stereo_Amount = 50;
@@ -2567,6 +2568,7 @@ void Newmod(void)
         lchorus_counter2 = MIX_RATE - lchorus_delay;
         rchorus_counter2 = MIX_RATE - rchorus_delay;
         compressor = FALSE;
+#endif
         c_threshold = 32;
         delay_time = 0;
 
