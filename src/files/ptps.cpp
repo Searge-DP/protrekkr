@@ -1854,7 +1854,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
         }
         Write_Mod_Data(&Compress_Track, sizeof(char), Songtracks, in);
    }
-#endif
+#endif // __LITE__
 
 #ifndef __LITE__
     Write_Mod_Data(&Feedback, sizeof(float), 1, in);
@@ -1909,7 +1909,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     Save_Constant("PTK_PROC_FILTERINT2P", Store_Filter_DistL | Store_Filter_DistM | Store_Filter_DistH | Store_Filter_Dist);
     Save_Constant("PTK_PROC_FILTERHP", Store_Filter_Hp12M | Store_Filter_Hp12S | Store_Filter_Hp24M);
     Save_Constant("PTK_PROC_FILTERHP2", Store_Filter_Hp12S | Store_Filter_Hp24M);
-#endif
+#endif // __LITE__
 
     Save_Constant("PTK_SHUFFLE", shuffle != 0 ? TRUE : FALSE || Store_FX_Shuffle);
     
@@ -2033,7 +2033,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     
     if(Store_303_1) Write_Mod_Data(&tb303engine[0].tbVolume, sizeof(float), 1, in);
     if(Store_303_2) Write_Mod_Data(&tb303engine[1].tbVolume, sizeof(float), 1, in);
-#endif
+#endif // __LITE__
 
     free(New_RawPatterns);
 
