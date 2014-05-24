@@ -114,6 +114,14 @@ SOURCE=.\src\support\main.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\support\Project_16x16_lite.ico
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\support\Project_lite.ico
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\Support\Resources.rc
 # End Source File
 # Begin Source File
@@ -236,19 +244,19 @@ SOURCE=.\src\Editors\Patterns_Blocks.cpp
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\release\distrib\replay\lib\include\endianness.h
+SOURCE=.\release\distrib_lite\replay\lib\include\endianness.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Release\Distrib\Replay\lib\include\Ptk_Def_Properties.h
+SOURCE=.\release\distrib_lite\replay\lib\include\ptk_def_properties.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Release\Distrib\Replay\lib\include\PtkReplay.h
+SOURCE=.\release\distrib_lite\replay\lib\include\ptkreplay.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Release\Distrib\Replay\lib\include\Replay.h
+SOURCE=.\release\distrib_lite\replay\lib\include\replay.h
 # End Source File
 # End Group
 # Begin Group "SoundDriver"
@@ -259,21 +267,21 @@ SOURCE=.\Release\Distrib\Replay\lib\include\Replay.h
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\release\distrib\replay\lib\sounddriver\include\sounddriver_windows.h
+SOURCE=.\release\distrib_lite\replay\lib\sounddriver\include\sounddriver_windows.h
 # End Source File
 # End Group
 # Begin Source File
 
-SOURCE=.\release\distrib\replay\lib\sounddriver\sounddriver_windows.cpp
+SOURCE=.\release\distrib_lite\replay\lib\sounddriver\sounddriver_windows.cpp
 # End Source File
 # End Group
 # Begin Source File
 
-SOURCE=.\release\distrib\replay\lib\endianness.cpp
+SOURCE=.\release\distrib_lite\replay\lib\endianness.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Release\Distrib\Replay\lib\Replay.cpp
+SOURCE=.\release\distrib_lite\replay\lib\replay.cpp
 # End Source File
 # End Group
 # Begin Group "UI"
@@ -493,13 +501,5 @@ SOURCE=.\release\distrib\history.txt
 SOURCE=.\src\ptk.cpp
 # End Source File
 # End Group
-# Begin Source File
-
-SOURCE=.\src\support\Project_16x16_lite.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\support\Project_lite.ico
-# End Source File
 # End Target
 # End Project
