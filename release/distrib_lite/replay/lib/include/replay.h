@@ -319,19 +319,19 @@ extern unsigned char track3032;
 
 extern unsigned char *RawPatterns;
 extern int Song_Position;
-extern unsigned int lchorus_counter;
-extern unsigned int rchorus_counter;
-extern unsigned int lchorus_counter2;
-extern unsigned int rchorus_counter2;
-extern int lchorus_delay;
-extern int rchorus_delay;
+//extern unsigned int lchorus_counter;
+//extern unsigned int rchorus_counter;
+//extern unsigned int lchorus_counter2;
+//extern unsigned int rchorus_counter2;
+//extern int lchorus_delay;
+//extern int rchorus_delay;
 extern float Track_Volume[MAX_TRACKS];
-extern float mas_comp_threshold_Track[MAX_TRACKS];
-extern float mas_comp_ratio_Track[MAX_TRACKS];
-extern char Compress_Track[MAX_TRACKS];
-extern float mas_comp_threshold_Master;
-extern float mas_comp_ratio_Master;
-extern char Compress_Master;
+//extern float mas_comp_threshold_Track[MAX_TRACKS];
+//extern float mas_comp_ratio_Track[MAX_TRACKS];
+//extern char Compress_Track[MAX_TRACKS];
+//extern float mas_comp_threshold_Master;
+//extern float mas_comp_ratio_Master;
+//extern char Compress_Master;
 extern unsigned char nPatterns;
 extern char Songtracks;
 extern unsigned char Song_Length;
@@ -362,18 +362,18 @@ extern char Finetune[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float Sample_Amplify[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern short *RawSamples[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
-extern char SampleChannels[MAX_INSTRS][MAX_INSTRS_SPLITS];         // Mono / Stereo
-extern float TCut[MAX_TRACKS];
-extern float ICut[MAX_TRACKS];
+extern char Sample_Channels[MAX_INSTRS][MAX_INSTRS_SPLITS];         // Mono / Stereo
+//extern float TCut[MAX_TRACKS];
+//extern float ICut[MAX_TRACKS];
 extern float TPan[MAX_TRACKS];
-extern int FType[MAX_TRACKS];
-extern int FRez[MAX_TRACKS];
-extern float DThreshold[MAX_TRACKS];
-extern float DClamp[MAX_TRACKS];
-extern float DSend[MAX_TRACKS]; 
-extern int CSend[MAX_TRACKS];
+//extern int FType[MAX_TRACKS];
+//extern int FRez[MAX_TRACKS];
+//extern float DThreshold[MAX_TRACKS];
+//extern float DClamp[MAX_TRACKS];
+//extern float DSend[MAX_TRACKS]; 
+//extern int CSend[MAX_TRACKS];
 extern char Channels_Polyphony[MAX_TRACKS];
-extern char compressor; // 0-->Off 1-->On
+//extern char compressor; // 0-->Off 1-->On
 extern int c_threshold;
 extern int BeatsPerMin;
 extern int TicksPerBeat;
@@ -384,8 +384,8 @@ extern volatile float local_ramp_vol;
 extern int delay_time;
 extern float Feedback;
 
-extern float lchorus_feedback;
-extern float rchorus_feedback;
+//extern float lchorus_feedback;
+//extern float rchorus_feedback;
 extern int shuffle;
 
 extern char CHAN_ACTIVE_STATE[256][16];
@@ -393,22 +393,22 @@ extern char CHAN_HISTORY_STATE[256][16];
 extern float CCoef[MAX_TRACKS];
 extern int CHAN_MIDI_PRG[MAX_TRACKS];
 
-extern char LFO_ON[MAX_TRACKS];
-extern float LFO_RATE[MAX_TRACKS];
-extern float LFO_AMPL[MAX_TRACKS];
+//extern char LFO_ON[MAX_TRACKS];
+//extern float LFO_RATE[MAX_TRACKS];
+//extern float LFO_AMPL[MAX_TRACKS];
 
-extern char FLANGER_ON[MAX_TRACKS];
-extern float FLANGER_AMOUNT[MAX_TRACKS];
-extern float FLANGER_DEPHASE[MAX_TRACKS];
-extern float FLANGER_RATE[MAX_TRACKS];
-extern float FLANGER_AMPL[MAX_TRACKS];
-extern float FLANGER_GR[MAX_TRACKS];
-extern float FLANGER_FEEDBACK[MAX_TRACKS];
-extern int FLANGER_DELAY[MAX_TRACKS];
-extern int FLANGER_OFFSET[MAX_TRACKS];
+//extern char FLANGER_ON[MAX_TRACKS];
+//extern float FLANGER_AMOUNT[MAX_TRACKS];
+//extern float FLANGER_DEPHASE[MAX_TRACKS];
+//extern float FLANGER_RATE[MAX_TRACKS];
+//extern float FLANGER_AMPL[MAX_TRACKS];
+//extern float FLANGER_GR[MAX_TRACKS];
+//extern float FLANGER_FEEDBACK[MAX_TRACKS];
+//extern int FLANGER_DELAY[MAX_TRACKS];
+//extern int FLANGER_OFFSET[MAX_TRACKS];
 
-extern float FLANGER_OFFSET2[MAX_TRACKS];
-extern float FLANGER_OFFSET1[MAX_TRACKS];
+//extern float FLANGER_OFFSET2[MAX_TRACKS];
+//extern float FLANGER_OFFSET1[MAX_TRACKS];
 
 extern int CHAN_MUTE_STATE[MAX_TRACKS]; // 0->Normal 1->Muted
 extern char Disclap[MAX_TRACKS];
@@ -502,9 +502,9 @@ void init_sample_bank(void);
 void KillInst(int inst_nbr, int all_splits);
 void Post_Song_Init(void);
 
-#if !defined(__STAND_ALONE__) || defined(__WINAMP__)
-void ResetSynthParameters(SynthParameters *TSP);
-#endif
+//#if !defined(__STAND_ALONE__) || defined(__WINAMP__)
+//void ResetSynthParameters(SynthParameters *TSP);
+//#endif
 
 void Free_Samples(void);
 #if defined(PTK_LIMITER_MASTER)

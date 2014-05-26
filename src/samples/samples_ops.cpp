@@ -60,7 +60,7 @@ int Sample_Rotate_Left(int32 range_start, int32 range_end, int amount)
  
     if(shiftsize)
     {
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         for(j = 0; j < amount; j++)
         {
@@ -99,7 +99,7 @@ int Sample_Rotate_Right(int32 range_start, int32 range_end, int amount)
  
     if(shiftsize)
     {
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         for(j = 0; j < amount; j++)
         {
@@ -137,7 +137,7 @@ int Sample_Reverse(int32 range_start, int32 range_end)
  
     if(reversesize)
     {
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         p_s = range_end - 1;
 
@@ -176,7 +176,7 @@ int Sample_Crop(int32 range_start, int32 range_end)
         Stop_Current_Instrument();
         AUDIO_Stop();
 
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         NewBuffer[0] = (short *) malloc(cropsize * 2 + 8);
         if(!NewBuffer[0]) return 0;
@@ -229,7 +229,7 @@ int Sample_Copy(int32 range_start, int32 range_end)
     short *dest_mono;
     short *dest_stereo;
     long copysize = (range_end - range_start);
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
     if(copysize)
     {
@@ -286,7 +286,7 @@ int Sample_Paste(int32 range_start)
         Stop_Current_Instrument();
         AUDIO_Stop();
 
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         // Allocate the destination buffer(s)
         // (We need to clear the second one as the back buffer may not be stereo).
@@ -371,7 +371,7 @@ int Sample_Cut(int32 range_start, int32 range_end, int do_copy)
         Stop_Current_Instrument();
         AUDIO_Stop();
 
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         // Allocate the wav with the minus the block to cut
         NewBuffer[0] = (short *) malloc(newsize * 2 + 8);
@@ -456,7 +456,7 @@ int Sample_Cut(int32 range_start, int32 range_end, int do_copy)
 void Sample_DC_Adjust(int32 range_start, int32 range_end)
 {
     int32 i;
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
     float l_shift = 0;
     float r_shift = 0;
 
@@ -498,7 +498,7 @@ void Sample_DC_Adjust(int32 range_start, int32 range_end)
 void Sample_Maximize(int32 range_start, int32 range_end)
 {
     int32 i;
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
     float l_shift = 0;
 
     for(i = range_start; i < range_end + 1; i++)
@@ -547,7 +547,7 @@ void Sample_Maximize(int32 range_start, int32 range_end)
 void Sample_Zeroize(int32 range_start, int32 range_end)
 {
     int32 i;
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
     for(i = range_start; i < range_end + 1; i++)
     {
@@ -567,7 +567,7 @@ void Sample_Zeroize(int32 range_start, int32 range_end)
 void Sample_FadeIn(int32 range_start, int32 range_end)
 {
     int i;
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
     float c_vol = 0.0f;
     float const coef_vol = 1.0f / ((range_end + 1) - range_start);
 
@@ -604,7 +604,7 @@ void Sample_FadeOut(int32 range_start, int32 range_end)
     Status_Box("Fade Out Selection...");
     SDL_Delay(100);
 
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
     float c_vol = 1.0f;
     float const coef_vol = 1.0f / ((range_end + 1) - range_start);
@@ -640,7 +640,7 @@ void Sample_Half(int32 range_start, int32 range_end)
 {
     int32 i;
 
-    char nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+    char nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
     float c_vol = 0.5f;
 
@@ -678,7 +678,7 @@ int Sample_Duplicate(int32 range_start, int32 range_end)
         Stop_Current_Instrument();
         AUDIO_Stop();
 
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         // Allocate the destination buffer(s)
         // (We need to clear the second one as the back buffer may not be stereo).
@@ -763,7 +763,7 @@ int Sample_InsertZero(int32 range_start, int32 range_end)
         Stop_Current_Instrument();
         AUDIO_Stop();
 
-        nc = SampleChannels[Current_Instrument][Current_Instrument_Split];
+        nc = Sample_Channels[Current_Instrument][Current_Instrument_Split];
 
         // Allocate the destination buffer(s)
         // (We need to clear the second one as the back buffer may not be stereo).

@@ -190,6 +190,7 @@ void Actualize_Track_Ed(char gode)
 
         if(gode == 0 || gode == 5 || gode == 15)
         {
+#ifndef __LITE__
             if(DSend[Track_Under_Caret] < 0)
             {
                 DSend[Track_Under_Caret] = 0;
@@ -198,15 +199,15 @@ void Actualize_Track_Ed(char gode)
             {
                 DSend[Track_Under_Caret] = 1.0f;
             }
-#ifndef __LITE__
             Realslider(308, (Cur_Height - 80), int(DSend[Track_Under_Caret] * 128.0f), compressor != 0);
 #else
-            Realslider(308, (Cur_Height - 80), int(DSend[Track_Under_Caret] * 128.0f), FALSE);
+            Realslider(308, (Cur_Height - 80), int(0 * 128.0f), FALSE);
 #endif
         }
 
         if(gode == 0 || gode == 6)
         {
+#ifndef __LITE__
             if(CSend[Track_Under_Caret] < 0)
             {
                 CSend[Track_Under_Caret] = 0;
@@ -215,7 +216,6 @@ void Actualize_Track_Ed(char gode)
             {
                 CSend[Track_Under_Caret] = 127;
             }
-#ifndef __LITE__
             value_box(570, (Cur_Height - 114), CSend[Track_Under_Caret], BUTTON_NORMAL | BUTTON_TEXT_CENTERED | BUTTON_RIGHT_MOUSE);
             if(gode == 6)
             {

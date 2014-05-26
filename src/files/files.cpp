@@ -57,8 +57,11 @@
 #include "../editors/include/editor_track.h"
 #include "../editors/include/editor_pattern.h"
 
+#ifndef __LITE__
 #include "../../release/distrib/replay/lib/include/endianness.h"
-
+#else
+#include "../../release/distrib_lite/replay/lib/include/endianness.h"
+#endif
 // ------------------------------------------------------
 // Variables
 #if !defined(__WINAMP__)
@@ -563,8 +566,8 @@ Read_Mod_File:
                     *RawSamples[swrite][0][slwrite] = 0;
 
                     // Stereo flag
-                    Read_Mod_Data(&SampleChannels[swrite][slwrite], sizeof(char), 1, in);
-                    if(SampleChannels[swrite][slwrite] == 2)
+                    Read_Mod_Data(&Sample_Channels[swrite][slwrite], sizeof(char), 1, in);
+                    if(Sample_Channels[swrite][slwrite] == 2)
                     {
                         RawSamples[swrite][1][slwrite] = (short *) malloc(Sample_Length[swrite][slwrite] * sizeof(short) + 8);
                         memset(RawSamples[swrite][1][slwrite], 0, Sample_Length[swrite][slwrite] * sizeof(short) + 8);
@@ -1936,8 +1939,8 @@ void Write_Unpacked_Sample(int (*Write_Function)(void *, int ,int, FILE *),
         Write_Function(Get_WaveForm(sample, 0, bank), sizeof(short), Sample_Length[sample][bank], in);
     }
 
-    Write_Function(&SampleChannels[sample][bank], sizeof(char), 1, in);
-    if(SampleChannels[sample][bank] == 2)
+    Write_Function(&Sample_Channels[sample][bank], sizeof(char), 1, in);
+    if(Sample_Channels[sample][bank] == 2)
     {
         swap_buffer = Swap_New_Sample(Get_WaveForm(sample, 1, bank), sample, bank);
         if(swap_buffer)
@@ -2288,7 +2291,7 @@ void Allocate_Wave(int n_index, int split, long lenfir,
     {
         if(RawSamples[n_index][0][split]) free(RawSamples[n_index][0][split]);
         RawSamples[n_index][0][split] = NULL;
-        if(SampleChannels[n_index][split] == 2)
+        if(Sample_Channels[n_index][split] == 2)
         {
             if(RawSamples[n_index][1][split]) free(RawSamples[n_index][1][split]);
             RawSamples[n_index][1][split] = NULL;
@@ -2297,7 +2300,7 @@ void Allocate_Wave(int n_index, int split, long lenfir,
 #if !defined(__WINAMP__)
         if(RawSamples_Swap[n_index][0][split]) free(RawSamples_Swap[n_index][0][split]);
         RawSamples_Swap[n_index][0][split] = NULL;
-        if(SampleChannels[n_index][split] == 2)
+        if(Sample_Channels[n_index][split] == 2)
         {
             if(RawSamples_Swap[n_index][1][split]) free(RawSamples_Swap[n_index][1][split]);
             RawSamples_Swap[n_index][1][split] = NULL;
@@ -2310,7 +2313,7 @@ void Allocate_Wave(int n_index, int split, long lenfir,
 
     SampleType[n_index][split] = 1;
 
-    SampleChannels[n_index][split] = samplechans;
+    Sample_Channels[n_index][split] = samplechans;
     // Was it already supplied ?
     if(Waveform1)
     {

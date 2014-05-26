@@ -37,7 +37,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#ifndef __LITE__
 #include "../../../../release/distrib/replay/lib/include/endianness.h"
+#else
+#include "../../../../release/distrib_lite/replay/lib/include/endianness.h"
+#endif
 
 // ------------------------------------------------------
 // Constants

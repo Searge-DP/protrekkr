@@ -155,7 +155,7 @@ void Draw_Wave_Data(void)
             if(SampleType[Current_Instrument][Current_Instrument_Split] > 0)
             {   
                 // Any Sample Out There?
-                int strober = SampleChannels[Current_Instrument][Current_Instrument_Split] * 2;
+                int strober = Sample_Channels[Current_Instrument][Current_Instrument_Split] * 2;
                 int s_ey;
                 int s_ey2;
                 int s_size = 0;
@@ -209,7 +209,7 @@ void Draw_Wave_Data(void)
                 }
 
                 // Now draw the sample data
-                switch(SampleChannels[Current_Instrument][Current_Instrument_Split])
+                switch(Sample_Channels[Current_Instrument][Current_Instrument_Split])
                 {
                     case 1:
                         // Mono sample
@@ -350,7 +350,7 @@ void Draw_Wave_PlayBack_Pos(void)
         if(SampleType[Current_Instrument][Current_Instrument_Split] > 0)
         { 
             // Any Sample Out There ?
-            int strober = SampleChannels[Current_Instrument][Current_Instrument_Split] * 2;
+            int strober = Sample_Channels[Current_Instrument][Current_Instrument_Split] * 2;
             int s_ey = (Cur_Height - 150) + 1 + (SAMPLE_LINES_HEIGHT / strober);
             int s_ey2 = s_ey + ((SAMPLE_LINES_HEIGHT / strober) * 2);
             int rcolor3;
@@ -378,7 +378,7 @@ void Draw_Wave_PlayBack_Pos(void)
                 sed_real_range_end = Swap_Range;
             }
 
-            if(SampleChannels[Current_Instrument][Current_Instrument_Split] == 1)
+            if(Sample_Channels[Current_Instrument][Current_Instrument_Split] == 1)
             {
                 for(int32 s_ex = 0; s_ex < LARGE_SMP_VIEW; s_ex++)
                 {
@@ -407,7 +407,7 @@ void Draw_Wave_PlayBack_Pos(void)
             } // If
 
             // STEREO DISPLAY
-            if(SampleChannels[Current_Instrument][Current_Instrument_Split] == 2)
+            if(Sample_Channels[Current_Instrument][Current_Instrument_Split] == 2)
             {
                 for(int32 s_ex = 0; s_ex < LARGE_SMP_VIEW; s_ex++)
                 {

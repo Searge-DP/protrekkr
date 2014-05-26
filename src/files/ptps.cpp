@@ -165,9 +165,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     int j;
     int k;
     int l;
-#ifndef __LITE__
     int twrite;
-#endif
     int tps_trk;
     char Store_303_1 = FALSE;
     char Store_303_2 = FALSE;
@@ -1525,7 +1523,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                     }
 
                     Write_Mod_Data(&Basenote[swrite][slwrite], sizeof(char), 1, in);
-                    
+
                     Write_Mod_Data(&Loop_Start, sizeof(int), 1, in);
                     Write_Mod_Data(&Loop_End, sizeof(int), 1, in);
                     switch(LoopType[swrite][slwrite])
@@ -1582,8 +1580,8 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
 #endif
                     
                     // Stereo mode ?
-                    Write_Mod_Data(&SampleChannels[swrite][slwrite], sizeof(char), 1, in);
-                    if(SampleChannels[swrite][slwrite] == 2)
+                    Write_Mod_Data(&Sample_Channels[swrite][slwrite], sizeof(char), 1, in);
+                    if(Sample_Channels[swrite][slwrite] == 2)
                     {
 #ifndef __LITE__
                         if(Apply_Interpolation)
@@ -1680,16 +1678,18 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
     Write_Mod_Data(&compressor, sizeof(char), 1, in);
 #endif // __LITE__
 
-#ifndef __LITE__
     for(twrite = 0; twrite < Songtracks; twrite++)
     {
         if(!Track_Is_Muted(twrite))
         {
+#ifndef __LITE__
             if(ICut[twrite] > 0.0078125f) ICut[twrite] = 0.0078125f;
             if(ICut[twrite] < 0.00006103515625f) ICut[twrite] = 0.00006103515625f;
             Write_Mod_Data(&TCut[twrite], sizeof(float), 1, in);
             Write_Mod_Data(&ICut[twrite], sizeof(float), 1, in);
+#endif
             Write_Mod_Data(&TPan[twrite], sizeof(float), 1, in);
+#ifndef __LITE__
             Write_Mod_Data(&FType[twrite], sizeof(int), 1, in);
             // One of them must be != 4
             if(FType[twrite] != 4) Store_TrackFilters = TRUE;
@@ -1771,9 +1771,9 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
             }
             Write_Mod_Data(&CSend[twrite], sizeof(int), 1, in);
             Write_Mod_Data(&Channels_Polyphony[twrite], sizeof(char), 1, in);
+#endif // __LITE__
         }
     }
-#endif // __LITE__
 
     // Writing mod properties
 #ifndef __LITE__

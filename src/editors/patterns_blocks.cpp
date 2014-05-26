@@ -2119,30 +2119,31 @@ void Reset_Track(int Position, int Track)
     FType[Track] = 4;
 #endif
 
+#ifndef __LITE__
     Compress_Track[Track] = FALSE;
     mas_comp_threshold_Track[Track] = 100.0f;
     mas_comp_ratio_Track[Track] = 0;
-
+#endif
     oldspawn[Track] = 0;
     roldspawn[Track] = 0;
 
     CHAN_MIDI_PRG[Track] = Track;
 
+#ifndef __LITE__
     LFO_ON[Track] = 0;
     LFO_RATE[Track] = 0.0001f;
     LFO_AMPL[Track] = 0;
 
-#ifndef __LITE__
     FRez[Track] = 64;
 
     DThreshold[Track] = 32767;
 
     DClamp[Track] = 32767;
     Disclap[Track] = 0;
-#endif
 
     DSend[Track] = 0;
     CSend[Track] = 0;
+#endif
 
     Track_Volume[Track] = 1.0f;
 
@@ -2212,9 +2213,11 @@ void Copy_Track(int Position, int Track_Src, int Track_Dst)
     Channels_Effects[Track_Dst] = Channels_Effects[Track_Src];
     CHAN_MUTE_STATE[Track_Dst] = CHAN_MUTE_STATE[Track_Src];
 
+#ifndef __LITE__
     Compress_Track[Track_Dst] = Compress_Track[Track_Src];
     mas_comp_threshold_Track[Track_Dst] = mas_comp_threshold_Track[Track_Src];
     mas_comp_ratio_Track[Track_Dst] = mas_comp_ratio_Track[Track_Src];
+#endif
 
     TPan[Track_Dst] = TPan[Track_Src];
 #ifndef __LITE__

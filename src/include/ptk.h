@@ -71,8 +71,13 @@
 
 #include "../midi/include/midi.h"
 
+#ifndef __LITE__
 #include "../../release/distrib/replay/lib/include/endianness.h"
 #include "../../release/distrib/replay/lib/include/replay.h"
+#else
+#include "../../release/distrib_lite/replay/lib/include/endianness.h"
+#include "../../release/distrib_lite/replay/lib/include/replay.h"
+#endif
 
 #include <string>
 #include <list>
