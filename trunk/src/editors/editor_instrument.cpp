@@ -36,10 +36,15 @@
 #include "../samples/include/samples_pack.h"
 #include "../files/include/files_list.h"
 
+#ifndef __LITE__
 #include "../../release/distrib/replay/lib/include/samples_unpack.h"
 #include "../../release/distrib/replay/lib/include/wavpack.h"
-
 #include "../../release/distrib/replay/lib/include/endianness.h"
+#else
+#include "../../release/distrib_lite/replay/lib/include/samples_unpack.h"
+#include "../../release/distrib_lite/replay/lib/include/wavpack.h"
+#include "../../release/distrib_lite/replay/lib/include/endianness.h"
+#endif
 
 #include "../files/include/files.h"
 #include "../ui/include/requesters.h"
@@ -221,7 +226,7 @@ void Actualize_Instrument_Ed(int typex, char gode)
                     {
                         if(SampleType[Current_Instrument][Current_Instrument_Split] != 0)
                         {
-                            if(SampleChannels[Current_Instrument][Current_Instrument_Split] == 2)
+                            if(Sample_Channels[Current_Instrument][Current_Instrument_Split] == 2)
                             {
                                 sprintf(temprout, "%s [Stereo]", SampleName[Current_Instrument][Current_Instrument_Split]);
                             }
@@ -1575,7 +1580,7 @@ void Lock_Sample(int instr_nbr, int split)
     int BitRate;
     int i;
 
-    for(i = 0; i < SampleChannels[instr_nbr][split]; i++)
+    for(i = 0; i < Sample_Channels[instr_nbr][split]; i++)
     {
         PackedSample = NULL;
         Smp_Dats = NULL;

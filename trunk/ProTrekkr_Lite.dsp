@@ -236,7 +236,7 @@ SOURCE=.\src\Editors\Editor_Track_Fx.cpp
 SOURCE=.\src\Editors\Patterns_Blocks.cpp
 # End Source File
 # End Group
-# Begin Group "Replay"
+# Begin Group "Replay_Lite"
 
 # PROP Default_Filter ""
 # Begin Group "Replay Include"
@@ -494,7 +494,7 @@ SOURCE=.\src\samples\samples_ops.cpp
 # End Group
 # Begin Source File
 
-SOURCE=.\release\distrib\history.txt
+SOURCE=.\release\distrib_lite\history.txt
 # End Source File
 # Begin Source File
 

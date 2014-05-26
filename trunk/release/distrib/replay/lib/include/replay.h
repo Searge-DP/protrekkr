@@ -362,7 +362,7 @@ extern char Finetune[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float Sample_Amplify[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];
 extern short *RawSamples[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
-extern char SampleChannels[MAX_INSTRS][MAX_INSTRS_SPLITS];         // Mono / Stereo
+extern char Sample_Channels[MAX_INSTRS][MAX_INSTRS_SPLITS];         // Mono / Stereo
 extern float TCut[MAX_TRACKS];
 extern float ICut[MAX_TRACKS];
 extern float TPan[MAX_TRACKS];

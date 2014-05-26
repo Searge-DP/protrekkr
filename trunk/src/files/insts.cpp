@@ -177,8 +177,8 @@ void Load_Inst(char *FileName)
                 *RawSamples[swrite][0][slwrite] = 0;
 
                 // Number of channel(s)
-                Read_Data(&SampleChannels[swrite][slwrite], sizeof(char), 1, in);
-                if(SampleChannels[swrite][slwrite] == 2)
+                Read_Data(&Sample_Channels[swrite][slwrite], sizeof(char), 1, in);
+                if(Sample_Channels[swrite][slwrite] == 2)
                 {
                     // Stereo
                     RawSamples[swrite][1][slwrite] = (short *) malloc(Sample_Length[swrite][slwrite] * sizeof(short) + 8);

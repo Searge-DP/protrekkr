@@ -740,7 +740,7 @@ char beatsync[MAX_INSTRS];
 short beatlines[MAX_INSTRS];
 int64 sp_Step[MAX_TRACKS][MAX_POLYPHONY];
 float Sample_Amplify[MAX_INSTRS][MAX_INSTRS_SPLITS];
-char SampleChannels[MAX_INSTRS][MAX_INSTRS_SPLITS];
+char Sample_Channels[MAX_INSTRS][MAX_INSTRS_SPLITS];
 float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];
 short *RawSamples[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
 
@@ -1544,8 +1544,8 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
                     //*(RawSamples[swrite][0][slwrite]) = 0;
 
                     // Stereo flag
-                    Mod_Dat_Read(&SampleChannels[swrite][slwrite], sizeof(char));
-                    if(SampleChannels[swrite][slwrite] == 2)
+                    Mod_Dat_Read(&Sample_Channels[swrite][slwrite], sizeof(char));
+                    if(Sample_Channels[swrite][slwrite] == 2)
                     {
                         if(Apply_Interpolation)
                         {
@@ -4294,14 +4294,14 @@ void Play_Instrument(int channel, int sub_channel)
                         Player_LW[channel][sub_channel] = SMP_LOOPING_FORWARD;
                     }
                 }
-                Player_SC[channel][sub_channel] = SampleChannels[associated_sample][split];
+                Player_SC[channel][sub_channel] = Sample_Channels[associated_sample][split];
 
                 // I know this isn't exactly correct but using a sub channel for this
                 // would mean that we'd have to maintain 1 filters state / sub channel which would be insane.
                 Player_FD[channel] = FDecay[associated_sample][split];
 
                 Player_WL[channel][sub_channel] = RawSamples[associated_sample][0][split];
-                if(SampleChannels[associated_sample][split] == 2)
+                if(Sample_Channels[associated_sample][split] == 2)
                 {
                     Player_WR[channel][sub_channel] = RawSamples[associated_sample][1][split];
                 }
@@ -6009,7 +6009,7 @@ void KillInst(int inst_nbr, int all_splits)
     {
         if(RawSamples[inst_nbr][0][z]) free(RawSamples[inst_nbr][0][z]);
         RawSamples[inst_nbr][0][z] = NULL;
-        if(SampleChannels[inst_nbr][z] == 2)
+        if(Sample_Channels[inst_nbr][z] == 2)
         {
             if(RawSamples[inst_nbr][1][z]) free(RawSamples[inst_nbr][1][z]);
             RawSamples[inst_nbr][1][z] = NULL;
@@ -6018,14 +6018,14 @@ void KillInst(int inst_nbr, int all_splits)
 #if !defined(__STAND_ALONE__) && !defined(__WINAMP__)
         if(RawSamples_Swap[inst_nbr][0][z]) free(RawSamples_Swap[inst_nbr][0][z]);
         RawSamples_Swap[inst_nbr][0][z] = NULL;
-        if(SampleChannels[inst_nbr][z] == 2)
+        if(Sample_Channels[inst_nbr][z] == 2)
         {
             if(RawSamples_Swap[inst_nbr][1][z]) free(RawSamples_Swap[inst_nbr][1][z]);
             RawSamples_Swap[inst_nbr][1][z] = NULL;
         }
 #endif
 
-        SampleChannels[inst_nbr][z] = 0;
+        Sample_Channels[inst_nbr][z] = 0;
         SampleType[inst_nbr][z] = 0;
         LoopStart[inst_nbr][z] = 0;
         LoopEnd[inst_nbr][z] = 0;
@@ -6136,7 +6136,7 @@ void Free_Samples(void)
             {
                 if(RawSamples[freer][0][pedsplit]) free(RawSamples[freer][0][pedsplit]);
                 RawSamples[freer][0][pedsplit] = NULL;
-                if(SampleChannels[freer][pedsplit] == 2)
+                if(Sample_Channels[freer][pedsplit] == 2)
                 {
                     if(RawSamples[freer][1][pedsplit]) free(RawSamples[freer][1][pedsplit]);
                     RawSamples[freer][1][pedsplit] = NULL;
@@ -6148,7 +6148,7 @@ void Free_Samples(void)
             {
                 if(RawSamples_Swap[freer][0][pedsplit]) free(RawSamples_Swap[freer][0][pedsplit]);
                 RawSamples_Swap[freer][0][pedsplit] = NULL;
-                if(SampleChannels[freer][pedsplit] == 2)
+                if(Sample_Channels[freer][pedsplit] == 2)
                 {
                     if(RawSamples_Swap[freer][1][pedsplit]) free(RawSamples_Swap[freer][1][pedsplit]);
                     RawSamples_Swap[freer][1][pedsplit] = NULL;

@@ -23,7 +23,11 @@
 
 #include "ddc.h"
 
+#ifndef __LITE__
 #include "../../../../release/distrib/replay/lib/include/endianness.h"
+#else
+#include "../../../../release/distrib_lite/replay/lib/include/endianness.h"
+#endif
 
 #define WAVE_FORMAT_IEEE_FLOAT 0x0003
 #define WAVE_FORMAT_PCM 1

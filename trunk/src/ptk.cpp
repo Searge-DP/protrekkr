@@ -1328,19 +1328,19 @@ int Screen_Update(void)
                 RF.OpenForWrite(SampleName[Current_Instrument][Current_Instrument_Split],
                                 44100,
                                 16,
-                                SampleChannels[Current_Instrument][Current_Instrument_Split]);
+                                Sample_Channels[Current_Instrument][Current_Instrument_Split]);
             }
             else
             {
                 RF.OpenForWrite("Untitled.wav",
                                 44100,
                                 16,
-                                SampleChannels[Current_Instrument][Current_Instrument_Split]);
+                                Sample_Channels[Current_Instrument][Current_Instrument_Split]);
             }
 
             char t_stereo;
 
-            if(SampleChannels[Current_Instrument][Current_Instrument_Split] == 1) t_stereo = FALSE;
+            if(Sample_Channels[Current_Instrument][Current_Instrument_Split] == 1) t_stereo = FALSE;
             else t_stereo = TRUE;
 
             Uint32 woff = 0;
@@ -2588,7 +2588,9 @@ void Newmod(void)
 
     SubCounter = 0;
     PosInTick = 0;
+#ifndef __LITE__
     PosInTick_Delay = 0;
+#endif
 
     allow_save = TRUE;
 
@@ -3193,7 +3195,7 @@ void ShowInfo(void)
         {
             if(SampleType[pp][z] != 0)
             {
-                sampsize += SampleChannels[pp][z] * Sample_Length[pp][z];
+                sampsize += Sample_Channels[pp][z] * Sample_Length[pp][z];
                 nbr_samp++;
             }
         }
@@ -6236,9 +6238,6 @@ void Display_Master_Comp(void)
     Gui_Draw_Button_Box(159, 6, 54, 16, "Threshold", BUTTON_NORMAL | BUTTON_DISABLED | BUTTON_TEXT_CENTERED);
 #ifndef __LITE__
     Realslider_Size(159 + 54, 6, 50, (int) (mas_comp_threshold_Master * 0.5f), TRUE);
-#else
-    Realslider_Size(159 + 54, 6, 50, (int) (mas_comp_threshold_Master * 0.5f), FALSE);
-#endif
     if(mas_comp_ratio_Master <= 0.01f)
     {
         sprintf(string, "Off");
@@ -6247,6 +6246,10 @@ void Display_Master_Comp(void)
     {
         sprintf(string, "%d%%", (int) mas_comp_threshold_Master);
     }
+#else
+    Realslider_Size(159 + 54, 6, 50, (int) (0 * 0.5f), FALSE);
+    sprintf(string, "Off");
+#endif
 #ifndef __LITE__
     Print_String(string, 159 + 54, 8, 67, BUTTON_TEXT_CENTERED);
 #else
@@ -6256,9 +6259,6 @@ void Display_Master_Comp(void)
     Gui_Draw_Button_Box(283, 6, 41, 16, "Ratio", BUTTON_NORMAL | BUTTON_DISABLED | BUTTON_TEXT_CENTERED);
 #ifndef __LITE__
     Realslider_Size(283 + 41, 6, 50, (int) (mas_comp_ratio_Master * 0.5f), TRUE);
-#else
-    Realslider_Size(283 + 41, 6, 50, (int) (mas_comp_ratio_Master * 0.5f), FALSE);
-#endif
     if(mas_comp_ratio_Master <= 0.01f)
     {
         sprintf(string, "Off");
@@ -6267,6 +6267,10 @@ void Display_Master_Comp(void)
     {
         sprintf(string, "%d%%", (int) mas_comp_ratio_Master);
     }
+#else
+    Realslider_Size(283 + 41, 6, 50, (int) (0 * 0.5f), FALSE);
+    sprintf(string, "Off");
+#endif
 #ifndef __LITE__
     Print_String(string, 283 + 41, 8, 67, BUTTON_TEXT_CENTERED);
 #else

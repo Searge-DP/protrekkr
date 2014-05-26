@@ -648,7 +648,6 @@ unsigned int Player_LE[MAX_TRACKS][MAX_POLYPHONY];
 unsigned int Player_LL[MAX_TRACKS][MAX_POLYPHONY];
 unsigned int Player_NS[MAX_TRACKS][MAX_POLYPHONY];
 
-
 #if defined(PTK_LIMITER_MASTER) || defined(PTK_LIMITER_TRACKS)
 #define MAS_COMPRESSOR_SECONDS 0.1f
 #define MAS_COMPRESSOR_SIZE (int) (MAS_COMPRESSOR_SECONDS * MIX_RATE)
@@ -721,7 +720,7 @@ char beatsync[MAX_INSTRS];
 short beatlines[MAX_INSTRS];
 int64 sp_Step[MAX_TRACKS][MAX_POLYPHONY];
 float Sample_Amplify[MAX_INSTRS][MAX_INSTRS_SPLITS];
-char SampleChannels[MAX_INSTRS][MAX_INSTRS_SPLITS];
+char Sample_Channels[MAX_INSTRS][MAX_INSTRS_SPLITS];
 float FDecay[MAX_INSTRS][MAX_INSTRS_SPLITS];
 short *RawSamples[MAX_INSTRS][2][MAX_INSTRS_SPLITS];
 
@@ -1072,8 +1071,6 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
         Mod_Dat_Read(&Songtracks, sizeof(char));
         Mod_Dat_Read(&Song_Length, sizeof(char));
 
-        Mod_Dat_Read(&Use_Cubic, sizeof(char));
-
         Mod_Dat_Read(pSequence, sizeof(char) * Song_Length);
 
         // Patterns lines
@@ -1098,22 +1095,11 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
         if(!RawPatterns) return(FALSE);
 #endif
 
-        // Multi notes
-        Mod_Dat_Read(Channels_MultiNotes, sizeof(char) * Songtracks);
-
         // Multi fx
         Mod_Dat_Read(Channels_Effects, sizeof(char) * Songtracks);
 
         // Individual volumes
         Mod_Dat_Read(Track_Volume, sizeof(float) * Songtracks);
-
-        // Eq parameters
-        for(i = 0; i < Songtracks; i++)
-        {
-            Mod_Dat_Read(&EqDat[i].lg, sizeof(float));
-            Mod_Dat_Read(&EqDat[i].mg, sizeof(float));
-            Mod_Dat_Read(&EqDat[i].hg, sizeof(float));
-        }
 
         TmpPatterns = RawPatterns;
         for(int pwrite = 0; pwrite < nPatterns; pwrite++)
@@ -1137,40 +1123,9 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
 
         for(int swrite = 0; swrite < nbr_instr; swrite++)
         {
-            Mod_Dat_Read(&Synthprg[swrite], sizeof(char));
-
             Mod_Dat_Read(&beatsync[swrite], sizeof(char));
             Mod_Dat_Read(&beatlines[swrite], sizeof(short));
             Mod_Dat_Read(&Sample_Vol[swrite], sizeof(float));
-
-#if defined(PTK_SYNTH)
-            if(Synthprg[swrite])
-            {
-                Mod_Dat_Read(&PARASynth[swrite], sizeof(SYNTH_DATA));
-            }
-#endif
-
-            // Compression type
-            Mod_Dat_Read(&SampleCompression[swrite], sizeof(char));
-
-#if defined(PTK_MP3) || defined(PTK_AT3)
-            switch(SampleCompression[swrite])
-            {
-
-#if defined(PTK_MP3)
-                case SMP_PACK_MP3:
-                    Mod_Dat_Read(&Mp3_BitRate[swrite], sizeof(char));
-                    break;
-#endif
-
-#if defined(PTK_AT3)
-                case SMP_PACK_AT3:
-                    Mod_Dat_Read(&At3_BitRate[swrite], sizeof(char));
-                    break;
-#endif
-
-            }
-#endif
 
             for(int slwrite = 0; slwrite < MAX_INSTRS_SPLITS; slwrite++)
             {
@@ -1247,8 +1202,8 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
                     //*(RawSamples[swrite][0][slwrite]) = 0;
 
                     // Stereo flag
-                    Mod_Dat_Read(&SampleChannels[swrite][slwrite], sizeof(char));
-                    if(SampleChannels[swrite][slwrite] == 2)
+                    Mod_Dat_Read(&Sample_Channels[swrite][slwrite], sizeof(char));
+                    if(Sample_Channels[swrite][slwrite] == 2)
                     {
                         if(Apply_Interpolation)
                         {
@@ -1299,22 +1254,12 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             }
         }
 
-        // Reading mod properties
-        Mod_Dat_Read(&compressor, sizeof(char));
-
         // Reading Track Properties
         for(twrite = 0; twrite < Songtracks; twrite++)
         {
             Mod_Dat_Read(&TPan[twrite], sizeof(float));
             ComputeStereo(twrite);
             FixStereo(twrite);
-
-#if defined(PTK_COMPRESSOR)
-            if(compressor)
-            {
-                Mod_Dat_Read(&DSend[twrite], sizeof(float));
-            }
-#endif
         }
 
         Mod_Dat_Read(&BeatsPerMin, sizeof(int));
@@ -2455,7 +2400,7 @@ void Sp_Player(void)
                Cut_Stage[c][i])
             {
 
-#if defined(PTK_SYNTH)
+/*#if defined(PTK_SYNTH)
 
                 // Synth bypassing
                 if(!Synth_Was[c][i]) goto ByPass_Wav;
@@ -2464,7 +2409,7 @@ void Sp_Player(void)
                     Synthesizer[c][i].Data.OSC2_WAVEFORM != WAVEFORM_WAV))
                 {
 ByPass_Wav:
-#endif
+#endif*/
                     if(Cut_Stage[c][i])
                     {
                         // Volume ramping
@@ -2603,9 +2548,9 @@ ByPass_Wav:
                     }
 #endif
 
-#if defined(PTK_SYNTH)
+/*#if defined(PTK_SYNTH)
                 }
-#endif
+#endif*/
 
             }
 #endif // defined(PTK_INSTRUMENTS) || defined(PTK_SYNTH)
@@ -3114,14 +3059,14 @@ void Play_Instrument(int channel, int sub_channel)
                         Player_LW[channel][sub_channel] = SMP_LOOPING_FORWARD;
                     }
                 }
-                Player_SC[channel][sub_channel] = SampleChannels[associated_sample][split];
+                Player_SC[channel][sub_channel] = Sample_Channels[associated_sample][split];
 
                 // I know this isn't exactly correct but using a sub channel for this
                 // would mean that we'd have to maintain 1 filters state / sub channel which would be insane.
                 Player_FD[channel] = FDecay[associated_sample][split];
 
                 Player_WL[channel][sub_channel] = RawSamples[associated_sample][0][split];
-                if(SampleChannels[associated_sample][split] == 2)
+                if(Sample_Channels[associated_sample][split] == 2)
                 {
                     Player_WR[channel][sub_channel] = RawSamples[associated_sample][1][split];
                 }
@@ -3829,7 +3774,7 @@ void Do_Effects_Ticks_X(void)
                     {
                         Player_LW[trackef][i] = SMP_LOOPING_BACKWARD;
                     }
-                    if(sp_Stage2[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i])
+/*                    if(sp_Stage2[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i])
                     {
                         Synthesizer[trackef][i].ENV1_LOOP_BACKWARD = TRUE;
                         Synthesizer[trackef][i].ENV3_LOOP_BACKWARD = TRUE;
@@ -3837,7 +3782,7 @@ void Do_Effects_Ticks_X(void)
                     if(sp_Stage3[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i])
                     {
                         Synthesizer[trackef][i].ENV2_LOOP_BACKWARD = TRUE;
-                    }
+                    }*/
                 }
             }
             else
@@ -3849,7 +3794,7 @@ void Do_Effects_Ticks_X(void)
                     {
                         Player_LW[trackef][i] = SMP_LOOPING_FORWARD;
                     }
-                    if(sp_Stage2[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i]) 
+/*                    if(sp_Stage2[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i]) 
                     {
                         Synthesizer[trackef][i].ENV1_LOOP_BACKWARD = FALSE;
                         Synthesizer[trackef][i].ENV3_LOOP_BACKWARD = FALSE;
@@ -3857,7 +3802,7 @@ void Do_Effects_Ticks_X(void)
                     if(sp_Stage3[trackef][i] != PLAYING_NOSAMPLE || Cut_Stage[trackef][i]) 
                     {
                         Synthesizer[trackef][i].ENV2_LOOP_BACKWARD = FALSE;
-                    }
+                    }*/
                 }
             }
         }
@@ -4036,7 +3981,7 @@ void KillInst(int inst_nbr, int all_splits)
     {
         if(RawSamples[inst_nbr][0][z]) free(RawSamples[inst_nbr][0][z]);
         RawSamples[inst_nbr][0][z] = NULL;
-        if(SampleChannels[inst_nbr][z] == 2)
+        if(Sample_Channels[inst_nbr][z] == 2)
         {
             if(RawSamples[inst_nbr][1][z]) free(RawSamples[inst_nbr][1][z]);
             RawSamples[inst_nbr][1][z] = NULL;
@@ -4045,14 +3990,14 @@ void KillInst(int inst_nbr, int all_splits)
 #if !defined(__STAND_ALONE__) && !defined(__WINAMP__)
         if(RawSamples_Swap[inst_nbr][0][z]) free(RawSamples_Swap[inst_nbr][0][z]);
         RawSamples_Swap[inst_nbr][0][z] = NULL;
-        if(SampleChannels[inst_nbr][z] == 2)
+        if(Sample_Channels[inst_nbr][z] == 2)
         {
             if(RawSamples_Swap[inst_nbr][1][z]) free(RawSamples_Swap[inst_nbr][1][z]);
             RawSamples_Swap[inst_nbr][1][z] = NULL;
         }
 #endif
 
-        SampleChannels[inst_nbr][z] = 0;
+        Sample_Channels[inst_nbr][z] = 0;
         SampleType[inst_nbr][z] = 0;
         LoopStart[inst_nbr][z] = 0;
         LoopEnd[inst_nbr][z] = 0;
@@ -4083,7 +4028,7 @@ void Free_Samples(void)
             {
                 if(RawSamples[freer][0][pedsplit]) free(RawSamples[freer][0][pedsplit]);
                 RawSamples[freer][0][pedsplit] = NULL;
-                if(SampleChannels[freer][pedsplit] == 2)
+                if(Sample_Channels[freer][pedsplit] == 2)
                 {
                     if(RawSamples[freer][1][pedsplit]) free(RawSamples[freer][1][pedsplit]);
                     RawSamples[freer][1][pedsplit] = NULL;
@@ -4095,7 +4040,7 @@ void Free_Samples(void)
             {
                 if(RawSamples_Swap[freer][0][pedsplit]) free(RawSamples_Swap[freer][0][pedsplit]);
                 RawSamples_Swap[freer][0][pedsplit] = NULL;
-                if(SampleChannels[freer][pedsplit] == 2)
+                if(Sample_Channels[freer][pedsplit] == 2)
                 {
                     if(RawSamples_Swap[freer][1][pedsplit]) free(RawSamples_Swap[freer][1][pedsplit]);
                     RawSamples_Swap[freer][1][pedsplit] = NULL;
