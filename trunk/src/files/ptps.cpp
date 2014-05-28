@@ -1424,6 +1424,7 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
             }
 #endif // __LITE__
 
+
 #ifndef __LITE__
             // Compression type
             Write_Mod_Data(&SampleCompression[swrite], sizeof(char), 1, in);
@@ -1437,6 +1438,8 @@ int Save_Ptp(FILE *in, int Simulate, char *FileName)
                     Write_Mod_Data(&At3_BitRate[swrite], sizeof(char), 1, in);
                     break;
             }
+#else
+            Write_Mod_Data(&SampleCompression[swrite], sizeof(char), 1, in);
 #endif
 
             // 16 splits / instrument

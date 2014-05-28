@@ -42,7 +42,7 @@
 #include "../../release/distrib/replay/lib/include/endianness.h"
 #else
 #include "../../release/distrib_lite/replay/lib/include/samples_unpack.h"
-#include "../../release/distrib_lite/replay/lib/include/wavpack.h"
+//#include "../../release/distrib_lite/replay/lib/include/wavpack.h"
 #include "../../release/distrib_lite/replay/lib/include/endianness.h"
 #endif
 

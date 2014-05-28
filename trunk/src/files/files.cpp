@@ -69,7 +69,9 @@ extern REQUESTER Overwrite_Requester;
 extern char OverWrite_Name[1024];
 #endif
 
+#ifndef __LITE__
 extern SynthParameters PARASynth[128];
+#endif
 
 extern int Beveled;
 char AutoBackup;
@@ -921,7 +923,7 @@ short *Unpack_Sample(FILE *FileHandle, int Dest_Length, char Pack_Type, int BitR
         return(Dest_Buffer);
 
     }
-#endif __LITE__
+#endif // __LITE__
 }
 
 // ------------------------------------------------------

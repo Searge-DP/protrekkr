@@ -3,39 +3,27 @@
 <pre>
 <h1>Build Log</h1>
 <h3>
---------------------Configuration: PtkReplay - Win32 Release--------------------
+--------------------Configuration: PtkReplay - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\franck\LOCALS~1\Temp\RSP79F.tmp" with contents
+Creating temporary file "C:\DOCUME~1\franck\LOCALS~1\Temp\RSP9C.tmp" with contents
 [
-/nologo /Gz /ML /W3 /O1 /D "__WIN32__" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "__STAND_ALONE__" /Fo"Release/" /Fd"Release/" /FD /c 
-"C:\Src\Pc\ptk\release\distrib\replay\lib\Replay.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\Samples_Unpack.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\sounddriver\sounddriver_windows.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\spline.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\Synth.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\TB_303.cpp"
-"C:\Src\Pc\ptk\release\distrib\replay\lib\wavpack.cpp"
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "_LIB" /D "__WIN32__" /D "_DEBUG" /D "_MBCS" /D "__STAND_ALONE__" /D "__LITE__" /Fp"Debug/PtkReplay.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Src\Pc\ptk\release\distrib_lite\replay\lib\Replay.cpp"
+"C:\Src\Pc\ptk\release\distrib_lite\replay\lib\sounddriver\sounddriver_windows.cpp"
 ]
-Creating command line "cl.exe @C:\DOCUME~1\franck\LOCALS~1\Temp\RSP79F.tmp" 
-Creating command line "link.exe -lib /nologo /out:"..\PtkReplay.lib"  .\Release\Replay.obj .\Release\Samples_Unpack.obj .\Release\sounddriver_windows.obj .\Release\spline.obj .\Release\Synth.obj .\Release\TB_303.obj .\Release\wavpack.obj "
+Creating command line "cl.exe @C:\DOCUME~1\franck\LOCALS~1\Temp\RSP9C.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\PtkReplay.lib"  .\Debug\Replay.obj .\Debug\sounddriver_windows.obj "
 <h3>Output Window</h3>
 Compiling...
 Replay.cpp
-C:\Src\Pc\ptk\release\distrib\replay\lib\Replay.cpp(4415) : warning C4101: 'i' : unreferenced local variable
-Samples_Unpack.cpp
 sounddriver_windows.cpp
-spline.cpp
-Synth.cpp
-TB_303.cpp
-wavpack.cpp
-Generating Code...
 Creating library...
 
 
 
 <h3>Results</h3>
-PtkReplay.lib - 0 error(s), 1 warning(s)
+PtkReplay.lib - 0 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

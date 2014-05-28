@@ -3251,12 +3251,14 @@ void Actualize_Input(void)
             gui_action = GUI_CMD_UPDATE_PATTERN_ED;
             break;
 
+#ifndef __LITE__
         // Synth name
         case INPUT_SYNTH_NAME:
             Actualize_Name(retletter, PARASynth[Current_Instrument].presetname);
             teac = UPDATE_SYNTH_CHANGE_NAME;
             gui_action = GUI_CMD_UPDATE_SYNTH_ED;
             break;
+#endif
 
         // Module artist
         case INPUT_MODULE_ARTIST:
