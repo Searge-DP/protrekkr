@@ -70,8 +70,10 @@ int SamplesPerTick;
     float FADECOEF[MAX_TRACKS];
 #endif
 
+#ifndef __LITE__
 #if defined(PTK_SYNTH)
 CSynth Synthesizer[MAX_TRACKS][MAX_POLYPHONY];
+#endif
 #endif
 
 float Player_FD[MAX_TRACKS];
@@ -703,11 +705,13 @@ short *RawSamples_Swap[MAX_INSTRS][2][16];
 
 unsigned char Synthprg[128];
 
+#ifndef __LITE__
 #if defined(PTK_SYNTH)
 #if !defined(__STAND_ALONE__) || defined(__WINAMP__)
 SynthParameters PARASynth[128];
 #else
 SYNTH_DATA PARASynth[128];
+#endif
 #endif
 #endif
 
@@ -1043,6 +1047,90 @@ void Mod_Dat_Read(void *Dest, int size)
     Cur_Module += size;
 }
 
+#if defined(PTK_INSTRUMENTS)
+short *Unpack_Sample(int Dest_Length, char Pack_Type, int BitRate)
+{
+    int Packed_Length;
+    short *Dest_Buffer;
+    Uint8 *Packed_Read_Buffer;
+
+    Mod_Dat_Read(&Packed_Length, sizeof(int));
+    if(Packed_Length == -1)
+    {
+        // Sample wasn't packed
+        Packed_Read_Buffer = (Uint8 *) malloc(Dest_Length * 2 + 8);
+        memset(Packed_Read_Buffer, 0, Dest_Length * 2 + 8);
+        Mod_Dat_Read(Packed_Read_Buffer, sizeof(char) * (Dest_Length * 2));
+        return((short *) Packed_Read_Buffer);
+    }
+    else
+    {
+        Packed_Read_Buffer = (Uint8 *) malloc(Packed_Length);
+        // Read the packer buffer
+        Mod_Dat_Read(Packed_Read_Buffer, sizeof(char) * Packed_Length);
+        Dest_Buffer = (short *) malloc(Dest_Length * 2 + 8);
+        memset(Dest_Buffer, 0, Dest_Length * 2 + 8);
+
+#if defined(PTK_AT3) || defined(PTK_GSM) || defined(PTK_MP3) || \
+    defined(PTK_TRUESPEECH) || defined(PTK_ADPCM) || defined(PTK_8BIT) || \
+    defined(PTK_INTERNAL)
+
+        switch(Pack_Type)
+        {
+
+#if defined(__PSP__)
+#if defined(PTK_AT3)
+            case SMP_PACK_AT3:
+                UnpackAT3(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length, BitRate);
+                break;
+#endif
+#endif
+
+#if defined(PTK_GSM)
+            case SMP_PACK_GSM:
+                UnpackGSM(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length);
+                break;
+#endif
+
+#if defined(PTK_MP3)
+            case SMP_PACK_MP3:
+                UnpackMP3(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length, BitRate);
+                break;
+#endif
+
+#if defined(PTK_TRUESPEECH)
+            case SMP_PACK_TRUESPEECH:
+                UnpackTrueSpeech(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length);
+                break;
+#endif
+
+#if defined(PTK_ADPCM)
+            case SMP_PACK_ADPCM:
+                UnpackADPCM(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length);
+                break;
+#endif
+
+#if defined(PTK_8BIT)
+            case SMP_PACK_8BIT:
+                Unpack8Bit(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length);
+                break;
+#endif
+
+#if defined(PTK_INTERNAL)
+            case SMP_PACK_INTERNAL:
+                UnpackInternal(Packed_Read_Buffer, Dest_Buffer, Packed_Length, Dest_Length);
+                break;
+#endif
+
+        }
+#endif
+
+        free(Packed_Read_Buffer);
+        return(Dest_Buffer);
+    }
+}
+#endif // PTK_INSTRUMENTS
+
 int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
 {
     Uint32 *dwModule = (Uint32 *) Module;
@@ -1126,6 +1214,8 @@ int PTKEXPORT Ptk_InitModule(Uint8 *Module, int start_position)
             Mod_Dat_Read(&beatsync[swrite], sizeof(char));
             Mod_Dat_Read(&beatlines[swrite], sizeof(short));
             Mod_Dat_Read(&Sample_Vol[swrite], sizeof(float));
+
+            Mod_Dat_Read(&SampleCompression[swrite], sizeof(char));
 
             for(int slwrite = 0; slwrite < MAX_INSTRS_SPLITS; slwrite++)
             {
@@ -1544,7 +1634,9 @@ void Pre_Song_Init(void)
         CHAN_MUTE_STATE[ini] = 0;
 #endif
 
+#if !defined(__STAND_ALONE__)
         TPan[ini] = Default_Pan[ini];
+#endif
 
         ramper[ini] = 0;
     }
@@ -3946,8 +4038,12 @@ void KillInst(int inst_nbr, int all_splits)
 
     if(all_splits)
     {
+#ifndef __LITE__
         // Internal is the default packing scheme
         SampleCompression[inst_nbr] = SMP_PACK_INTERNAL;
+#else
+        SampleCompression[inst_nbr] = SMP_PACK_NONE;
+#endif
 
 #if defined(PTK_MP3)
         Mp3_BitRate[inst_nbr] = 0;

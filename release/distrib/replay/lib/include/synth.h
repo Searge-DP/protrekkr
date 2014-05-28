@@ -35,20 +35,7 @@
 // ------------------------------------------------------
 // Includes
 #include <math.h>
-
-#if defined(__STAND_ALONE__)
-    #if defined(__WINAMP__)
-        #include "ptk_def_properties.h"
-    #else
-        #if defined(__GCC__)
-        #include "../../ptk_properties.h"
-        #else
-        #include "../ptk_properties.h"
-        #endif
-    #endif
-#else
-    #include "ptk_def_properties.h"
-#endif
+#include "replay.h"
 
 // ------------------------------------------------------
 // Constants

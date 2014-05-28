@@ -34,9 +34,22 @@
 
 // ------------------------------------------------------
 // Includes
-#include "tb_303.h"
-#include "cubic_spline.h"
-#include "spline.h"
+#include <math.h>
+
+#if defined(__STAND_ALONE__)
+    #if defined(__WINAMP__)
+        #include "ptk_def_properties.h"
+    #else
+        #if defined(__GCC__)
+        #include "../../ptk_properties.h"
+        #else
+        #include "../ptk_properties.h"
+        #endif
+    #endif
+#else
+    #include "ptk_def_properties.h"
+#endif
+
 #if defined(__WIN32__)
 #include "../sounddriver/include/sounddriver_windows.h"
 #elif defined(__LINUX__)
@@ -52,9 +65,7 @@
 #else
 #error "Can't work without any sound driver !"
 #endif
-#include "samples_unpack.h"
 #include "ptkreplay.h"
-#include "synth.h"
 
 // ------------------------------------------------------
 // Constants
@@ -224,6 +235,8 @@ extern char rawrender_target;
 extern int rawrender_from;
 extern int rawrender_to;
 #endif
+
+typedef __int64 int64;
 
 // ------------------------------------------------------
 // Structures
@@ -443,8 +456,10 @@ extern int sp_Stage3[MAX_TRACKS][MAX_POLYPHONY];
 extern int L_MaxLevel;
 extern int R_MaxLevel;
 
+#ifndef __LITE__
 #if defined(PTK_SYNTH)
 extern CSynth Synthesizer[MAX_TRACKS][MAX_POLYPHONY];
+#endif
 #endif
 
 extern float oldspawn[MAX_TRACKS];
@@ -461,11 +476,13 @@ extern int Song_Playing;
 extern int left_value;
 extern int right_value;
 
+#ifndef __LITE__
 #if defined(PTK_SYNTH)
 #if !defined(__STAND_ALONE__) || defined(__WINAMP__)
 extern SynthParameters PARASynth[128];
 #else
 extern SYNTH_DATA PARASynth[128];
+#endif
 #endif
 #endif
 

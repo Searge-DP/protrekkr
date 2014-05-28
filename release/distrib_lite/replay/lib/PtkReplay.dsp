@@ -65,7 +65,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "_LIB" /D "__WIN32__" /D "_DEBUG" /D "_MBCS" /D "__STAND_ALONE__" /YX /FD /GZ /c
+# ADD CPP /nologo /W3 /Gm /GX /ZI /Od /D "_LIB" /D "__WIN32__" /D "_DEBUG" /D "_MBCS" /D "__STAND_ALONE__" /D "__LITE__" /YX /FD /GZ /c
 # ADD BASE RSC /l 0x40c /d "_DEBUG"
 # ADD RSC /l 0x40c /d "_DEBUG"
 BSC32=bscmake.exe
@@ -90,36 +90,12 @@ SOURCE=.\Replay.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Samples_Unpack.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\sounddriver\sounddriver_windows.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\spline.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\Synth.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\TB_303.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\wavpack.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
-# Begin Source File
-
-SOURCE=.\include\Cubic_Spline.h
-# End Source File
 # Begin Source File
 
 SOURCE=..\Ptk_Properties.h
@@ -130,27 +106,7 @@ SOURCE=.\include\Replay.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\include\Samples_Unpack.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\sounddriver\include\sounddriver_windows.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\include\spline.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\include\Synth.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\include\TB_303.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\include\wavpack.h
 # End Source File
 # End Group
 # End Target
