@@ -324,28 +324,28 @@ void Actualize_Track_Fx_Ed(char gode)
                             100 + 16,
                             64,
                             TRUE);
-#else
+#else // __LITE__
             Realslider_Vert(710, (Cur_Height - 120),
-                            (int) ((2.0f - EqDat[Track_Under_Caret].lg) * 50.0f),
+                            (int) 0,
                             16,
                             100 + 16,
                             64,
                             FALSE);
 
             Realslider_Vert(710 + (22 * 1), (Cur_Height - 120),
-                            (int) ((2.0f - EqDat[Track_Under_Caret].mg) * 50.0f),
+                            (int) 0,
                             16,
                             100 + 16,
                             64,
                             FALSE);
 
             Realslider_Vert(710 + (22 * 2), (Cur_Height - 120),
-                            (int) ((2.0f - EqDat[Track_Under_Caret].hg) * 50.0f),
+                            (int) 0,
                             16,
                             100 + 16,
                             64,
                             FALSE);
-#endif
+#endif // __LITE__
         }
     }//User gui screen match
 }

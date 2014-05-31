@@ -2265,7 +2265,9 @@ void Clear_Instrument_Dat(int n_index, int split, int lenfir)
     {
         Sample_Vol[n_index] = 0.0f;
         Midiprg[n_index] = -1;
+#ifndef __LITE__
         Synthprg[n_index] = SYNTH_WAVE_OFF;
+#endif
         beatsync[n_index] = FALSE;
 
         // Internal is default compression
