@@ -308,7 +308,11 @@ REQUESTER_BUTTON Requester_Btn_Synths =
 
 REQUESTER_BUTTON Requester_Btn_Instruments =
 {
+#ifndef __LITE__    
     &Requester_Btn_Synths,
+#else
+    &Requester_Btn_Cancel,
+#endif
     "Instruments",
     0,
     SDLK_i
@@ -2429,7 +2433,9 @@ void Song_Stop(void)
 void Newmod(void)
 {
     int i;
+#ifndef __LITE__
     int Old_Prg;
+#endif
 
     Clear_Input();
     Song_Stop();
@@ -2448,14 +2454,20 @@ void Newmod(void)
         Actualize_Master(0);
         for(i = 0; i < MAX_INSTRS; i++)
         {
+#ifndef __LITE__
             Old_Prg = Synthprg[i];
+#endif
             KillInst(i, TRUE);
+#ifndef __LITE__
             Synthprg[i] = Old_Prg;
+#endif
             sprintf(nameins[i], "Untitled");
+#ifndef __LITE__
             if((Synthprg[i] - 2) == i)
             {
                 Synthprg[i] = 1;
             }
+#endif
         }
         Renew_Sample_Ed();
     }
@@ -3054,8 +3066,8 @@ void DeleteInstrument(void)
 {
 #ifndef __LITE__
     int i;
-#endif
     int Old_Prg;
+#endif
 
     Stop_Current_Instrument();
 
@@ -3087,14 +3099,20 @@ void DeleteInstrument(void)
         seditor = 0;
         Final_Mod_Length = 0;
         Actualize_Master(0);
+#ifndef __LITE__
         Old_Prg = Synthprg[Current_Instrument];
+#endif
         KillInst(Current_Instrument, FALSE);
+#ifndef __LITE__
         Synthprg[Current_Instrument] = Old_Prg;
+#endif
         sprintf(nameins[Current_Instrument], "Untitled");
+#ifndef __LITE__
         if((Synthprg[Current_Instrument] - 2) == Current_Instrument)
         {
             Synthprg[Current_Instrument] = 1;
         }
+#endif
         Renew_Sample_Ed();
         Status_Box("Instrument deleted.");
         RefreshSample();
@@ -3106,14 +3124,20 @@ void DeleteInstrument(void)
         seditor = 0;
         Final_Mod_Length = 0;
         Actualize_Master(0);
+#ifndef __LITE__
         Old_Prg = Synthprg[Current_Instrument];
+#endif
         KillInst(Current_Instrument, TRUE);
+#ifndef __LITE__
         Synthprg[Current_Instrument] = Old_Prg;
+#endif
         sprintf(nameins[Current_Instrument], "Untitled");
+#ifndef __LITE__
         if((Synthprg[Current_Instrument] - 2) == Current_Instrument)
         {
             Synthprg[Current_Instrument] = 1;
         }
+#endif
         Renew_Sample_Ed();
         Status_Box("Instrument deleted.");
         RefreshSample();
@@ -3179,8 +3203,11 @@ void ShowInfo(void)
     int sampsize = 0;
     int nbr_samp = 0;
     int nbr_synth = 0;
+#ifndef __LITE__
     int i;
+#endif
 
+#ifndef __LITE__
     for(i = 0; i < MAX_INSTRS; i++)
     {
         if(Synthprg[i])
@@ -3188,7 +3215,7 @@ void ShowInfo(void)
             nbr_synth++;
         }
     }
-
+#endif
     for(int pp = 0; pp < MAX_INSTRS; pp++)
     {
         for(int z = 0; z < MAX_INSTRS_SPLITS; z++)
